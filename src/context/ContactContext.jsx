@@ -15,19 +15,30 @@ const projectList = projectsPage.items.map((p) => ({
 }))
 
 function ContactModal({ project = '', onClose }) {
+  const safeProject = typeof project === 'string' ? project : ''
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    project: project || '',
+    project: safeProject || '',
   })
   const [status, setStatus] = useState('idle')
+  const [formError, setFormError] = useState('')
 
   // Find initial active index based on passed project name
-  const initialIndex = project
-    ? projectList.findIndex((p) => p.name.toLowerCase() === project.toLowerCase())
+  const initialIndex = safeProject
+    ? projectList.findIndex((p) => p.name.toLowerCase() === safeProject.toLowerCase())
     : 0
   const [activeIndex, setActiveIndex] = useState(initialIndex !== -1 ? initialIndex : 0)
+
+  // Keep project synced if prop updates
+  useEffect(() => {
+    if (safeProject) {
+      setFormData((prev) => ({ ...prev, project: safeProject }))
+      const idx = projectList.findIndex((p) => p.name.toLowerCase() === safeProject.toLowerCase())
+      if (idx !== -1) setActiveIndex(idx)
+    }
+  }, [safeProject])
 
   // Escape key handler and lock body scroll
   useEffect(() => {
@@ -56,7 +67,7 @@ function ContactModal({ project = '', onClose }) {
     if (projectName) {
       const idx = projectList.findIndex((p) => p.name === projectName)
       if (idx !== -1) {
-        setActiveIndex(idx) // Switch to chosen project image immediately
+        setActiveIndex(idx)
       }
     }
   }
@@ -66,9 +77,25 @@ function ContactModal({ project = '', onClose }) {
     setActiveIndex(idx)
   }
 
-  // Submit enquiry
+  // Submit enquiry with clear feedback
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setFormError('')
+
+    if (!formData.name.trim()) {
+      setFormError('Please enter your name.')
+      return
+    }
+    if (!formData.email.trim()) {
+      setFormError('Please enter your email address.')
+      return
+    }
+    const cleanPhone = formData.phone.replace(/\D/g, '')
+    if (!cleanPhone || cleanPhone.length < 10) {
+      setFormError('Please enter a valid 10-digit mobile number.')
+      return
+    }
+
     setStatus('sending')
     try {
       if (contactForm.endpoint) {
@@ -83,6 +110,7 @@ function ContactModal({ project = '', onClose }) {
       setStatus('sent')
     } catch {
       setStatus('error')
+      setFormError('Something went wrong. Please try again or call sales directly.')
     }
   }
 
@@ -93,15 +121,18 @@ function ContactModal({ project = '', onClose }) {
       aria-modal="true"
       aria-labelledby="enquiry-modal-title"
     >
-      {/* Blurred dark backdrop */}
+      {/* Blurred dark backdrop - explicitly z-0 */}
       <div
-        className="fixed inset-0 bg-black/65 backdrop-blur-sm"
+        className="fixed inset-0 z-0 bg-black/65 backdrop-blur-sm cursor-pointer"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Modal Dialog Card */}
-      <div className="relative my-auto w-full max-w-[860px] overflow-hidden bg-white border border-line flex flex-col md:flex-row min-h-[500px] max-h-[94vh] motion-safe:animate-hero-in">
+      {/* Modal Dialog Card - explicitly z-10 and stops click bubbling */}
+      <div
+        className="relative z-10 my-auto w-full max-w-[860px] overflow-hidden bg-white border border-line flex flex-col md:flex-row min-h-[500px] max-h-[94vh] motion-safe:animate-hero-in"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Left Side: Animated Project Showcase with Soft Cross-fade Carousel */}
         <div className="relative w-full md:w-1/2 min-h-[260px] md:min-h-[500px] bg-night overflow-hidden select-none">
           {projectList.map((p, idx) => {
@@ -169,7 +200,7 @@ function ContactModal({ project = '', onClose }) {
             type="button"
             onClick={onClose}
             aria-label="Close enquiry modal"
-            className="absolute right-5 top-5 p-1 text-gray-500 hover:text-ink transition-colors"
+            className="absolute right-5 top-5 p-1 text-gray-500 hover:text-ink transition-colors cursor-pointer"
           >
             <svg
               width="22"
@@ -208,7 +239,7 @@ function ContactModal({ project = '', onClose }) {
               <button
                 type="button"
                 onClick={onClose}
-                className="mt-6 rounded-full border border-line bg-cream px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-ink hover:border-brand-deep hover:text-sun transition-colors"
+                className="mt-6 rounded-full border border-line bg-cream px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-ink hover:border-brand-deep hover:text-sun transition-colors cursor-pointer"
               >
                 Close
               </button>
@@ -226,7 +257,7 @@ function ContactModal({ project = '', onClose }) {
                 {/* Name */}
                 <div>
                   <label className="block text-[13px] font-semibold text-gray-800 mb-1">
-                    Name
+                    Name *
                   </label>
                   <input
                     type="text"
@@ -242,7 +273,7 @@ function ContactModal({ project = '', onClose }) {
                 {/* Email */}
                 <div>
                   <label className="block text-[13px] font-semibold text-gray-800 mb-1">
-                    Email
+                    Email *
                   </label>
                   <input
                     type="email"
@@ -255,17 +286,16 @@ function ContactModal({ project = '', onClose }) {
                   />
                 </div>
 
-                {/* Phone Number (Clean input without whatsapp/call checkboxes) */}
+                {/* Phone Number */}
                 <div>
                   <label className="block text-[13px] font-semibold text-gray-800 mb-1">
-                    Phone Number
+                    Phone Number *
                   </label>
                   <input
                     type="tel"
                     name="phone"
                     required
-                    maxLength={10}
-                    pattern="[0-9]{10}"
+                    maxLength={14}
                     value={formData.phone}
                     onChange={(e) => {
                       const digits = e.target.value.replace(/\D/g, '').slice(0, 10)
@@ -310,12 +340,19 @@ function ContactModal({ project = '', onClose }) {
                   </div>
                 </div>
 
-                {/* Submit Button Matching the Theme */}
+                {/* Inline Validation Error Notice */}
+                {formError && (
+                  <p className="text-xs font-semibold text-sun animate-hero-in">
+                    {formError}
+                  </p>
+                )}
+
+                {/* Submit Button */}
                 <div className="pt-2">
                   <button
                     type="submit"
                     disabled={status === 'sending'}
-                    className="w-full rounded-full border border-brand-deep bg-gradient-to-r from-sun to-brand-deep hover:from-brand-deep hover:to-brand-deeper text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 transition-all duration-300 disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full rounded-full border border-brand-deep bg-gradient-to-r from-sun to-brand-deep hover:from-brand-deep hover:to-brand-deeper text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 transition-all duration-300 disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
                   >
                     {status === 'sending' ? (
                       <>
@@ -341,7 +378,7 @@ function ContactModal({ project = '', onClose }) {
                         </svg>
                       </>
                     ) : (
-                      'Submit'
+                      'Submit Enquiry'
                     )}
                   </button>
                 </div>
@@ -356,7 +393,10 @@ function ContactModal({ project = '', onClose }) {
 
 export function ContactProvider({ children }) {
   const [state, setState] = useState({ open: false, project: '' })
-  const openContact = useCallback((project = '') => setState({ open: true, project }), [])
+  const openContact = useCallback((project = '') => {
+    const projectName = typeof project === 'string' ? project : ''
+    setState({ open: true, project: projectName })
+  }, [])
   const closeContact = useCallback(() => setState((s) => ({ ...s, open: false })), [])
 
   return (

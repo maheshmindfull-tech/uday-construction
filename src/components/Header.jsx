@@ -105,13 +105,14 @@ export default function Header() {
         </nav>
 
         {/* Mobile Actions */}
-        <div className="flex items-center gap-3 md:hidden">
-          <Link
-            to="/contact"
-            className="rounded-full border border-brand-deep bg-brand-deep px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white"
+        <div className="flex items-center gap-2.5 md:hidden">
+          <button
+            type="button"
+            onClick={() => openContact()}
+            className="rounded-full border border-brand-deep bg-brand-deep px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-brand-deeper cursor-pointer"
           >
-            Contact
-          </Link>
+            Enquire Now
+          </button>
 
           <button
             type="button"
