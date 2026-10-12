@@ -65,8 +65,12 @@ function ProjectCard({ project, number }) {
         <div className="mt-6 flex items-center justify-between border-t border-line pt-5">
           <button
             type="button"
-            onClick={() => openContact(project.name)}
-            className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:text-sun"
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              openContact(project.name)
+            }}
+            className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:text-sun cursor-pointer active:scale-95"
           >
             {upcoming ? 'Register interest' : 'Enquire now'}
             <ArrowIcon />

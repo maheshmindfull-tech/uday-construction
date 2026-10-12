@@ -25,10 +25,14 @@ function ContactModal({ project = '', onClose }) {
     : 0
   const [activeIndex, setActiveIndex] = useState(initialIndex !== -1 ? initialIndex : 0)
 
-  // Guard against instant closure on mount (opening click event bubbling)
-  const mountTimeRef = useRef(Date.now())
+  // Strict pointer-down guard to prevent mobile phantom tap dismissals
+  const isBackdropPointerDownRef = useRef(false)
+  const [canClose, setCanClose] = useState(false)
+
   useEffect(() => {
-    mountTimeRef.current = Date.now()
+    // 350ms lock on mounting ensures mobile tap gestures (touchstart -> touchend -> simulated click) cannot dismiss modal
+    const t = setTimeout(() => setCanClose(true), 350)
+    return () => clearTimeout(t)
   }, [])
 
   // Keep project synced if prop updates
@@ -81,17 +85,23 @@ function ContactModal({ project = '', onClose }) {
     }
   }
 
-  // Safe backdrop click handler: only close if user actually clicked the outer dark backdrop
+  // Only consider as backdrop press if interaction started directly on the backdrop container
+  const handleBackdropPointerDown = (e) => {
+    isBackdropPointerDownRef.current = e.target === e.currentTarget
+  }
+
+  // Only close if BOTH pointerdown AND click occurred on the backdrop, and grace period passed
   const handleOverlayClick = (e) => {
-    if (Date.now() - mountTimeRef.current < 250) return
-    if (e.target === e.currentTarget) {
+    if (canClose && isBackdropPointerDownRef.current && e.target === e.currentTarget) {
       onClose()
     }
+    isBackdropPointerDownRef.current = false
   }
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-2.5 sm:p-5 md:p-8 overflow-y-auto overscroll-contain bg-black/70 backdrop-blur-sm cursor-pointer"
+      className="fixed inset-0 z-[100] flex items-start sm:items-center justify-center p-2.5 sm:p-5 md:p-8 overflow-y-auto overscroll-contain bg-black/75 backdrop-blur-sm"
+      onPointerDown={handleBackdropPointerDown}
       onClick={handleOverlayClick}
       role="dialog"
       aria-modal="true"
@@ -99,15 +109,19 @@ function ContactModal({ project = '', onClose }) {
     >
       {/* Modal Dialog Card - explicitly stops click bubbling and cursor-default */}
       <div
-        className="relative z-10 my-auto w-full max-w-[860px] overflow-hidden bg-white border border-line flex flex-col md:flex-row max-h-[92vh] sm:max-h-[94vh] shadow-none motion-safe:animate-hero-in cursor-default"
+        className="relative z-10 w-full max-w-[860px] my-3 sm:my-auto bg-white border border-line flex flex-col md:flex-row shadow-none motion-safe:animate-hero-in cursor-default"
         onClick={(e) => e.stopPropagation()}
+        onPointerDown={(e) => e.stopPropagation()}
       >
         {/* Floating Close button: top-right corner on both mobile (over image) and desktop (over form) */}
         <button
           type="button"
-          onClick={onClose}
+          onClick={(e) => {
+            e.stopPropagation()
+            onClose()
+          }}
           aria-label="Close enquiry modal"
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 md:top-5 md:right-5 z-30 flex h-8 w-8 sm:h-9 sm:w-9 md:h-auto md:w-auto items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition-colors hover:bg-black/70 md:rounded-none md:bg-transparent md:text-gray-500 md:hover:text-ink md:p-1 cursor-pointer"
+          className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 md:top-4 md:right-4 z-40 flex h-9 w-9 sm:h-9 sm:w-9 md:h-auto md:w-auto items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md transition-colors hover:bg-black/85 md:rounded-none md:bg-transparent md:text-gray-500 md:hover:text-ink md:p-1 cursor-pointer"
         >
           <svg
             width="20"
