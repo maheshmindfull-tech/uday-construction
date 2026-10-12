@@ -2,7 +2,7 @@ import { stats } from '../data/content'
 
 export default function Stats() {
   return (
-    <section aria-label="Numbers" className="w-full bg-gradient-to-b from-sand via-cream to-sand/60 text-ink">
+    <section aria-label="Numbers" className="w-full bg-white text-ink border-b border-line">
       <div className="mx-auto max-w-site px-5 pb-20 pt-20 md:px-10 md:pb-[104px] md:pt-28">
         <div className="overflow-hidden whitespace-nowrap bg-gradient-to-r from-sun via-brand to-gold bg-clip-text font-number text-[18vw] font-[200] leading-[0.9] tracking-[-0.03em] text-transparent md:text-[clamp(68px,17.5vw,272px)]">
           {stats.bigNumber}

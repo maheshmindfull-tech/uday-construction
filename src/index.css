@@ -7,7 +7,7 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-cream font-sans text-ink antialiased;
+    @apply bg-white font-sans text-ink antialiased;
   }
   :focus-visible {
     outline: 2px solid #b8500a;

@@ -259,7 +259,7 @@ export default function ContactPage() {
             </div>
 
             {/* Quick Call Box */}
-            <div className="mt-10 bg-gradient-to-br from-sand via-cream to-sand p-6 border border-line">
+            <div className="mt-10 bg-neutral-50 p-6 border border-line">
               <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-sun">Prefer calling right away?</span>
               <p className="mt-2 text-2xl font-light text-ink">+91 95525 69646</p>
               <p className="mt-1 text-xs text-body">Our team is available right now to answer your inquiries.</p>
@@ -537,7 +537,7 @@ export default function ContactPage() {
       </section>
 
       {/* Office Locations & Interactive Guide */}
-      <section aria-label="Our office locations" className="w-full bg-gradient-to-b from-sand to-cream py-20 md:py-28 border-t border-line">
+      <section aria-label="Our office locations" className="w-full bg-white py-20 md:py-28 border-t border-line">
         <div className="mx-auto max-w-site px-5 md:px-10">
           <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line pb-8">
             <Reveal>

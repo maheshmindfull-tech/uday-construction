@@ -16,7 +16,7 @@ export default function Ticker() {
   return (
     <div
       aria-label="Design Philosophy Highlights"
-      className="relative w-full overflow-hidden border-y border-line bg-gradient-to-r from-sand via-white to-sand py-3.5 text-ink select-none md:py-4"
+      className="relative w-full overflow-hidden border-y border-line bg-white py-3.5 text-ink select-none md:py-4"
     >
       <div className="animate-marquee flex items-center">
         {duplicatedList.map((item, idx) => (

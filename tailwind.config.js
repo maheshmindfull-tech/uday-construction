@@ -15,9 +15,9 @@ export default {
         // Neutrals
         ink: '#2f2a26', // headings & primary text
         body: '#5a544e', // paragraphs & secondary text
-        line: '#f0dfc6', // borders & dividers
-        cream: '#fffdf9', // page background
-        sand: '#fff4e3', // tinted section background
+        line: '#e8e6e3', // subtle clean borders & dividers
+        cream: '#ffffff', // white theme background
+        sand: '#ffffff', // white theme surface
         night: '#3a2412', // warm dark: photo overlays & placeholders
         ember: '#7a2e0e', // warm mid-tone for overlay gradients
       },

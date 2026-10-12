@@ -120,7 +120,7 @@ export default function ProjectsPage() {
 
       <Ticker />
 
-      <section aria-label="Project listing" className="w-full bg-gradient-to-b from-sand to-cream py-20 md:py-28">
+      <section aria-label="Project listing" className="w-full bg-white py-20 md:py-28">
         <div className="mx-auto max-w-site px-5 md:px-10">
           <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line pb-8">
             <Reveal>
@@ -160,7 +160,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section aria-label={visit.eyebrow} className="w-full border-t border-line bg-gradient-to-r from-sand via-cream to-sand">
+      <section aria-label={visit.eyebrow} className="w-full border-t border-line bg-white">
         <div className="mx-auto flex max-w-site flex-wrap items-start justify-between gap-12 px-5 py-16 md:px-10 md:py-24">
           <Reveal className="min-w-[280px] flex-[1_1_360px] lg:max-w-md">
             <div className="eyebrow text-sun">{visit.eyebrow}</div>

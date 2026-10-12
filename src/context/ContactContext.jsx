@@ -24,10 +24,10 @@ function ContactModal({ project, onClose }) {
     <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto p-4 md:p-8" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
       <div className="absolute inset-0 bg-night/55 backdrop-blur-sm" onClick={onClose} aria-hidden="true" />
 
-      <div className="relative my-auto flex w-full max-w-4xl flex-col overflow-hidden bg-cream shadow-2xl motion-safe:animate-hero-in md:flex-row">
+      <div className="relative my-auto flex w-full max-w-4xl flex-col overflow-hidden bg-white shadow-2xl motion-safe:animate-hero-in md:flex-row">
         <div className="h-1 w-full bg-gradient-to-r from-sun via-brand to-gold md:hidden" />
 
-        <aside className="hidden flex-[0_0_300px] flex-col justify-between bg-gradient-to-b from-sand to-sand p-8 md:flex">
+        <aside className="hidden flex-[0_0_300px] flex-col justify-between bg-neutral-50 p-8 md:flex border-r border-line">
           <div>
             <div className="eyebrow text-sun">Contact us</div>
             <p className="mt-6 text-[15px] leading-relaxed text-body">{contactForm.text}</p>

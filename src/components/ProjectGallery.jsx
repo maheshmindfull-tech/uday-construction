@@ -42,7 +42,7 @@ export default function ProjectGallery() {
     lightboxIndex !== null ? filteredItems[lightboxIndex] : null
 
   return (
-    <section aria-label="Project Gallery" className="w-full bg-gradient-to-b from-sand to-sand/60 py-20 text-ink md:py-28">
+    <section aria-label="Project Gallery" className="w-full bg-white py-20 text-ink md:py-28">
       <div className="mx-auto max-w-site px-5 md:px-10">
         {/* Header & Category Filter Controls */}
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">

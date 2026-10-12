@@ -2,7 +2,7 @@ import { thoughts } from '../data/content'
 
 export default function Thoughts() {
   return (
-    <section id="thoughts" className="w-full bg-sand">
+    <section id="thoughts" className="w-full bg-white">
       <div className="mx-auto flex max-w-site flex-wrap items-center gap-12 px-5 py-20 md:gap-16 lg:gap-20 md:px-10 md:py-28">
         {/* Left Column: Title, Subtitle, and the Thought Box */}
         <div className="min-w-[280px] flex-[1_1_460px]">

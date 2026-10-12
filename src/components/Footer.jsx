@@ -3,7 +3,7 @@ import { company, footer } from '../data/content'
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-gradient-to-b from-sand to-sand/70 text-ink">
+    <footer id="contact" className="bg-white text-ink border-t border-line">
       <div className="h-1 w-full bg-gradient-to-r from-sun via-brand to-gold" />
 
       <div className="mx-auto max-w-site px-5 pb-10 pt-14 md:px-10 md:pt-16">

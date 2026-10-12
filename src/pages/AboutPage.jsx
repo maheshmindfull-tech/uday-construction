@@ -96,7 +96,7 @@ export default function AboutPage() {
       </section>
 
       {/* 2. Legacy Numbers Section - Twilight Charcoal with Sunrise Sun vermilion numbers */}
-      <section aria-label="Legacy numbers" className="w-full bg-gradient-to-b from-sand to-sand/60 text-ink">
+      <section aria-label="Legacy numbers" className="w-full bg-white text-ink border-b border-line">
         <div className="mx-auto max-w-site px-5 py-16 md:px-10 md:py-24">
           <Reveal>
             <div className="eyebrow text-sun">Legacy</div>
@@ -118,7 +118,7 @@ export default function AboutPage() {
       <Ticker />
 
       {/* 3. Non-Negotiables Section - 4 Boxes Structure matching reference */}
-      <section aria-label="Non-negotiables" className="w-full bg-cream py-20 text-ink md:py-28">
+      <section aria-label="Non-negotiables" className="w-full bg-white py-20 text-ink md:py-28">
         <div className="mx-auto max-w-site px-5 md:px-10">
           <Reveal>
             <h2 className="font-sans text-3xl font-normal tracking-tight text-ink sm:text-4xl md:text-5xl lg:text-[54px] leading-[1.12]">
@@ -131,7 +131,7 @@ export default function AboutPage() {
             {aboutPage.nonNegotiable.items.map((item, index) => (
               <div
                 key={item.num}
-                className={`group relative p-8 transition-colors duration-300 md:p-12 lg:p-14 bg-white hover:bg-peach ${
+                className={`group relative p-8 transition-colors duration-300 md:p-12 lg:p-14 bg-white hover:bg-neutral-50 ${
                   index % 2 === 1 ? 'md:border-l md:border-line' : ''
                 } ${
                   index >= 2 ? 'md:border-t md:border-line' : ''
@@ -162,7 +162,7 @@ export default function AboutPage() {
       </section>
 
       {/* 4. Words We Build By - Continuous Right-to-Left Moving Marquee matching the photo */}
-      <section aria-label="Words we build by" className="relative overflow-hidden bg-gradient-to-r from-sand via-cream to-sand py-16 md:py-24 select-none border-y border-line">
+      <section aria-label="Words we build by" className="relative overflow-hidden bg-white py-16 md:py-24 select-none border-y border-line">
         <div className="space-y-6 md:space-y-10">
           {/* Row 1: Continuous smooth right-to-left marquee */}
           <div className="animate-marquee flex items-center">

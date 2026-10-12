@@ -27,8 +27,8 @@ export default function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'border-b border-line bg-cream/95 py-2 shadow-[0_6px_24px_rgba(226,57,17,0.08)] backdrop-blur-md md:py-2.5'
-          : 'border-b border-line/70 bg-cream/90 py-2.5 backdrop-blur-md md:py-3'
+          ? 'border-b border-line bg-white/95 py-2 shadow-sm backdrop-blur-md md:py-2.5'
+          : 'border-b border-line/70 bg-white/90 py-2.5 backdrop-blur-md md:py-3'
       }`}
     >
       <div className="mx-auto flex max-w-site items-center justify-between px-5 md:px-10">
@@ -138,7 +138,7 @@ export default function Header() {
       {open && (
         <div
           id="mobile-menu"
-          className="border-b border-line bg-cream px-6 py-5 shadow-xl md:hidden"
+          className="border-b border-line bg-white px-6 py-5 shadow-xl md:hidden"
         >
           <ul className="space-y-3.5">
             {navLinks.map((link) => {
