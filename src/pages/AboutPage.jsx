@@ -11,7 +11,7 @@ const wordsRow1 = [
   { text: 'Trust', style: 'font-display text-5xl md:text-7xl font-medium text-sun' },
   { text: 'Light', style: 'font-display text-2xl md:text-3xl font-light italic text-ink/60' },
   { text: 'Home', style: 'font-display text-5xl md:text-7xl font-normal text-ink' },
-  { text: 'Quality', style: 'font-display text-4xl md:text-6xl font-medium text-brass-dark underline decoration-brass/50 underline-offset-8' },
+  { text: 'Quality', style: 'font-display text-4xl md:text-6xl font-medium text-brand-deeper underline decoration-brand/50 underline-offset-8' },
   { text: 'PCMC', style: 'font-sans text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-body' },
   { text: 'Craft', style: 'font-sans text-2xl md:text-4xl font-light tracking-wider text-ink/80' },
   { text: 'Legacy', style: 'font-display text-5xl md:text-7xl font-medium text-sun' },
@@ -23,7 +23,7 @@ const wordsRow2 = [
   { text: 'Brick', style: 'font-display text-xl md:text-3xl font-medium text-sun' },
   { text: 'Integrity', style: 'font-display text-3xl md:text-5xl font-light italic text-ink/60' },
   { text: 'Quiet Living', style: 'font-sans text-xs md:text-sm font-semibold uppercase tracking-[0.25em] text-body' },
-  { text: 'Endurance', style: 'font-display text-3xl md:text-5xl font-normal text-brass' },
+  { text: 'Endurance', style: 'font-display text-3xl md:text-5xl font-normal text-brand-deep' },
 ]
 
 // Duplicate each row 4 times for gap-free continuous marquee movement
@@ -50,11 +50,11 @@ export default function AboutPage() {
         />
 
         {/* Cinematic Directional Gradients for contrast on text while leaving architecture clear */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#3a2412]/60 via-[#7a2e0e]/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#3a2412]/35 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-night/60 via-ember/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-night/35 via-transparent to-transparent" />
 
         <div className="relative mx-auto flex max-w-site flex-col justify-center px-5 md:px-10">
-          <div className="eyebrow text-brass-light">ABOUT US</div>
+          <div className="eyebrow text-gold">ABOUT US</div>
 
           <div className="mt-6 sm:mt-8 min-h-[105px] sm:min-h-[145px] md:min-h-[175px] lg:min-h-[205px] flex items-center">
             <Typewriter lines={['Legacy &', 'Philosophy']} />
@@ -96,7 +96,7 @@ export default function AboutPage() {
       </section>
 
       {/* 2. Legacy Numbers Section - Twilight Charcoal with Sunrise Sun vermilion numbers */}
-      <section aria-label="Legacy numbers" className="w-full bg-gradient-to-b from-peach to-glow/60 text-ink">
+      <section aria-label="Legacy numbers" className="w-full bg-gradient-to-b from-sand to-sand/60 text-ink">
         <div className="mx-auto max-w-site px-5 py-16 md:px-10 md:py-24">
           <Reveal>
             <div className="eyebrow text-sun">Legacy</div>
@@ -131,9 +131,7 @@ export default function AboutPage() {
             {aboutPage.nonNegotiable.items.map((item, index) => (
               <div
                 key={item.num}
-                className={`group relative p-8 transition-colors duration-300 md:p-12 lg:p-14 ${
-                  index === 0 ? 'bg-peach' : 'bg-white hover:bg-mist'
-                } ${
+                className={`group relative p-8 transition-colors duration-300 md:p-12 lg:p-14 bg-white hover:bg-peach ${
                   index % 2 === 1 ? 'md:border-l md:border-line' : ''
                 } ${
                   index >= 2 ? 'md:border-t md:border-line' : ''
@@ -164,7 +162,7 @@ export default function AboutPage() {
       </section>
 
       {/* 4. Words We Build By - Continuous Right-to-Left Moving Marquee matching the photo */}
-      <section aria-label="Words we build by" className="relative overflow-hidden bg-gradient-to-r from-peach via-cream to-glow py-16 md:py-24 select-none border-y border-line">
+      <section aria-label="Words we build by" className="relative overflow-hidden bg-gradient-to-r from-sand via-cream to-sand py-16 md:py-24 select-none border-y border-line">
         <div className="space-y-6 md:space-y-10">
           {/* Row 1: Continuous smooth right-to-left marquee */}
           <div className="animate-marquee flex items-center">
@@ -204,9 +202,9 @@ export default function AboutPage() {
               alt={aboutPage.comingSoon.imageAlt}
               className="h-full w-full object-cover motion-safe:animate-slow-zoom"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#3a2412]/65 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-night/65 via-transparent to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-7 md:p-12">
-              <div className="eyebrow text-brass-light">{aboutPage.comingSoon.eyebrow}</div>
+              <div className="eyebrow text-gold">{aboutPage.comingSoon.eyebrow}</div>
               <h2 className="mt-4 font-display text-[40px] font-medium leading-none text-white md:text-[64px]">
                 {aboutPage.comingSoon.title}
               </h2>

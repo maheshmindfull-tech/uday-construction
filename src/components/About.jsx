@@ -18,7 +18,7 @@ export default function About() {
         ))}
         <Link
           to={about.linkHref}
-          className="mt-9 inline-flex items-center gap-3 border-b-[1.5px] border-ink pb-1.5 text-[13px] font-bold uppercase tracking-[0.16em] transition-colors hover:border-brass-dark hover:text-brass-dark"
+          className="mt-9 inline-flex items-center gap-3 border-b-[1.5px] border-ink pb-1.5 text-[13px] font-bold uppercase tracking-[0.16em] transition-colors hover:border-brand-deeper hover:text-brand-deeper"
         >
           {about.linkLabel}
           <svg width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M0 5h17M13 1l4 4-4 4" /></svg>

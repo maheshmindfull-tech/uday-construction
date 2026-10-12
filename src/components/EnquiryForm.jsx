@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { contactForm, projectsPage } from '../data/content'
 
 const inputClass =
-  'mt-2 w-full border border-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-body/50 transition-colors focus:border-brass focus:outline-none focus:ring-2 focus:ring-brass/20'
+  'mt-2 w-full border border-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-body/50 transition-colors focus:border-brand-deep focus:outline-none focus:ring-2 focus:ring-brand/20'
 
 const labelClass = 'block text-[11px] font-bold uppercase tracking-[0.16em] text-body'
 
@@ -41,7 +41,7 @@ export default function EnquiryForm({ defaultProject = '', showVisitDate = false
   if (status === 'sent') {
     return (
       <div role="status" className="flex flex-col items-start py-6">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-sun to-brass text-white">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-sun to-brand-deep text-white">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M5 12l5 5L20 7" />
           </svg>
@@ -53,7 +53,7 @@ export default function EnquiryForm({ defaultProject = '', showVisitDate = false
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="mt-6 text-[11px] font-bold uppercase tracking-[0.16em] text-sun transition-colors hover:text-brass-dark"
+          className="mt-6 text-[11px] font-bold uppercase tracking-[0.16em] text-sun transition-colors hover:text-brand-deeper"
         >
           Send another enquiry
         </button>
@@ -126,7 +126,7 @@ export default function EnquiryForm({ defaultProject = '', showVisitDate = false
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="inline-flex items-center gap-2 rounded-full border border-brass bg-brass px-7 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brass-dark hover:bg-brass-dark hover:shadow-lg disabled:pointer-events-none disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-7 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-deeper hover:bg-brand-deeper hover:shadow-lg disabled:pointer-events-none disabled:opacity-60"
         >
           {status === 'sending' ? 'Sending…' : submitLabel}
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

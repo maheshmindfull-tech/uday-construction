@@ -10,7 +10,7 @@
     @apply bg-cream font-sans text-ink antialiased;
   }
   :focus-visible {
-    outline: 2px solid #f38b1b;
+    outline: 2px solid #b8500a;
     outline-offset: 3px;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -32,7 +32,7 @@
   }
   .eyebrow::before {
     content: '';
-    @apply block h-0.5 w-10 bg-gradient-to-r from-sun to-brass;
+    @apply block h-0.5 w-10 bg-gradient-to-r from-sun to-brand;
   }
   .section-title {
     @apply font-display text-[40px] font-medium leading-[1.08] tracking-[-0.01em] md:text-[56px];

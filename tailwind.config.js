@@ -4,22 +4,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#2f2a26',
-        night: '#3a2c22',
-        brass: {
-          DEFAULT: '#f38b1b',
-          light: '#fcd756',
-          dark: '#c9300e',
+        // Brand — taken from the sunrise logo
+        brand: {
+          DEFAULT: '#f38b1b', // bright logo orange: gradients, lines, dots, icons on dark
+          deep: '#b8500a', // buttons and small orange text (AA on white & cream)
+          deeper: '#9a4208', // hover / pressed
         },
-        sun: '#e23911',
-        forest: '#3a2c22',
-        terracotta: '#e23911',
-        cream: '#fffdf9',
-        mist: '#fffbf5',
-        peach: '#fff7ec',
-        glow: '#fff0d9',
-        body: '#5a544e',
-        line: '#f0dfc6',
+        sun: '#c8320f', // logo red: eyebrows, numbers, highlights (AA on cream)
+        gold: '#fcd756', // logo gold: accents on dark imagery only
+        // Neutrals
+        ink: '#2f2a26', // headings & primary text
+        body: '#5a544e', // paragraphs & secondary text
+        line: '#f0dfc6', // borders & dividers
+        cream: '#fffdf9', // page background
+        sand: '#fff4e3', // tinted section background
+        night: '#3a2412', // warm dark: photo overlays & placeholders
+        ember: '#7a2e0e', // warm mid-tone for overlay gradients
       },
       fontFamily: {
         display: ['"Cormorant Garamond"', 'Georgia', 'serif'],

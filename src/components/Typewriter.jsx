@@ -39,7 +39,7 @@ export default function Typewriter({ lines, className = '' }) {
         >
           <span>{seg.visible}</span>
           {i === cursorLine && (
-            <span className="ml-2 inline-block h-[0.8em] w-[3.5px] animate-pulse bg-brass-light align-middle" />
+            <span className="ml-2 inline-block h-[0.8em] w-[3.5px] animate-pulse bg-gold align-middle" />
           )}
         </span>
       ))}

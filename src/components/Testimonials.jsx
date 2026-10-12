@@ -24,7 +24,7 @@ export default function Testimonials() {
   }, [activeVideo])
 
   return (
-    <section id="testimonials" className="w-full bg-mist py-20 md:py-28">
+    <section id="testimonials" className="w-full bg-sand py-20 md:py-28">
       <div className="mx-auto max-w-site px-5 md:px-10">
         {/* Header */}
         <div className="max-w-2xl">
@@ -75,19 +75,19 @@ export default function Testimonials() {
                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   {/* Cinematic Dark Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20 transition-opacity duration-300 group-hover:from-black/85" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-night/80 via-night/30 to-night/20 transition-opacity duration-300 group-hover:from-night/85" />
 
                   {/* Top Tag */}
                   {item.tag && (
-                    <span className="absolute left-4 top-4 border border-white/20 bg-black/60 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
+                    <span className="absolute left-4 top-4 border border-white/20 bg-night/60 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
                       {item.tag}
                     </span>
                   )}
 
                   {/* Duration Badge */}
                   {item.duration && (
-                    <span className="absolute right-4 top-4 flex items-center gap-1.5 border border-white/10 bg-black/60 px-2 py-0.5 text-[11px] font-medium text-white/90 backdrop-blur-sm">
-                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-brass" />
+                    <span className="absolute right-4 top-4 flex items-center gap-1.5 border border-white/10 bg-night/60 px-2 py-0.5 text-[11px] font-medium text-white/90 backdrop-blur-sm">
+                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand-deep" />
                       {item.duration}
                     </span>
                   )}
@@ -98,7 +98,7 @@ export default function Testimonials() {
                       type="button"
                       tabIndex={-1}
                       aria-hidden="true"
-                      className="flex h-16 w-16 items-center justify-center rounded-full border border-brass/80 bg-night/80 text-brass shadow-2xl backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-brass group-hover:bg-brass group-hover:text-white"
+                      className="flex h-16 w-16 items-center justify-center rounded-full border border-brand/80 bg-night/80 text-brand shadow-2xl backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-brand-deep group-hover:bg-brand-deep group-hover:text-white"
                     >
                       <svg
                         width="22"
@@ -115,12 +115,12 @@ export default function Testimonials() {
                   {/* Bottom Video Action Bar */}
                   <div className="absolute inset-x-0 bottom-0 flex items-center justify-between px-4 pb-3.5 text-xs text-white/90">
                     <span className="inline-flex items-center gap-1.5 font-medium tracking-wide">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-brass">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-brand">
                         <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" />
                       </svg>
                       Watch Video Feedback
                     </span>
-                    <span className="text-[11px] uppercase tracking-wider text-white/70 transition-colors group-hover:text-brass">
+                    <span className="text-[11px] uppercase tracking-wider text-white/70 transition-colors group-hover:text-brand">
                       Play &#9654;
                     </span>
                   </div>
@@ -130,7 +130,7 @@ export default function Testimonials() {
                 <div className="flex flex-1 flex-col justify-between p-6">
                   <div>
                     {/* 5-Star Rating */}
-                    <div className="flex items-center gap-1 text-brass" aria-label="5 out of 5 stars">
+                    <div className="flex items-center gap-1 text-brand" aria-label="5 out of 5 stars">
                       {[...Array(5)].map((_, i) => (
                         <svg key={i} width="15" height="15" viewBox="0 0 20 20" fill="currentColor">
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -148,7 +148,7 @@ export default function Testimonials() {
 
                   {/* Client Info Footer */}
                   <div className="mt-6 flex items-center gap-3.5 border-t border-line/70 pt-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brass/10 font-sans text-xs font-bold uppercase tracking-wider text-brass-dark">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 font-sans text-xs font-bold uppercase tracking-wider text-brand-deeper">
                       {initials}
                     </div>
                     <div className="min-w-0 flex-1">
@@ -170,20 +170,20 @@ export default function Testimonials() {
       {/* Video Player Modal */}
       {activeVideo && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md md:p-8"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-night/90 p-4 backdrop-blur-md md:p-8"
           role="dialog"
           aria-modal="true"
           aria-label={`Video Feedback from ${activeVideo.clientName}`}
           onClick={() => setActiveVideo(null)}
         >
           <div
-            className="relative w-full max-w-4xl overflow-hidden rounded-sm bg-night shadow-2xl"
+            className="relative w-full max-w-4xl overflow-hidden bg-night shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-white/10 px-5 py-4 text-white">
               <div className="flex items-center gap-3">
-                <span className="flex h-2.5 w-2.5 rounded-full bg-brass animate-pulse" />
+                <span className="flex h-2.5 w-2.5 rounded-full bg-brand-deep animate-pulse" />
                 <div>
                   <h3 className="text-sm font-semibold tracking-wide md:text-base">
                     {activeVideo.clientName} &mdash; Client Video Feedback
@@ -207,7 +207,7 @@ export default function Testimonials() {
             </div>
 
             {/* Video Viewport */}
-            <div className="relative aspect-video w-full bg-black">
+            <div className="relative aspect-video w-full bg-night">
               {activeVideo.videoSrc ? (
                 <video
                   src={activeVideo.videoSrc}
@@ -223,15 +223,15 @@ export default function Testimonials() {
                     alt=""
                     className="absolute inset-0 h-full w-full object-cover opacity-25"
                   />
-                  <div className="relative z-10 max-w-md rounded-lg border border-white/15 bg-black/80 p-6 backdrop-blur-md">
-                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-brass bg-brass/20 text-brass">
+                  <div className="relative z-10 max-w-md border border-white/15 bg-night/80 p-6 backdrop-blur-md">
+                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-brand-deep bg-brand/20 text-brand">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" />
                       </svg>
                     </div>
                     <h4 className="mt-4 text-lg font-semibold text-white">Video Ready to Link</h4>
                     <p className="mt-2 text-xs leading-relaxed text-cream/70">
-                      Place your client feedback video file into <code className="bg-white/10 px-1.5 py-0.5 text-brass">public/videos/</code> and set <code className="bg-white/10 px-1.5 py-0.5 text-brass">videoSrc</code> in <code className="bg-white/10 px-1.5 py-0.5 text-brass">src/data/content.js</code>.
+                      Place your client feedback video file into <code className="bg-white/10 px-1.5 py-0.5 text-brand">public/videos/</code> and set <code className="bg-white/10 px-1.5 py-0.5 text-brand">videoSrc</code> in <code className="bg-white/10 px-1.5 py-0.5 text-brand">src/data/content.js</code>.
                     </p>
                     <blockquote className="mt-4 border-t border-white/10 pt-3 text-xs italic text-cream">
                       &ldquo;{activeVideo.quote}&rdquo;
@@ -243,7 +243,7 @@ export default function Testimonials() {
 
             {/* Modal Footer */}
             <div className="bg-ink px-5 py-3 text-xs text-white/70">
-              <span className="font-semibold text-brass">Quote:</span> &ldquo;{activeVideo.quote}&rdquo;
+              <span className="font-semibold text-brand">Quote:</span> &ldquo;{activeVideo.quote}&rdquo;
             </div>
           </div>
         </div>

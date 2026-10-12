@@ -16,7 +16,7 @@ export default function Ticker() {
   return (
     <div
       aria-label="Design Philosophy Highlights"
-      className="relative w-full overflow-hidden border-y border-line bg-gradient-to-r from-peach via-white to-glow py-3.5 text-ink select-none md:py-4"
+      className="relative w-full overflow-hidden border-y border-line bg-gradient-to-r from-sand via-white to-sand py-3.5 text-ink select-none md:py-4"
     >
       <div className="animate-marquee flex items-center">
         {duplicatedList.map((item, idx) => (
@@ -24,7 +24,7 @@ export default function Ticker() {
             key={idx}
             className="flex shrink-0 items-center gap-3.5 px-6 md:gap-4 md:px-8"
           >
-            {/* Terracotta Bullet Dot matching the screenshot */}
+            {/* Bullet dot */}
             <span
               className="inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-sun"
               aria-hidden="true"

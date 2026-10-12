@@ -7,7 +7,7 @@ import EnquiryForm from '../components/EnquiryForm'
 import { useContact } from '../context/ContactContext'
 
 const badgeStyles = {
-  Ongoing: 'bg-gradient-to-r from-sun to-brass text-white',
+  Ongoing: 'bg-gradient-to-r from-sun to-brand-deep text-white',
   Completed: 'bg-ink text-white',
   'Coming Soon': 'bg-white text-sun',
 }
@@ -102,11 +102,11 @@ export default function ProjectsPage() {
           alt={hero.imageAlt}
           className="absolute inset-0 h-full w-full object-cover object-center md:object-[center_40%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#3a2412]/60 via-[#7a2e0e]/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#3a2412]/35 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-night/60 via-ember/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-night/35 via-transparent to-transparent" />
 
         <div className="relative mx-auto flex max-w-site flex-col justify-center px-5 md:px-10">
-          <div className="eyebrow text-brass-light">{hero.eyebrow}</div>
+          <div className="eyebrow text-gold">{hero.eyebrow}</div>
 
           <div className="mt-6 flex min-h-[105px] items-center sm:mt-8 sm:min-h-[145px] md:min-h-[175px] lg:min-h-[205px]">
             <Typewriter lines={hero.typeLines} />
@@ -120,7 +120,7 @@ export default function ProjectsPage() {
 
       <Ticker />
 
-      <section aria-label="Project listing" className="w-full bg-gradient-to-b from-mist to-cream py-20 md:py-28">
+      <section aria-label="Project listing" className="w-full bg-gradient-to-b from-sand to-cream py-20 md:py-28">
         <div className="mx-auto max-w-site px-5 md:px-10">
           <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line pb-8">
             <Reveal>
@@ -139,8 +139,8 @@ export default function ProjectsPage() {
                     aria-pressed={active}
                     className={`rounded-full px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] transition-all duration-300 ${
                       active
-                        ? 'bg-gradient-to-r from-sun to-brass text-white shadow-md shadow-sun/20'
-                        : 'border border-line bg-white text-body hover:border-brass hover:text-sun'
+                        ? 'bg-gradient-to-r from-sun to-brand-deep text-white shadow-md shadow-sun/20'
+                        : 'border border-line bg-white text-body hover:border-brand-deep hover:text-sun'
                     }`}
                   >
                     {f} <span className={active ? 'text-white/80' : 'text-body/60'}>({count})</span>
@@ -160,7 +160,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section aria-label={visit.eyebrow} className="w-full border-t border-line bg-gradient-to-r from-peach via-cream to-glow">
+      <section aria-label={visit.eyebrow} className="w-full border-t border-line bg-gradient-to-r from-sand via-cream to-sand">
         <div className="mx-auto flex max-w-site flex-wrap items-start justify-between gap-12 px-5 py-16 md:px-10 md:py-24">
           <Reveal className="min-w-[280px] flex-[1_1_360px] lg:max-w-md">
             <div className="eyebrow text-sun">{visit.eyebrow}</div>

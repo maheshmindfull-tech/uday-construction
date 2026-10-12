@@ -68,7 +68,7 @@ export default function Header() {
                     >
                       {link.label}
                       {isActive && (
-                        <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-gradient-to-r from-sun to-brass" />
+                        <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-gradient-to-r from-sun to-brand" />
                       )}
                     </Link>
                   </li>
@@ -84,7 +84,7 @@ export default function Header() {
                 key={btn.label}
                 type="button"
                 onClick={() => openContact()}
-                className="inline-flex items-center gap-2 rounded-full border border-brass bg-brass px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-sm transition-all duration-300 hover:border-brass-dark hover:bg-brass-dark hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-sm transition-all duration-300 hover:border-brand-deeper hover:bg-brand-deeper hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
               >
                 <span>{btn.label}</span>
                 <svg
@@ -108,7 +108,7 @@ export default function Header() {
         <div className="flex items-center gap-3 md:hidden">
           <Link
             to="/contact"
-            className="rounded-full border border-brass bg-brass px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white"
+            className="rounded-full border border-brand-deep bg-brand-deep px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white"
           >
             Contact
           </Link>
@@ -119,7 +119,7 @@ export default function Header() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Close menu' : 'Open menu'}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-white text-ink transition-colors hover:bg-peach"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-white text-ink transition-colors hover:bg-sand"
           >
             {open ? (
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -151,7 +151,7 @@ export default function Header() {
                         setOpen(false)
                         openContact()
                       }}
-                      className="flex w-full items-center justify-center gap-2 rounded-full border border-brass bg-brass py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-md transition-colors hover:bg-brass-dark"
+                      className="flex w-full items-center justify-center gap-2 rounded-full border border-brand-deep bg-brand-deep py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-md transition-colors hover:bg-brand-deeper"
                     >
                       <span>{link.label}</span>
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

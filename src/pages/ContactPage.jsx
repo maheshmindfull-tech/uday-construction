@@ -5,7 +5,7 @@ import Typewriter from '../components/Typewriter'
 import aboutHeroBg from '../assets/images/about-hero.jpg'
 
 const inputClass =
-  'mt-2 w-full border border-line bg-cream/50 px-4 py-3 text-[15px] text-ink placeholder:text-body/50 transition-all duration-200 focus:border-brass focus:bg-white focus:outline-none focus:ring-2 focus:ring-brass/20'
+  'mt-2 w-full border border-line bg-cream/50 px-4 py-3 text-[15px] text-ink placeholder:text-body/50 transition-all duration-200 focus:border-brand-deep focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/20'
 
 const labelClass = 'block text-[11px] font-bold uppercase tracking-[0.16em] text-body'
 
@@ -107,11 +107,11 @@ export default function ContactPage() {
         />
 
         {/* Ambient Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#3a2412]/80 via-[#7a2e0e]/40 to-night/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-night/80 via-ember/40 to-night/70" />
         <div className="absolute inset-0 bg-gradient-to-t from-night via-transparent to-transparent" />
 
         <div className="relative mx-auto flex max-w-site flex-col justify-center px-5 md:px-10">
-          <div className="eyebrow text-brass-light">GET IN TOUCH</div>
+          <div className="eyebrow text-gold">GET IN TOUCH</div>
 
           <div className="mt-6 flex min-h-[105px] items-center sm:mt-8 sm:min-h-[145px] md:min-h-[175px] lg:min-h-[205px]">
             <Typewriter lines={['Connect With Us,', 'Visit Our Spaces']} />
@@ -128,7 +128,7 @@ export default function ContactPage() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {/* Card 1: Direct Helpline */}
           <div className="group border border-line/80 bg-white p-7 shadow-[0_12px_32px_rgba(226,57,17,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-peach text-sun transition-transform duration-300 group-hover:scale-110">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-sun transition-transform duration-300 group-hover:scale-110">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
@@ -154,7 +154,7 @@ export default function ContactPage() {
 
           {/* Card 2: Email Inquiries */}
           <div className="group border border-line/80 bg-white p-7 shadow-[0_12px_32px_rgba(226,57,17,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-peach text-sun transition-transform duration-300 group-hover:scale-110">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-sun transition-transform duration-300 group-hover:scale-110">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <rect width="20" height="16" x="2" y="4" rx="2" />
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
@@ -168,7 +168,7 @@ export default function ContactPage() {
                   href={`mailto:${email.address}`}
                   className="group/mail block"
                 >
-                  <span className="block text-base font-medium text-ink underline decoration-brass/40 underline-offset-4 transition-colors group-hover/mail:text-sun">
+                  <span className="block text-base font-medium text-ink underline decoration-brand/40 underline-offset-4 transition-colors group-hover/mail:text-sun">
                     {email.address}
                   </span>
                   <span className="text-xs text-body">{email.label} Desk</span>
@@ -182,7 +182,7 @@ export default function ContactPage() {
 
           {/* Card 3: WhatsApp Instant Connect */}
           <div className="group border border-line/80 bg-white p-7 shadow-[0_12px_32px_rgba(226,57,17,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:col-span-2 lg:col-span-1">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-peach text-emerald-600 transition-transform duration-300 group-hover:scale-110">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-emerald-600 transition-transform duration-300 group-hover:scale-110">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
               </svg>
@@ -225,7 +225,7 @@ export default function ContactPage() {
             {/* Value Pillars */}
             <div className="mt-10 space-y-6">
               <Reveal delay={80}>
-                <div className="flex items-start gap-4 border-l-2 border-brass pl-4">
+                <div className="flex items-start gap-4 border-l-2 border-brand-deep pl-4">
                   <div>
                     <h3 className="font-display text-xl font-medium text-ink">Zero Brokerage & Direct Dealing</h3>
                     <p className="mt-1 text-sm leading-relaxed text-body">
@@ -236,7 +236,7 @@ export default function ContactPage() {
               </Reveal>
 
               <Reveal delay={140}>
-                <div className="flex items-start gap-4 border-l-2 border-brass pl-4">
+                <div className="flex items-start gap-4 border-l-2 border-brand-deep pl-4">
                   <div>
                     <h3 className="font-display text-xl font-medium text-ink">Personal Guided Walkthrough</h3>
                     <p className="mt-1 text-sm leading-relaxed text-body">
@@ -247,7 +247,7 @@ export default function ContactPage() {
               </Reveal>
 
               <Reveal delay={200}>
-                <div className="flex items-start gap-4 border-l-2 border-brass pl-4">
+                <div className="flex items-start gap-4 border-l-2 border-brand-deep pl-4">
                   <div>
                     <h3 className="font-display text-xl font-medium text-ink">Established PCMC Heritage</h3>
                     <p className="mt-1 text-sm leading-relaxed text-body">
@@ -259,7 +259,7 @@ export default function ContactPage() {
             </div>
 
             {/* Quick Call Box */}
-            <div className="mt-10 rounded-2xl bg-gradient-to-br from-peach via-cream to-glow p-6 border border-line">
+            <div className="mt-10 bg-gradient-to-br from-sand via-cream to-sand p-6 border border-line">
               <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-sun">Prefer calling right away?</span>
               <p className="mt-2 text-2xl font-light text-ink">+91 95525 69646</p>
               <p className="mt-1 text-xs text-body">Our team is available right now to answer your inquiries.</p>
@@ -268,7 +268,7 @@ export default function ContactPage() {
 
           {/* Right Column: Embedded Contact Us Form Container */}
           <div className="lg:col-span-7">
-            <div className="border border-line bg-white p-6 shadow-[0_20px_50px_rgba(226,57,17,0.08)] sm:p-9 md:p-11 rounded-xl">
+            <div className="border border-line bg-white p-6 shadow-[0_20px_50px_rgba(226,57,17,0.08)] sm:p-9 md:p-11">
               <div className="border-b border-line pb-6">
                 <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-sun">Online Enquiry Form</span>
                 <h3 className="mt-2 font-display text-2xl font-medium text-ink sm:text-3xl">
@@ -295,8 +295,8 @@ export default function ContactPage() {
                         onClick={() => setInquiryType(type.id)}
                         className={`rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
                           active
-                            ? 'bg-gradient-to-r from-sun to-brass text-white shadow-sm'
-                            : 'border border-line bg-cream/60 text-body hover:border-brass hover:text-sun'
+                            ? 'bg-gradient-to-r from-sun to-brand-deep text-white shadow-sm'
+                            : 'border border-line bg-cream/60 text-body hover:border-brand-deep hover:text-sun'
                         }`}
                       >
                         {type.label}
@@ -309,13 +309,13 @@ export default function ContactPage() {
               {/* Form Content or Thank You Screen */}
               {formStatus === 'sent' ? (
                 <div role="status" className="flex flex-col items-start py-10 animate-hero-in">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-sun to-brass text-white shadow-lg shadow-sun/20">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-sun to-brand-deep text-white shadow-lg shadow-sun/20">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M5 12l5 5L20 7" />
                     </svg>
                   </span>
                   <div className="mt-6">
-                    <span className="inline-block rounded-full bg-peach px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-sun">
+                    <span className="inline-block rounded-full bg-sand px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-sun">
                       Reference ID: {referenceId}
                     </span>
                     <h3 className="mt-3 font-display text-3xl font-medium sm:text-4xl text-ink">Thank you for reaching out!</h3>
@@ -340,7 +340,7 @@ export default function ContactPage() {
                     <button
                       type="button"
                       onClick={() => setFormStatus('idle')}
-                      className="text-xs font-bold uppercase tracking-[0.16em] text-sun transition-colors hover:text-brass-dark"
+                      className="text-xs font-bold uppercase tracking-[0.16em] text-sun transition-colors hover:text-brand-deeper"
                     >
                       Submit another enquiry
                     </button>
@@ -487,7 +487,7 @@ export default function ContactPage() {
                       type="checkbox"
                       checked={sendWhatsApp}
                       onChange={(e) => setSendWhatsApp(e.target.checked)}
-                      className="mt-1 h-4 w-4 rounded border-line text-brass focus:ring-brass"
+                      className="mt-1 h-4 w-4 rounded border-line text-brand-deep focus:ring-brand"
                     />
                     <label htmlFor="whatsapp-optin" className="text-xs text-body leading-relaxed cursor-pointer select-none">
                       Send project brochure, floor plans, and pricing sheet directly to my WhatsApp number for easy offline viewing.
@@ -509,7 +509,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={formStatus === 'sending'}
-                      className="inline-flex items-center gap-2 rounded-full border border-brass bg-brass px-8 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-brass-dark hover:bg-brass-dark hover:shadow-xl disabled:pointer-events-none disabled:opacity-60"
+                      className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-8 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-deeper hover:bg-brand-deeper hover:shadow-xl disabled:pointer-events-none disabled:opacity-60"
                     >
                       {formStatus === 'sending' ? (
                         <>
@@ -537,7 +537,7 @@ export default function ContactPage() {
       </section>
 
       {/* Office Locations & Interactive Guide */}
-      <section aria-label="Our office locations" className="w-full bg-gradient-to-b from-mist to-cream py-20 md:py-28 border-t border-line">
+      <section aria-label="Our office locations" className="w-full bg-gradient-to-b from-sand to-cream py-20 md:py-28 border-t border-line">
         <div className="mx-auto max-w-site px-5 md:px-10">
           <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line pb-8">
             <Reveal>
@@ -552,8 +552,8 @@ export default function ContactPage() {
                 onClick={() => setSelectedOfficeTab('site')}
                 className={`rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition-all duration-300 ${
                   selectedOfficeTab === 'site'
-                    ? 'bg-gradient-to-r from-sun to-brass text-white shadow-md shadow-sun/20'
-                    : 'border border-line bg-white text-body hover:border-brass hover:text-sun'
+                    ? 'bg-gradient-to-r from-sun to-brand-deep text-white shadow-md shadow-sun/20'
+                    : 'border border-line bg-white text-body hover:border-brand-deep hover:text-sun'
                 }`}
               >
                 Site Office (Punawale)
@@ -563,8 +563,8 @@ export default function ContactPage() {
                 onClick={() => setSelectedOfficeTab('corp')}
                 className={`rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition-all duration-300 ${
                   selectedOfficeTab === 'corp'
-                    ? 'bg-gradient-to-r from-sun to-brass text-white shadow-md shadow-sun/20'
-                    : 'border border-line bg-white text-body hover:border-brass hover:text-sun'
+                    ? 'bg-gradient-to-r from-sun to-brand-deep text-white shadow-md shadow-sun/20'
+                    : 'border border-line bg-white text-body hover:border-brand-deep hover:text-sun'
                 }`}
               >
                 Corporate Office (Nigdi)
@@ -575,10 +575,10 @@ export default function ContactPage() {
           {/* Office Details & Visual Map Card */}
           <div className="mt-12 grid gap-8 lg:grid-cols-12 items-center">
             {/* Office Description */}
-            <div className="lg:col-span-5 bg-white border border-line p-8 md:p-10 shadow-sm rounded-xl">
+            <div className="lg:col-span-5 bg-white border border-line p-8 md:p-10 shadow-sm">
               {selectedOfficeTab === 'site' ? (
                 <div>
-                  <span className="inline-block rounded-full bg-peach px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-sun">
+                  <span className="inline-block rounded-full bg-sand px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-sun">
                     Experience Lounge & Sample Flats
                   </span>
                   <h3 className="mt-4 font-display text-3xl font-medium text-ink">
@@ -605,7 +605,7 @@ export default function ContactPage() {
                       href="https://maps.google.com/?q=Punawale+Pune+Uday+Developers"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-brass bg-brass px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-sm hover:bg-brass-dark"
+                      className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-sm hover:bg-brand-deeper"
                     >
                       <span>Open in Google Maps</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -622,7 +622,7 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <div>
-                  <span className="inline-block rounded-full bg-peach px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-sun">
+                  <span className="inline-block rounded-full bg-sand px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-sun">
                     Headquarters & Documentation
                   </span>
                   <h3 className="mt-4 font-display text-3xl font-medium text-ink">
@@ -649,7 +649,7 @@ export default function ContactPage() {
                       href="https://maps.google.com/?q=Sant+Tukaram+Vyapar+Sankul+Nigdi+Pune"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-brass bg-brass px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-sm hover:bg-brass-dark"
+                      className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-sm hover:bg-brand-deeper"
                     >
                       <span>Open in Google Maps</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -668,7 +668,7 @@ export default function ContactPage() {
             </div>
 
             {/* Visual Location Frame / Map Simulation */}
-            <div className="lg:col-span-7 h-[380px] md:h-[440px] rounded-xl overflow-hidden border border-line bg-slate-900 relative shadow-lg">
+            <div className="lg:col-span-7 h-[380px] md:h-[440px] overflow-hidden border border-line bg-night relative shadow-lg">
               <iframe
                 title="Office Location Map"
                 src={

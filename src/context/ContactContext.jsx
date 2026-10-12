@@ -22,12 +22,12 @@ function ContactModal({ project, onClose }) {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto p-4 md:p-8" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
-      <div className="absolute inset-0 bg-[#3a2412]/55 backdrop-blur-sm" onClick={onClose} aria-hidden="true" />
+      <div className="absolute inset-0 bg-night/55 backdrop-blur-sm" onClick={onClose} aria-hidden="true" />
 
       <div className="relative my-auto flex w-full max-w-4xl flex-col overflow-hidden bg-cream shadow-2xl motion-safe:animate-hero-in md:flex-row">
-        <div className="h-1 w-full bg-gradient-to-r from-sun via-brass to-brass-light md:hidden" />
+        <div className="h-1 w-full bg-gradient-to-r from-sun via-brand to-gold md:hidden" />
 
-        <aside className="hidden flex-[0_0_300px] flex-col justify-between bg-gradient-to-b from-peach to-glow p-8 md:flex">
+        <aside className="hidden flex-[0_0_300px] flex-col justify-between bg-gradient-to-b from-sand to-sand p-8 md:flex">
           <div>
             <div className="eyebrow text-sun">Contact us</div>
             <p className="mt-6 text-[15px] leading-relaxed text-body">{contactForm.text}</p>
@@ -39,7 +39,7 @@ function ContactModal({ project, onClose }) {
                 <span className="mt-1 block text-lg font-light tracking-[0.02em] text-ink transition-colors group-hover:text-sun">{phone.display}</span>
               </a>
             ))}
-            <a href={`mailto:${footer.emails[0].address}`} className="block text-sm text-ink underline decoration-brass/50 underline-offset-4 transition-colors hover:text-sun">
+            <a href={`mailto:${footer.emails[0].address}`} className="block text-sm text-ink underline decoration-brand/50 underline-offset-4 transition-colors hover:text-sun">
               {footer.emails[0].address}
             </a>
           </div>
@@ -50,7 +50,7 @@ function ContactModal({ project, onClose }) {
             type="button"
             onClick={onClose}
             aria-label="Close contact form"
-            className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-line bg-white text-ink transition-colors hover:border-brass hover:text-sun"
+            className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-line bg-white text-ink transition-colors hover:border-brand-deep hover:text-sun"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
               <path d="M18 6L6 18M6 6l12 12" />

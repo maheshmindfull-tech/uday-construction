@@ -3,11 +3,11 @@ import { company, footer } from '../data/content'
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-gradient-to-b from-peach to-glow/70 text-ink">
-      <div className="h-1 w-full bg-gradient-to-r from-sun via-brass to-brass-light" />
+    <footer id="contact" className="bg-gradient-to-b from-sand to-sand/70 text-ink">
+      <div className="h-1 w-full bg-gradient-to-r from-sun via-brand to-gold" />
 
       <div className="mx-auto max-w-site px-5 pb-10 pt-14 md:px-10 md:pt-16">
-        <div className="flex flex-wrap items-end justify-between gap-8 border-b border-brass/25 pb-10">
+        <div className="flex flex-wrap items-end justify-between gap-8 border-b border-brand/25 pb-10">
           <div className="max-w-md">
             <Link to="/" aria-label={`${company.name} home`} className="inline-block transition-opacity hover:opacity-90">
               <img src={company.logo} alt={company.name} className="h-16 w-auto object-contain md:h-20" />
@@ -57,7 +57,7 @@ export default function Footer() {
                 <li key={email.address}>
                   <a href={`mailto:${email.address}`} className="group block">
                     <span className="block text-sm text-body">{email.label}</span>
-                    <span className="mt-1 block text-sm text-ink underline decoration-brass/50 underline-offset-4 transition-colors group-hover:text-sun">
+                    <span className="mt-1 block text-sm text-ink underline decoration-brand/50 underline-offset-4 transition-colors group-hover:text-sun">
                       {email.address}
                     </span>
                   </a>
@@ -83,7 +83,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-brass/25 pt-6 text-[13px] text-body">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-brand/25 pt-6 text-[13px] text-body">
           <span>© {footer.copyright}</span>
           <span className="tracking-[0.08em]">Nigdi · Punawale · Pune</span>
         </div>

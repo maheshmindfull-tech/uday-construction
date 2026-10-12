@@ -48,12 +48,12 @@ export default function Hero() {
       )}
 
       {/* Cinematic Gradient Overlays for navbar contrast & smooth bottom fade */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#3a2412]/55" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-night/20 via-transparent to-night/55" />
 
       {/* Hero Overlay Headlines */}
       <div className="absolute inset-0 flex flex-col justify-end px-5 pb-20 md:px-10 md:pb-24 pointer-events-none">
         <div className="max-w-3xl">
-          <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-brass-light md:text-xs">
+          <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-gold md:text-xs">
             Architectural Excellence &middot; PCMC
           </span>
           <h1 className="mt-3 font-display text-4xl font-medium leading-[1.08] text-white sm:text-5xl md:text-7xl">
@@ -69,7 +69,7 @@ export default function Hero() {
             type="button"
             onClick={togglePlay}
             aria-label={playing ? 'Pause video' : 'Play video'}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-black/40 text-white backdrop-blur-md transition-all duration-200 hover:border-white hover:bg-black/60"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-night/40 text-white backdrop-blur-md transition-all duration-200 hover:border-white hover:bg-night/60"
           >
             {playing ? (
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -86,7 +86,7 @@ export default function Hero() {
             type="button"
             onClick={toggleMute}
             aria-label={muted ? 'Unmute video' : 'Mute video'}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-black/40 text-white backdrop-blur-md transition-all duration-200 hover:border-white hover:bg-black/60"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-night/40 text-white backdrop-blur-md transition-all duration-200 hover:border-white hover:bg-night/60"
           >
             {muted ? (
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -107,7 +107,7 @@ export default function Hero() {
         aria-hidden="true"
       >
         <span>SCROLL</span>
-        <span className="block h-px w-14 bg-brass" />
+        <span className="block h-px w-14 bg-brand-deep" />
       </div>
     </section>
   )

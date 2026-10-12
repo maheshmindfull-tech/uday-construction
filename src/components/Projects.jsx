@@ -11,7 +11,7 @@ export default function Projects() {
         </div>
         <Link
           to={projects.allHref}
-          className="inline-flex h-[52px] items-center gap-3 border-[1.5px] border-ink px-7 text-[13px] font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-ink hover:text-white"
+          className="inline-flex h-12 items-center gap-3 rounded-full border-[1.5px] border-ink px-7 text-[13px] font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-ink hover:text-white"
         >
           {projects.allLabel}
           <svg width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M0 5h17M13 1l4 4-4 4" /></svg>
