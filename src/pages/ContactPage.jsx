@@ -9,19 +9,6 @@ const inputClass =
 
 const labelClass = 'block text-[11px] font-bold uppercase tracking-[0.16em] text-body'
 
-const INQUIRY_TYPES = [
-  { id: 'visit', label: 'Book Site Visit' },
-  { id: 'pricing', label: 'Pricing & Brochure' },
-  { id: 'general', label: 'General Inquiry' },
-  { id: 'partner', label: 'Channel Partner' },
-]
-
-const TIME_SLOTS = [
-  'Morning (10:00 AM – 1:00 PM)',
-  'Afternoon (1:00 PM – 4:00 PM)',
-  'Evening (4:00 PM – 7:00 PM)',
-]
-
 const CONFIGURATIONS = ['1 BHK', '2 BHK', '3 BHK', '4 BHK', 'Any Configuration']
 
 const FAQS = [
@@ -48,7 +35,6 @@ const FAQS = [
 ]
 
 export default function ContactPage() {
-  const [inquiryType, setInquiryType] = useState('visit')
   const [formStatus, setFormStatus] = useState('idle')
   const [referenceId, setReferenceId] = useState('')
   const [openFaq, setOpenFaq] = useState(null)
@@ -66,7 +52,6 @@ export default function ContactPage() {
     e.preventDefault()
     const form = e.currentTarget
     const data = Object.fromEntries(new FormData(form).entries())
-    data.inquiryType = inquiryType
     data.sendWhatsApp = sendWhatsApp
 
     setFormStatus('sending')
@@ -271,38 +256,11 @@ export default function ContactPage() {
               <div className="border-b border-line pb-6">
                 <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-sun">Online Enquiry Form</span>
                 <h3 className="mt-2 font-display text-2xl font-medium text-ink sm:text-3xl">
-                  {inquiryType === 'visit'
-                    ? 'Schedule a Private Site Visit'
-                    : inquiryType === 'pricing'
-                    ? 'Request Pricing & Detailed Brochure'
-                    : inquiryType === 'partner'
-                    ? 'Channel Partner / Landowner Collaboration'
-                    : 'Send Us Your Query'}
+                  Send Us an Enquiry
                 </h3>
                 <p className="mt-2 text-sm text-body">
-                  Select your inquiry purpose and share your requirements below.
+                  Please share your details below and our property advisor will connect with you shortly.
                 </p>
-
-                {/* Inquiry Type Selector Pills */}
-                <div className="mt-5 flex flex-wrap gap-2" role="group" aria-label="Inquiry Type">
-                  {INQUIRY_TYPES.map((type) => {
-                    const active = inquiryType === type.id
-                    return (
-                      <button
-                        key={type.id}
-                        type="button"
-                        onClick={() => setInquiryType(type.id)}
-                        className={`rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
-                          active
-                            ? 'bg-gradient-to-r from-sun to-brand-deep text-white'
-                            : 'border border-line bg-cream/60 text-body hover:border-brand-deep hover:text-sun'
-                        }`}
-                      >
-                        {type.label}
-                      </button>
-                    )
-                  })}
-                </div>
               </div>
 
               {/* Form Content or Thank You Screen */}
@@ -415,52 +373,20 @@ export default function ContactPage() {
                     </span>
                   </label>
 
-                  {/* Conditional: Preferred Configuration for pricing/brochure */}
-                  {inquiryType === 'pricing' && (
-                    <label className="sm:col-span-2">
-                      <span className={labelClass}>Preferred Configuration</span>
-                      <span className="relative block">
-                        <select name="configuration" defaultValue="2 BHK" className={`${inputClass} appearance-none pr-10`}>
-                          {CONFIGURATIONS.map((cfg) => (
-                            <option key={cfg} value={cfg}>{cfg}</option>
-                          ))}
-                        </select>
-                        <svg className="pointer-events-none absolute right-4 top-1/2 mt-1 -translate-y-1/2 text-body" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-                          <path d="M1 1l5 5 5-5" />
-                        </svg>
-                      </span>
-                    </label>
-                  )}
-
-                  {/* Conditional: Site Visit Date & Slot */}
-                  {inquiryType === 'visit' && (
-                    <>
-                      <label>
-                        <span className={labelClass}>Preferred Visit Date *</span>
-                        <input
-                          name="visitDate"
-                          type="date"
-                          required
-                          min={new Date().toISOString().slice(0, 10)}
-                          className={inputClass}
-                        />
-                      </label>
-
-                      <label>
-                        <span className={labelClass}>Preferred Time Slot</span>
-                        <span className="relative block">
-                          <select name="timeSlot" defaultValue={TIME_SLOTS[0]} className={`${inputClass} appearance-none pr-10`}>
-                            {TIME_SLOTS.map((slot) => (
-                              <option key={slot} value={slot}>{slot}</option>
-                            ))}
-                          </select>
-                          <svg className="pointer-events-none absolute right-4 top-1/2 mt-1 -translate-y-1/2 text-body" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-                            <path d="M1 1l5 5 5-5" />
-                          </svg>
-                        </span>
-                      </label>
-                    </>
-                  )}
+                  {/* Preferred Configuration */}
+                  <label className="sm:col-span-2">
+                    <span className={labelClass}>Preferred Configuration</span>
+                    <span className="relative block">
+                      <select name="configuration" defaultValue="2 BHK" className={`${inputClass} appearance-none pr-10`}>
+                        {CONFIGURATIONS.map((cfg) => (
+                          <option key={cfg} value={cfg}>{cfg}</option>
+                        ))}
+                      </select>
+                      <svg className="pointer-events-none absolute right-4 top-1/2 mt-1 -translate-y-1/2 text-body" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+                        <path d="M1 1l5 5 5-5" />
+                      </svg>
+                    </span>
+                  </label>
 
                   {/* Detailed Message / Requirements */}
                   <label className="sm:col-span-2">
@@ -468,13 +394,7 @@ export default function ContactPage() {
                     <textarea
                       name="message"
                       rows={3}
-                      placeholder={
-                        inquiryType === 'visit'
-                          ? 'Specify any specific requirements or number of family members attending the visit...'
-                          : inquiryType === 'pricing'
-                          ? 'Any particular floor preference, budget range, or handover timeline?'
-                          : 'Tell us how we can help...'
-                      }
+                      placeholder="Tell us how we can help or specify any particular requirements..."
                       className={`${inputClass} resize-none`}
                     />
                   </label>
@@ -520,7 +440,7 @@ export default function ContactPage() {
                         </>
                       ) : (
                         <>
-                          <span>{inquiryType === 'visit' ? 'Confirm Site Visit' : 'Send Enquiry'}</span>
+                          <span>Send Enquiry</span>
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                           </svg>
@@ -565,19 +485,17 @@ export default function ContactPage() {
                   MQ27+6Q9, GPRA Quarters, Pradhikaran, Nigdi, Pimpri-Chinchwad, Maharashtra 411044
                 </p>
 
-                <div className="mt-6 space-y-3.5 text-xs text-body border-t border-line pt-5">
-                  <p className="flex items-start gap-2">
-                    <span className="font-bold text-ink shrink-0">Location:</span>
-                    <span>GPRA Quarters, Pradhikaran, Nigdi, Pimpri-Chinchwad.</span>
-                  </p>
-                  <p className="flex items-start gap-2">
-                    <span className="font-bold text-ink shrink-0">Office Hours:</span>
-                    <span>Monday to Saturday: 9:30 AM to 7:00 PM (Sunday by Appointment).</span>
-                  </p>
-                  <p className="flex items-start gap-2">
-                    <span className="font-bold text-ink shrink-0">Services:</span>
-                    <span>Project Enquiries, Documentation, Site Visit Coordination & Customer Support.</span>
-                  </p>
+                <div className="mt-6 border-t border-line pt-5">
+                  <dl className="grid grid-cols-[100px_1fr] sm:grid-cols-[115px_1fr] gap-x-4 gap-y-3.5 text-xs text-body">
+                    <dt className="font-bold text-ink">Location:</dt>
+                    <dd className="m-0 leading-relaxed">GPRA Quarters, Pradhikaran, Nigdi, Pimpri-Chinchwad.</dd>
+
+                    <dt className="font-bold text-ink">Office Hours:</dt>
+                    <dd className="m-0 leading-relaxed">Monday to Saturday: 9:30 AM to 7:00 PM (Sunday by Appointment).</dd>
+
+                    <dt className="font-bold text-ink">Services:</dt>
+                    <dd className="m-0 leading-relaxed">Project Enquiries, Documentation, Site Visit Coordination & Customer Support.</dd>
+                  </dl>
                 </div>
 
                 <div className="mt-8 flex flex-wrap gap-4">

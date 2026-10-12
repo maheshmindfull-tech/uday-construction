@@ -6,30 +6,6 @@ import Ticker from '../components/Ticker'
 import ProjectGallery from '../components/ProjectGallery'
 import aboutHeroBg from '../assets/images/about-hero.jpg'
 
-// Distinct word styles matching the user's reference photo
-const wordsRow1 = [
-  { text: 'Trust', style: 'font-display text-5xl md:text-7xl font-medium text-sun' },
-  { text: 'Light', style: 'font-display text-2xl md:text-3xl font-light italic text-ink/60' },
-  { text: 'Home', style: 'font-display text-5xl md:text-7xl font-normal text-ink' },
-  { text: 'Quality', style: 'font-display text-4xl md:text-6xl font-medium text-brand-deeper underline decoration-brand/50 underline-offset-8' },
-  { text: 'PCMC', style: 'font-sans text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-body' },
-  { text: 'Craft', style: 'font-sans text-2xl md:text-4xl font-light tracking-wider text-ink/80' },
-  { text: 'Legacy', style: 'font-display text-5xl md:text-7xl font-medium text-sun' },
-]
-
-const wordsRow2 = [
-  { text: 'Promise', style: 'font-display text-2xl md:text-3xl font-light text-ink/70' },
-  { text: 'Family', style: 'font-display text-4xl md:text-6xl font-normal text-ink' },
-  { text: 'Brick', style: 'font-display text-xl md:text-3xl font-medium text-sun' },
-  { text: 'Integrity', style: 'font-display text-3xl md:text-5xl font-light italic text-ink/60' },
-  { text: 'Quiet Living', style: 'font-sans text-xs md:text-sm font-semibold uppercase tracking-[0.25em] text-body' },
-  { text: 'Endurance', style: 'font-display text-3xl md:text-5xl font-normal text-brand-deep' },
-]
-
-// Duplicate each row 4 times for gap-free continuous marquee movement
-const track1 = [...wordsRow1, ...wordsRow1, ...wordsRow1, ...wordsRow1]
-const track2 = [...wordsRow2, ...wordsRow2, ...wordsRow2, ...wordsRow2]
-
 export default function AboutPage() {
   useEffect(() => {
     document.title = 'About Us — Uday Developers'
@@ -161,34 +137,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. Words We Build By - Continuous Right-to-Left Moving Marquee matching the photo */}
-      <section aria-label="Words we build by" className="relative overflow-hidden bg-white py-16 md:py-24 select-none border-y border-line">
-        <div className="space-y-6 md:space-y-10">
-          {/* Row 1: Continuous smooth right-to-left marquee */}
-          <div className="animate-marquee flex items-center">
-            {track1.map((w, idx) => (
-              <div
-                key={`r1-${idx}`}
-                className="flex shrink-0 items-center gap-10 px-6 md:gap-16 md:px-10"
-              >
-                <span className={w.style}>{w.text}</span>
-              </div>
-            ))}
-          </div>
 
-          {/* Row 2: Continuous smooth right-to-left marquee */}
-          <div className="animate-marquee-slow flex items-center">
-            {track2.map((w, idx) => (
-              <div
-                key={`r2-${idx}`}
-                className="flex shrink-0 items-center gap-10 px-6 md:gap-16 md:px-10"
-              >
-                <span className={w.style}>{w.text}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* 5. Project Gallery Section */}
       <ProjectGallery />
