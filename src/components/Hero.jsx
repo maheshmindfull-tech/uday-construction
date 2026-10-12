@@ -27,7 +27,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="top" className="relative h-[80vh] min-h-[560px] w-full overflow-hidden bg-night md:h-screen md:min-h-[720px]">
+    <section id="top" className="relative h-[100svh] min-h-[500px] w-full overflow-hidden bg-night md:h-screen">
       {hasVideo ? (
         <video
           ref={videoRef}
@@ -48,15 +48,15 @@ export default function Hero() {
       )}
 
       {/* Cinematic Gradient Overlays for navbar contrast & smooth bottom fade */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-night/20 via-transparent to-night/55" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-night/20 via-transparent to-night/60" />
 
       {/* Hero Overlay Headlines */}
-      <div className="absolute inset-0 flex flex-col justify-end px-5 pb-20 md:px-10 md:pb-24 pointer-events-none">
+      <div className="absolute inset-0 flex flex-col justify-end px-5 pb-16 sm:pb-20 md:px-10 md:pb-20 pointer-events-none">
         <div className="max-w-3xl">
           <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-gold md:text-xs">
             Architectural Excellence &middot; PCMC
           </span>
-          <h1 className="mt-3 font-display text-4xl font-medium leading-[1.08] text-white sm:text-5xl md:text-7xl">
+          <h1 className="mt-2.5 font-display text-3xl font-medium leading-[1.12] text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl drop-shadow-md">
             Thoughtfully crafted homes for quiet living.
           </h1>
         </div>
@@ -64,7 +64,7 @@ export default function Hero() {
 
       {/* Video Controls (Discreet bottom-left placement so the tour is fully visible) */}
       {hasVideo && (
-        <div className="absolute bottom-8 left-5 z-20 flex items-center gap-2.5 md:left-10 md:bottom-10">
+        <div className="absolute bottom-6 left-5 z-20 flex items-center gap-2.5 md:left-10 md:bottom-7">
           <button
             type="button"
             onClick={togglePlay}
@@ -103,7 +103,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-end gap-3 px-5 pb-8 text-[11px] font-semibold tracking-[0.2em] text-white/90 md:px-10 md:pb-10"
+        className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-end gap-3 px-5 pb-6 text-[11px] font-semibold tracking-[0.2em] text-white/90 md:px-10 md:pb-7"
         aria-hidden="true"
       >
         <span>SCROLL</span>
