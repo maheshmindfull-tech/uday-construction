@@ -41,11 +41,11 @@ function ContactModal({ project = '', onClose }) {
     }
   }, [onClose])
 
-  // Continuous auto-play carousel animation (never stops, even after user selects a project)
+  // Continuous auto-play carousel animation with soft gentle timing
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % projectList.length)
-    }, 3800)
+    }, 4500)
 
     return () => clearInterval(timer)
   }, [])
@@ -102,27 +102,29 @@ function ContactModal({ project = '', onClose }) {
 
       {/* Modal Dialog Card */}
       <div className="relative my-auto w-full max-w-[860px] overflow-hidden bg-white border border-line flex flex-col md:flex-row min-h-[500px] max-h-[94vh] motion-safe:animate-hero-in">
-        {/* Left Side: Animated Project Showcase with Continuous Carousel */}
+        {/* Left Side: Animated Project Showcase with Soft Cross-fade Carousel */}
         <div className="relative w-full md:w-1/2 min-h-[260px] md:min-h-[500px] bg-night overflow-hidden select-none">
           {projectList.map((p, idx) => {
             const isActive = idx === activeIndex
             return (
               <div
                 key={p.name}
-                className={`absolute inset-0 transition-all duration-700 ease-in-out ${
-                  isActive ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0 pointer-events-none'
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
                 }`}
               >
                 <img
                   src={p.image}
                   alt={p.name}
-                  className="h-full w-full object-cover"
+                  className={`h-full w-full object-cover transition-transform duration-[4500ms] ease-out ${
+                    isActive ? 'scale-105' : 'scale-100'
+                  }`}
                 />
                 {/* Cinematic dark gradients for top and bottom readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60 pointer-events-none" />
 
-                {/* Top Right Project Watermark / Branding */}
-                <div className="absolute top-5 right-5 z-20 text-right text-white">
+                {/* Top Right Project Watermark / Branding with soft fade */}
+                <div className="absolute top-5 right-5 z-20 text-right text-white transition-opacity duration-700 ease-in-out">
                   <div className="flex items-center justify-end gap-1.5 text-gold">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
@@ -150,7 +152,7 @@ function ContactModal({ project = '', onClose }) {
                 type="button"
                 onClick={() => handleIndicatorClick(idx)}
                 aria-label={`View ${p.name}`}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
+                className={`h-1.5 rounded-full transition-all duration-500 ease-in-out ${
                   idx === activeIndex
                     ? 'w-8 bg-gradient-to-r from-sun to-brand-deep'
                     : 'w-4 bg-white/40 hover:bg-white/80'
