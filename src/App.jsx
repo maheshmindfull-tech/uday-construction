@@ -7,7 +7,6 @@ import AboutPage from './pages/AboutPage'
 import ProjectsPage from './pages/ProjectsPage'
 import ContactPage from './pages/ContactPage'
 import { ContactProvider } from './context/ContactContext'
-
 function ScrollManager() {
   const { pathname, hash } = useLocation()
 

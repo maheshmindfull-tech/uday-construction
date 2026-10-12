@@ -3,11 +3,26 @@
 @tailwind utilities;
 
 @layer base {
+  /* Modern Minimal — white, charcoal, one orange accent */
+  :root {
+    --c-brand: 243 139 27;
+    --c-brand-deep: 194 65 12;
+    --c-brand-deeper: 154 52 18;
+    --c-sun: 194 65 12;
+    --c-gold: 253 186 116;
+    --c-ink: 24 24 27;
+    --c-body: 82 82 91;
+    --c-line: 231 229 228;
+    --c-cream: 255 255 255;
+    --c-sand: 245 245 244;
+    --c-night: 24 24 27;
+    --c-ember: 63 63 70;
+  }
   html {
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-white font-sans text-ink antialiased;
+    @apply bg-cream font-sans text-ink antialiased;
   }
   *,
   *::before,
@@ -15,7 +30,7 @@
     box-shadow: none !important;
   }
   :focus-visible {
-    outline: 2px solid #b8500a;
+    outline: 2px solid rgb(var(--c-brand-deep));
     outline-offset: 3px;
   }
   @media (prefers-reduced-motion: reduce) {

@@ -1,3 +1,6 @@
+// Colours come from CSS variables defined in src/index.css.
+const v = (name) => `rgb(var(--c-${name}) / <alpha-value>)`
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
@@ -6,20 +9,20 @@ export default {
       colors: {
         // Brand — taken from the sunrise logo
         brand: {
-          DEFAULT: '#f38b1b', // bright logo orange: gradients, lines, dots, icons on dark
-          deep: '#b8500a', // buttons and small orange text (AA on white & cream)
-          deeper: '#9a4208', // hover / pressed
+          DEFAULT: v('brand'), // bright accent: gradients, lines, dots, icons on dark
+          deep: v('brand-deep'), // buttons and small accent text (AA on light backgrounds)
+          deeper: v('brand-deeper'), // hover / pressed
         },
-        sun: '#c8320f', // logo red: eyebrows, numbers, highlights (AA on cream)
-        gold: '#fcd756', // logo gold: accents on dark imagery only
+        sun: v('sun'), // secondary accent: eyebrows, numbers, highlights
+        gold: v('gold'), // accents on dark imagery only
         // Neutrals
-        ink: '#2f2a26', // headings & primary text
-        body: '#5a544e', // paragraphs & secondary text
-        line: '#e8e6e3', // subtle clean borders & dividers
-        cream: '#ffffff', // white theme background
-        sand: '#ffffff', // white theme surface
-        night: '#3a2412', // warm dark: photo overlays & placeholders
-        ember: '#7a2e0e', // warm mid-tone for overlay gradients
+        ink: v('ink'), // headings & primary text
+        body: v('body'), // paragraphs & secondary text
+        line: v('line'), // borders & dividers
+        cream: v('cream'), // page background
+        sand: v('sand'), // tinted section background
+        night: v('night'), // dark: photo overlays & placeholders
+        ember: v('ember'), // mid-tone for overlay gradients
       },
       fontFamily: {
         display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
