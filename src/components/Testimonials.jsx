@@ -53,7 +53,7 @@ export default function Testimonials() {
             return (
               <div
                 key={item.id || item.clientName || index}
-                className="group flex flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="group flex flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Video Box / Thumbnail */}
                 <div
@@ -98,7 +98,7 @@ export default function Testimonials() {
                       type="button"
                       tabIndex={-1}
                       aria-hidden="true"
-                      className="flex h-16 w-16 items-center justify-center rounded-full border border-brand/80 bg-night/80 text-brand shadow-2xl backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-brand-deep group-hover:bg-brand-deep group-hover:text-white"
+                      className="flex h-16 w-16 items-center justify-center rounded-full border border-brand/80 bg-night/80 text-brand backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-brand-deep group-hover:bg-brand-deep group-hover:text-white"
                     >
                       <svg
                         width="22"
@@ -177,7 +177,7 @@ export default function Testimonials() {
           onClick={() => setActiveVideo(null)}
         >
           <div
-            className="relative w-full max-w-4xl overflow-hidden bg-night shadow-2xl"
+            className="relative w-full max-w-4xl overflow-hidden bg-night"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}

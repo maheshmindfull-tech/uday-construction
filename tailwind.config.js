@@ -29,6 +29,25 @@ export default {
       maxWidth: {
         site: '1200px',
       },
+      boxShadow: {
+        none: 'none',
+        sm: 'none',
+        DEFAULT: 'none',
+        md: 'none',
+        lg: 'none',
+        xl: 'none',
+        '2xl': 'none',
+        inner: 'none',
+      },
+      dropShadow: {
+        none: 'none',
+        sm: 'none',
+        DEFAULT: 'none',
+        md: 'none',
+        lg: 'none',
+        xl: 'none',
+        '2xl': 'none',
+      },
       keyframes: {
         'hero-in': {
           '0%': { opacity: '0', transform: 'scale(1.04)' },

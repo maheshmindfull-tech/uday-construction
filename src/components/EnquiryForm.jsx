@@ -126,7 +126,7 @@ export default function EnquiryForm({ defaultProject = '', showVisitDate = false
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-7 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-deeper hover:bg-brand-deeper hover:shadow-lg disabled:pointer-events-none disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-7 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-deeper hover:bg-brand-deeper disabled:pointer-events-none disabled:opacity-60"
         >
           {status === 'sending' ? 'Sending…' : submitLabel}
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

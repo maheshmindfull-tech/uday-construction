@@ -9,6 +9,11 @@
   body {
     @apply bg-white font-sans text-ink antialiased;
   }
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+  }
   :focus-visible {
     outline: 2px solid #b8500a;
     outline-offset: 3px;

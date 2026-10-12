@@ -117,7 +117,7 @@ export default function ContactPage() {
             <Typewriter lines={['Connect With Us,', 'Visit Our Spaces']} />
           </div>
 
-          <p className="mt-6 max-w-2xl font-display text-xl font-normal leading-relaxed text-cream drop-shadow-sm md:mt-8 md:text-2xl lg:text-[28px]">
+          <p className="mt-6 max-w-2xl font-display text-xl font-normal leading-relaxed text-cream md:mt-8 md:text-2xl lg:text-[28px]">
             Have a question about our residences or planning a site visit? Our advisors in Nigdi and Punawale are here to guide you with complete transparency.
           </p>
         </div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
       <section aria-label="Direct contact channels" className="relative -mt-12 z-20 mx-auto max-w-site px-5 md:px-10">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {/* Card 1: Direct Helpline */}
-          <div className="group border border-line/80 bg-white p-7 shadow-[0_12px_32px_rgba(226,57,17,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <div className="group border border-line/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-sun transition-transform duration-300 group-hover:scale-110">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -153,7 +153,7 @@ export default function ContactPage() {
           </div>
 
           {/* Card 2: Email Inquiries */}
-          <div className="group border border-line/80 bg-white p-7 shadow-[0_12px_32px_rgba(226,57,17,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <div className="group border border-line/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-sun transition-transform duration-300 group-hover:scale-110">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <rect width="20" height="16" x="2" y="4" rx="2" />
@@ -181,7 +181,7 @@ export default function ContactPage() {
           </div>
 
           {/* Card 3: WhatsApp Instant Connect */}
-          <div className="group border border-line/80 bg-white p-7 shadow-[0_12px_32px_rgba(226,57,17,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:col-span-2 lg:col-span-1">
+          <div className="group border border-line/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1 sm:col-span-2 lg:col-span-1">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-emerald-600 transition-transform duration-300 group-hover:scale-110">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
@@ -195,7 +195,7 @@ export default function ContactPage() {
               href="https://wa.me/919552569646?text=Hi%2C%20I%20am%20interested%20in%20learning%20more%20about%20Uday%20Developers%20projects."
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-600/30 bg-emerald-50 px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-700 transition-all duration-300 hover:bg-emerald-600 hover:text-white hover:shadow-md"
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-600/30 bg-emerald-50 px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-700 transition-all duration-300 hover:bg-emerald-600 hover:text-white"
             >
               <span>Chat on WhatsApp</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -268,7 +268,7 @@ export default function ContactPage() {
 
           {/* Right Column: Embedded Contact Us Form Container */}
           <div className="lg:col-span-7">
-            <div className="border border-line bg-white p-6 shadow-[0_20px_50px_rgba(226,57,17,0.08)] sm:p-9 md:p-11">
+            <div className="border border-line bg-white p-6 sm:p-9 md:p-11">
               <div className="border-b border-line pb-6">
                 <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-sun">Online Enquiry Form</span>
                 <h3 className="mt-2 font-display text-2xl font-medium text-ink sm:text-3xl">
@@ -295,7 +295,7 @@ export default function ContactPage() {
                         onClick={() => setInquiryType(type.id)}
                         className={`rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
                           active
-                            ? 'bg-gradient-to-r from-sun to-brand-deep text-white shadow-sm'
+                            ? 'bg-gradient-to-r from-sun to-brand-deep text-white'
                             : 'border border-line bg-cream/60 text-body hover:border-brand-deep hover:text-sun'
                         }`}
                       >
@@ -309,7 +309,7 @@ export default function ContactPage() {
               {/* Form Content or Thank You Screen */}
               {formStatus === 'sent' ? (
                 <div role="status" className="flex flex-col items-start py-10 animate-hero-in">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-sun to-brand-deep text-white shadow-lg shadow-sun/20">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-sun to-brand-deep text-white">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M5 12l5 5L20 7" />
                     </svg>
@@ -329,7 +329,7 @@ export default function ContactPage() {
                       href="https://wa.me/919552569646?text=Hi%2C%20I%20just%20submitted%20an%20enquiry%20on%20your%20website."
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-emerald-600 bg-emerald-600 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-md hover:bg-emerald-700"
+                      className="inline-flex items-center gap-2 rounded-full border border-emerald-600 bg-emerald-600 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-emerald-700"
                     >
                       <span>Connect on WhatsApp</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -509,7 +509,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={formStatus === 'sending'}
-                      className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-8 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-deeper hover:bg-brand-deeper hover:shadow-xl disabled:pointer-events-none disabled:opacity-60"
+                      className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-8 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-deeper hover:bg-brand-deeper disabled:pointer-events-none disabled:opacity-60"
                     >
                       {formStatus === 'sending' ? (
                         <>
@@ -552,7 +552,7 @@ export default function ContactPage() {
                 onClick={() => setSelectedOfficeTab('site')}
                 className={`rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition-all duration-300 ${
                   selectedOfficeTab === 'site'
-                    ? 'bg-gradient-to-r from-sun to-brand-deep text-white shadow-md shadow-sun/20'
+                    ? 'bg-gradient-to-r from-sun to-brand-deep text-white'
                     : 'border border-line bg-white text-body hover:border-brand-deep hover:text-sun'
                 }`}
               >
@@ -563,7 +563,7 @@ export default function ContactPage() {
                 onClick={() => setSelectedOfficeTab('corp')}
                 className={`rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition-all duration-300 ${
                   selectedOfficeTab === 'corp'
-                    ? 'bg-gradient-to-r from-sun to-brand-deep text-white shadow-md shadow-sun/20'
+                    ? 'bg-gradient-to-r from-sun to-brand-deep text-white'
                     : 'border border-line bg-white text-body hover:border-brand-deep hover:text-sun'
                 }`}
               >
@@ -575,7 +575,7 @@ export default function ContactPage() {
           {/* Office Details & Visual Map Card */}
           <div className="mt-12 grid gap-8 lg:grid-cols-12 items-center">
             {/* Office Description */}
-            <div className="lg:col-span-5 bg-white border border-line p-8 md:p-10 shadow-sm">
+            <div className="lg:col-span-5 bg-white border border-line p-8 md:p-10">
               {selectedOfficeTab === 'site' ? (
                 <div>
                   <span className="inline-block rounded-full bg-sand px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-sun">
@@ -605,7 +605,7 @@ export default function ContactPage() {
                       href="https://maps.google.com/?q=Punawale+Pune+Uday+Developers"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-sm hover:bg-brand-deeper"
+                      className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white hover:bg-brand-deeper"
                     >
                       <span>Open in Google Maps</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -649,7 +649,7 @@ export default function ContactPage() {
                       href="https://maps.google.com/?q=Sant+Tukaram+Vyapar+Sankul+Nigdi+Pune"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-sm hover:bg-brand-deeper"
+                      className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white hover:bg-brand-deeper"
                     >
                       <span>Open in Google Maps</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -668,7 +668,7 @@ export default function ContactPage() {
             </div>
 
             {/* Visual Location Frame / Map Simulation */}
-            <div className="lg:col-span-7 h-[380px] md:h-[440px] overflow-hidden border border-line bg-night relative shadow-lg">
+            <div className="lg:col-span-7 h-[380px] md:h-[440px] overflow-hidden border border-line bg-night relative">
               <iframe
                 title="Office Location Map"
                 src={
@@ -679,7 +679,7 @@ export default function ContactPage() {
                 className="w-full h-full border-0 filter contrast-[1.05] opacity-90 transition-opacity duration-500 hover:opacity-100"
                 loading="lazy"
               />
-              <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full shadow-md text-xs font-semibold text-ink flex items-center gap-2">
+              <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full text-xs font-semibold text-ink flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-sun animate-ping" />
                 <span>{selectedOfficeTab === 'site' ? 'Punawale Site Location' : 'Nigdi Corporate Headquarters'}</span>
               </div>

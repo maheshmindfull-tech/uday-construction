@@ -56,7 +56,7 @@ export default function Hero() {
           <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-gold md:text-xs">
             Architectural Excellence &middot; PCMC
           </span>
-          <h1 className="mt-2.5 font-display text-3xl font-medium leading-[1.12] text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl drop-shadow-md">
+          <h1 className="mt-2.5 font-display text-3xl font-medium leading-[1.12] text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
             Thoughtfully crafted homes for quiet living.
           </h1>
         </div>

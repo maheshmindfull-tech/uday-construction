@@ -15,7 +15,7 @@ export default function Thoughts() {
           </p>
 
           {/* Thought Box matching the reference design */}
-          <div className="mt-9 border border-line bg-white p-7 shadow-[0_18px_40px_rgba(200,50,15,0.06)] sm:p-9 md:p-10">
+          <div className="mt-9 border border-line bg-white p-7 sm:p-9 md:p-10">
             <blockquote className="border-l-[3px] border-brand pl-5 sm:pl-7">
               <p className="font-sans text-xl font-light leading-[1.48] text-ink sm:text-2xl md:text-[25px] tracking-[-0.01em]">
                 &ldquo;A home is not built from material alone it is built from{' '}
@@ -31,7 +31,7 @@ export default function Thoughts() {
         </div>
 
         {/* Right Column: Original Image */}
-        <div className="h-[420px] min-w-[260px] flex-[0_1_460px] overflow-hidden bg-night shadow-xl md:h-[540px]">
+        <div className="h-[420px] min-w-[260px] flex-[0_1_460px] overflow-hidden bg-night md:h-[540px]">
           <img
             src={thoughts.image}
             alt={thoughts.imageAlt}

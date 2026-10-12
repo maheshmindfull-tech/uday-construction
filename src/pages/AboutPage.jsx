@@ -60,7 +60,7 @@ export default function AboutPage() {
             <Typewriter lines={['Legacy &', 'Philosophy']} />
           </div>
 
-          <p className="mt-6 max-w-2xl font-display text-xl font-normal leading-relaxed text-cream md:mt-8 md:text-2xl lg:text-[28px] drop-shadow-sm">
+          <p className="mt-6 max-w-2xl font-display text-xl font-normal leading-relaxed text-cream md:mt-8 md:text-2xl lg:text-[28px]">
             Delivering High Quality, Effective And Inspiring Built Spaces.
           </p>
         </div>

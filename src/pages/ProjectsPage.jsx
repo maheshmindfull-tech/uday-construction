@@ -36,7 +36,7 @@ function ProjectCard({ project, number }) {
   return (
     <article
       id={project.slug}
-      className="group flex h-full scroll-mt-28 flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(226,57,17,0.10)]"
+      className="group flex h-full scroll-mt-28 flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:-translate-y-1"
     >
       <div className="relative h-[260px] overflow-hidden bg-night">
         <img
@@ -45,7 +45,7 @@ function ProjectCard({ project, number }) {
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
         />
-        <span className={`absolute left-4 top-4 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] shadow-sm ${badgeStyles[project.status]}`}>
+        <span className={`absolute left-4 top-4 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] ${badgeStyles[project.status]}`}>
           {project.status}
         </span>
       </div>
@@ -112,7 +112,7 @@ export default function ProjectsPage() {
             <Typewriter lines={hero.typeLines} />
           </div>
 
-          <p className="mt-6 max-w-2xl font-display text-xl font-normal leading-relaxed text-cream drop-shadow-sm md:mt-8 md:text-2xl lg:text-[28px]">
+          <p className="mt-6 max-w-2xl font-display text-xl font-normal leading-relaxed text-cream md:mt-8 md:text-2xl lg:text-[28px]">
             {hero.text}
           </p>
         </div>
@@ -139,7 +139,7 @@ export default function ProjectsPage() {
                     aria-pressed={active}
                     className={`rounded-full px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] transition-all duration-300 ${
                       active
-                        ? 'bg-gradient-to-r from-sun to-brand-deep text-white shadow-md shadow-sun/20'
+                        ? 'bg-gradient-to-r from-sun to-brand-deep text-white'
                         : 'border border-line bg-white text-body hover:border-brand-deep hover:text-sun'
                     }`}
                   >
@@ -176,7 +176,7 @@ export default function ProjectsPage() {
             </div>
           </Reveal>
           <Reveal delay={120} className="min-w-[300px] flex-[1_1_520px]">
-            <div id="site-visit-form" className="scroll-mt-28 border border-line bg-white/80 p-6 shadow-[0_18px_40px_rgba(226,57,17,0.06)] backdrop-blur-sm sm:p-8 md:p-10">
+            <div id="site-visit-form" className="scroll-mt-28 border border-line bg-white/80 p-6 backdrop-blur-sm sm:p-8 md:p-10">
               <EnquiryForm showVisitDate submitLabel="Book a site visit" />
             </div>
           </Reveal>

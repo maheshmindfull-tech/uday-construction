@@ -70,7 +70,7 @@ export default function ProjectGallery() {
                   onClick={() => setSelectedCategory(cat)}
                   className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] transition-all duration-300 ${
                     selectedCategory === cat
-                      ? 'bg-gradient-to-r from-sun to-brand-deep text-white shadow-md shadow-sun/20'
+                      ? 'bg-gradient-to-r from-sun to-brand-deep text-white'
                       : 'border border-line bg-white text-body hover:border-brand-deep hover:text-sun'
                   }`}
                 >
@@ -86,7 +86,7 @@ export default function ProjectGallery() {
           {filteredItems.map((item, index) => (
             <Reveal key={item.id} delay={index * 60}>
               <div
-                className="group relative h-[360px] w-full cursor-pointer overflow-hidden bg-night transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl md:h-[400px]"
+                className="group relative h-[360px] w-full cursor-pointer overflow-hidden bg-night transition-all duration-500 hover:-translate-y-1 md:h-[400px]"
                 onClick={() => setLightboxIndex(index)}
                 role="button"
                 tabIndex={0}
@@ -117,7 +117,7 @@ export default function ProjectGallery() {
 
                 {/* Center Hover Expand Icon */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-brand-deep bg-night/60 text-brand shadow-xl backdrop-blur-md transition-transform duration-300 group-hover:scale-110">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-brand-deep bg-night/60 text-brand backdrop-blur-md transition-transform duration-300 group-hover:scale-110">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
                     </svg>
@@ -199,7 +199,7 @@ export default function ProjectGallery() {
 
           {/* Lightbox Content Container */}
           <div
-            className="relative flex max-h-[92vh] max-w-5xl flex-col overflow-hidden border border-white/10 bg-night shadow-2xl"
+            className="relative flex max-h-[92vh] max-w-5xl flex-col overflow-hidden border border-white/10 bg-night"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Main Lightbox Image Viewport */}

@@ -27,7 +27,7 @@ export default function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'border-b border-line bg-white/95 py-2 shadow-sm backdrop-blur-md md:py-2.5'
+          ? 'border-b border-line bg-white/95 py-2 backdrop-blur-md md:py-2.5'
           : 'border-b border-line/70 bg-white/90 py-2.5 backdrop-blur-md md:py-3'
       }`}
     >
@@ -84,7 +84,7 @@ export default function Header() {
                 key={btn.label}
                 type="button"
                 onClick={() => openContact()}
-                className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-sm transition-all duration-300 hover:border-brand-deeper hover:bg-brand-deeper hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:border-brand-deeper hover:bg-brand-deeper hover:-translate-y-0.5 active:translate-y-0"
               >
                 <span>{btn.label}</span>
                 <svg
@@ -138,7 +138,7 @@ export default function Header() {
       {open && (
         <div
           id="mobile-menu"
-          className="border-b border-line bg-white px-6 py-5 shadow-xl md:hidden"
+          className="border-b border-line bg-white px-6 py-5 md:hidden"
         >
           <ul className="space-y-3.5">
             {navLinks.map((link) => {
@@ -151,7 +151,7 @@ export default function Header() {
                         setOpen(false)
                         openContact()
                       }}
-                      className="flex w-full items-center justify-center gap-2 rounded-full border border-brand-deep bg-brand-deep py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-md transition-colors hover:bg-brand-deeper"
+                      className="flex w-full items-center justify-center gap-2 rounded-full border border-brand-deep bg-brand-deep py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-brand-deeper"
                     >
                       <span>{link.label}</span>
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
