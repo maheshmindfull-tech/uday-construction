@@ -85,7 +85,7 @@ export default function Footer() {
 
         <div className="flex flex-wrap items-center justify-between gap-3 border-t border-brand/25 pt-6 text-[13px] text-body">
           <span>© {footer.copyright}</span>
-          <span className="tracking-[0.08em]">Nigdi · Punawale · Pune</span>
+          <span className="tracking-[0.08em]">Pradhikaran · Nigdi · Pimpri-Chinchwad</span>
         </div>
       </div>
     </footer>

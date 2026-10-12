@@ -51,7 +51,6 @@ export default function ContactPage() {
   const [inquiryType, setInquiryType] = useState('visit')
   const [formStatus, setFormStatus] = useState('idle')
   const [referenceId, setReferenceId] = useState('')
-  const [selectedOfficeTab, setSelectedOfficeTab] = useState('site')
   const [openFaq, setOpenFaq] = useState(null)
   const [sendWhatsApp, setSendWhatsApp] = useState(true)
 
@@ -118,7 +117,7 @@ export default function ContactPage() {
           </div>
 
           <p className="mt-6 max-w-2xl font-display text-xl font-normal leading-relaxed text-cream md:mt-8 md:text-2xl lg:text-[28px]">
-            Have a question about our residences or planning a site visit? Our advisors in Nigdi and Punawale are here to guide you with complete transparency.
+            Have a question about our residences or planning a visit? Our property advisors in Nigdi Pradhikaran are here to guide you with complete transparency.
           </p>
         </div>
       </section>
@@ -536,39 +535,18 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Office Locations & Interactive Guide */}
-      <section aria-label="Our office locations" className="w-full bg-white py-20 md:py-28 border-t border-line">
+      {/* Office Location & Interactive Map */}
+      <section aria-label="Our office location" className="w-full bg-white py-20 md:py-28 border-t border-line">
         <div className="mx-auto max-w-site px-5 md:px-10">
           <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line pb-8">
             <Reveal>
               <div className="eyebrow text-sun">Our Presence</div>
-              <h2 className="section-title mt-5">Visit our physical offices.</h2>
+              <h2 className="section-title mt-5">Visit our office.</h2>
             </Reveal>
-
-            {/* Office Switcher Tabs */}
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => setSelectedOfficeTab('site')}
-                className={`rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition-all duration-300 ${
-                  selectedOfficeTab === 'site'
-                    ? 'bg-gradient-to-r from-sun to-brand-deep text-white'
-                    : 'border border-line bg-white text-body hover:border-brand-deep hover:text-sun'
-                }`}
-              >
-                Site Office (Punawale)
-              </button>
-              <button
-                type="button"
-                onClick={() => setSelectedOfficeTab('corp')}
-                className={`rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition-all duration-300 ${
-                  selectedOfficeTab === 'corp'
-                    ? 'bg-gradient-to-r from-sun to-brand-deep text-white'
-                    : 'border border-line bg-white text-body hover:border-brand-deep hover:text-sun'
-                }`}
-              >
-                Corporate Office (Nigdi)
-              </button>
+            <div className="text-right">
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-sun">
+                Pimpri-Chinchwad &middot; Pune
+              </span>
             </div>
           </div>
 
@@ -576,112 +554,65 @@ export default function ContactPage() {
           <div className="mt-12 grid gap-8 lg:grid-cols-12 items-center">
             {/* Office Description */}
             <div className="lg:col-span-5 bg-white border border-line p-8 md:p-10">
-              {selectedOfficeTab === 'site' ? (
-                <div>
-                  <span className="inline-block rounded-full bg-sand px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-sun">
-                    Experience Lounge & Sample Flats
-                  </span>
-                  <h3 className="mt-4 font-display text-3xl font-medium text-ink">
-                    Uday Emerald Park Experience Center
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-body">
-                    Survey No. 50/6, Punawale, Pune, Maharashtra 411033.
+              <div>
+                <span className="inline-block rounded-full bg-sand px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-sun">
+                  Headquarters & Office
+                </span>
+                <h3 className="mt-4 font-display text-3xl font-medium text-ink">
+                  Uday Developers
+                </h3>
+                <p className="mt-4 text-[15px] font-medium leading-relaxed text-ink">
+                  MQ27+6Q9, GPRA Quarters, Pradhikaran, Nigdi, Pimpri-Chinchwad, Maharashtra 411044
+                </p>
+
+                <div className="mt-6 space-y-3.5 text-xs text-body border-t border-line pt-5">
+                  <p className="flex items-start gap-2">
+                    <span className="font-bold text-ink shrink-0">Location:</span>
+                    <span>GPRA Quarters, Pradhikaran, Nigdi, Pimpri-Chinchwad.</span>
                   </p>
-
-                  <div className="mt-6 space-y-3 text-xs text-body border-t border-line pt-5">
-                    <p className="flex items-center gap-2">
-                      <span className="font-bold text-ink">Key Landmarks:</span> Near Mumbai-Bengaluru Highway, minutes from Hinjewadi IT Park.
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <span className="font-bold text-ink">Visiting Hours:</span> Open All 7 Days: 9:30 AM to 7:00 PM.
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <span className="font-bold text-ink">Facilities:</span> Dedicated Visitor Parking, Model Flat Walkthrough, Audio-Visual Lounge.
-                    </p>
-                  </div>
-
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <a
-                      href="https://maps.google.com/?q=Punawale+Pune+Uday+Developers"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white hover:bg-brand-deeper"
-                    >
-                      <span>Open in Google Maps</span>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-                      </svg>
-                    </a>
-                    <a
-                      href={footer.phones[0].href}
-                      className="inline-flex items-center gap-2 rounded-full border border-line bg-cream px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-ink hover:text-sun"
-                    >
-                      <span>Call Site Manager</span>
-                    </a>
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  <span className="inline-block rounded-full bg-sand px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-sun">
-                    Headquarters & Documentation
-                  </span>
-                  <h3 className="mt-4 font-display text-3xl font-medium text-ink">
-                    Uday Developers Corporate Office
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-body">
-                    Sant Tukaram Vyapar Sankul, Shop 22/23, Near Savali Hotel, Nigdi, Pune, Maharashtra 411044.
+                  <p className="flex items-start gap-2">
+                    <span className="font-bold text-ink shrink-0">Office Hours:</span>
+                    <span>Monday to Saturday: 9:30 AM to 7:00 PM (Sunday by Appointment).</span>
                   </p>
-
-                  <div className="mt-6 space-y-3 text-xs text-body border-t border-line pt-5">
-                    <p className="flex items-center gap-2">
-                      <span className="font-bold text-ink">Key Landmarks:</span> Near Savali Hotel, walking distance to Nigdi Pradhikaran bus terminus.
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <span className="font-bold text-ink">Office Hours:</span> Monday to Saturday: 10:00 AM to 6:30 PM.
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <span className="font-bold text-ink">Services:</span> Legal Agreements, Documentation, Allotments & Management Desk.
-                    </p>
-                  </div>
-
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <a
-                      href="https://maps.google.com/?q=Sant+Tukaram+Vyapar+Sankul+Nigdi+Pune"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white hover:bg-brand-deeper"
-                    >
-                      <span>Open in Google Maps</span>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-                      </svg>
-                    </a>
-                    <a
-                      href={footer.phones[1].href}
-                      className="inline-flex items-center gap-2 rounded-full border border-line bg-cream px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-ink hover:text-sun"
-                    >
-                      <span>Call Corporate Desk</span>
-                    </a>
-                  </div>
+                  <p className="flex items-start gap-2">
+                    <span className="font-bold text-ink shrink-0">Services:</span>
+                    <span>Project Enquiries, Documentation, Site Visit Coordination & Customer Support.</span>
+                  </p>
                 </div>
-              )}
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <a
+                    href="https://maps.google.com/?q=MQ27%2B6Q9%2C+GPRA+Quarters%2C+Pradhikaran%2C+Nigdi%2C+Pimpri-Chinchwad%2C+Maharashtra+411044"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white hover:bg-brand-deeper transition-colors"
+                  >
+                    <span>Open in Google Maps</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                    </svg>
+                  </a>
+                  <a
+                    href={footer.phones[0].href}
+                    className="inline-flex items-center gap-2 rounded-full border border-line bg-cream px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-ink hover:text-sun transition-colors"
+                  >
+                    <span>Call Office</span>
+                  </a>
+                </div>
+              </div>
             </div>
 
-            {/* Visual Location Frame / Map Simulation */}
+            {/* Visual Location Frame / Embedded Map */}
             <div className="lg:col-span-7 h-[380px] md:h-[440px] overflow-hidden border border-line bg-night relative">
               <iframe
                 title="Office Location Map"
-                src={
-                  selectedOfficeTab === 'site'
-                    ? 'https://maps.google.com/maps?q=Punawale%2C%20Pune&t=&z=14&ie=UTF8&iwloc=&output=embed'
-                    : 'https://maps.google.com/maps?q=Nigdi%20Pune%20Sant%20Tukaram%20Vyapar%20Sankul&t=&z=14&ie=UTF8&iwloc=&output=embed'
-                }
+                src="https://maps.google.com/maps?q=MQ27%2B6Q9%2C%20GPRA%20Quarters%2C%20Pradhikaran%2C%20Nigdi%2C%20Pimpri-Chinchwad%2C%20Maharashtra%20411044&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 className="w-full h-full border-0 filter contrast-[1.05] opacity-90 transition-opacity duration-500 hover:opacity-100"
                 loading="lazy"
               />
-              <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full text-xs font-semibold text-ink flex items-center gap-2">
+              <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full text-xs font-semibold text-ink flex items-center gap-2 shadow-none border border-line/60">
                 <span className="h-2 w-2 rounded-full bg-sun animate-ping" />
-                <span>{selectedOfficeTab === 'site' ? 'Punawale Site Location' : 'Nigdi Corporate Headquarters'}</span>
+                <span>MQ27+6Q9 &middot; Pradhikaran, Nigdi</span>
               </div>
             </div>
           </div>

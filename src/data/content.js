@@ -188,12 +188,11 @@ export const footer = {
     'Homes across Pimpri-Chinchwad, planned and handed over with the same care from blueprint to brick.',
   offices: [
     {
-      title: 'Corporate office',
-      lines: ['Sant Tukaram Vyapar Sankul, Shop 22/23', 'Near Savali Hotel, Nigdi, Pune 411044'],
-    },
-    {
-      title: 'Site office',
-      lines: ['Uday Emerald Park, Survey No. 50/6', 'Punawale, Pune 411033'],
+      title: 'Office address',
+      lines: [
+        'MQ27+6Q9, GPRA Quarters, Pradhikaran',
+        'Nigdi, Pimpri-Chinchwad, Maharashtra 411044',
+      ],
     },
   ],
   phones: [
