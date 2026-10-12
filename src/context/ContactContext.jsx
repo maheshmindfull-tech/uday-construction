@@ -20,8 +20,6 @@ function ContactModal({ project = '', onClose }) {
     email: '',
     phone: '',
     project: project || '',
-    whatsapp: true,
-    call: false,
   })
   const [status, setStatus] = useState('idle')
 
@@ -30,8 +28,6 @@ function ContactModal({ project = '', onClose }) {
     ? projectList.findIndex((p) => p.name.toLowerCase() === project.toLowerCase())
     : 0
   const [activeIndex, setActiveIndex] = useState(initialIndex !== -1 ? initialIndex : 0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(!project)
-  const [isHovered, setIsHovered] = useState(false)
 
   // Escape key handler and lock body scroll
   useEffect(() => {
@@ -45,39 +41,29 @@ function ContactModal({ project = '', onClose }) {
     }
   }, [onClose])
 
-  // Auto-play timer for image carousel animation
+  // Continuous auto-play carousel animation (never stops, even after user selects a project)
   useEffect(() => {
-    if (!isAutoPlaying || isHovered) return
-
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % projectList.length)
     }, 3800)
 
     return () => clearInterval(timer)
-  }, [isAutoPlaying, isHovered])
+  }, [])
 
-  // When user changes the dropdown project
+  // When user changes the dropdown project: immediately jump to the project image while keeping animation running
   const handleProjectSelect = (projectName) => {
     setFormData((prev) => ({ ...prev, project: projectName }))
     if (projectName) {
       const idx = projectList.findIndex((p) => p.name === projectName)
       if (idx !== -1) {
-        setActiveIndex(idx)
-        setIsAutoPlaying(false) // Focus on user-chosen project
+        setActiveIndex(idx) // Switch to chosen project image immediately
       }
-    } else {
-      setIsAutoPlaying(true) // Resume cycling if "Select a project" is re-selected
     }
   }
 
   // When user clicks an indicator bar at the bottom of the image
   const handleIndicatorClick = (idx) => {
     setActiveIndex(idx)
-    const selectedItem = projectList[idx]
-    if (selectedItem) {
-      setFormData((prev) => ({ ...prev, project: selectedItem.name }))
-    }
-    setIsAutoPlaying(false)
   }
 
   // Submit enquiry
@@ -116,12 +102,8 @@ function ContactModal({ project = '', onClose }) {
 
       {/* Modal Dialog Card */}
       <div className="relative my-auto w-full max-w-[860px] overflow-hidden bg-white border border-line flex flex-col md:flex-row min-h-[500px] max-h-[94vh] motion-safe:animate-hero-in">
-        {/* Left Side: Animated Project Showcase with Indicator Bars */}
-        <div
-          className="relative w-full md:w-1/2 min-h-[260px] md:min-h-[500px] bg-night overflow-hidden select-none"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
+        {/* Left Side: Animated Project Showcase with Continuous Carousel */}
+        <div className="relative w-full md:w-1/2 min-h-[260px] md:min-h-[500px] bg-night overflow-hidden select-none">
           {projectList.map((p, idx) => {
             const isActive = idx === activeIndex
             return (
@@ -139,7 +121,7 @@ function ContactModal({ project = '', onClose }) {
                 {/* Cinematic dark gradients for top and bottom readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60 pointer-events-none" />
 
-                {/* Top Right Project Watermark / Branding (inspired by screenshot) */}
+                {/* Top Right Project Watermark / Branding */}
                 <div className="absolute top-5 right-5 z-20 text-right text-white">
                   <div className="flex items-center justify-end gap-1.5 text-gold">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
@@ -160,7 +142,7 @@ function ContactModal({ project = '', onClose }) {
             )
           })}
 
-          {/* Bottom Dash Indicator Bars (Active bar highlighted in lime like screenshot) */}
+          {/* Bottom Dash Indicator Bars (Active bar highlighted in brand theme gradient) */}
           <div className="absolute bottom-5 inset-x-0 z-20 flex items-center justify-center gap-2">
             {projectList.map((p, idx) => (
               <button
@@ -170,7 +152,7 @@ function ContactModal({ project = '', onClose }) {
                 aria-label={`View ${p.name}`}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   idx === activeIndex
-                    ? 'w-8 bg-[#b4cd34]'
+                    ? 'w-8 bg-gradient-to-r from-sun to-brand-deep'
                     : 'w-4 bg-white/40 hover:bg-white/80'
                 }`}
               />
@@ -203,7 +185,7 @@ function ContactModal({ project = '', onClose }) {
 
           {status === 'sent' ? (
             <div className="py-6 text-center flex flex-col items-center animate-hero-in">
-              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#b4cd34] text-ink mb-4">
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-sun to-brand-deep text-white mb-4">
                 <svg
                   width="24"
                   height="24"
@@ -219,8 +201,7 @@ function ContactModal({ project = '', onClose }) {
               </span>
               <h3 className="font-sans text-2xl font-bold text-ink">Thank you!</h3>
               <p className="mt-2 text-sm text-body max-w-xs leading-relaxed">
-                Your enquiry has been received. Our sales advisor will connect with you via{' '}
-                {formData.whatsapp ? 'WhatsApp' : 'phone call'} shortly.
+                Your enquiry has been received. Our sales advisor will connect with you shortly.
               </p>
               <button
                 type="button"
@@ -272,44 +253,11 @@ function ContactModal({ project = '', onClose }) {
                   />
                 </div>
 
-                {/* Phone Number with inline Whatsapp / Call options */}
+                {/* Phone Number (Clean input without whatsapp/call checkboxes) */}
                 <div>
-                  <div className="flex items-center justify-between mb-1">
-                    <label className="text-[13px] font-semibold text-gray-800">
-                      Phone Number
-                    </label>
-                    <div className="flex items-center gap-2 text-xs text-gray-600">
-                      <label className="inline-flex items-center gap-1.5 cursor-pointer select-none">
-                        <input
-                          type="checkbox"
-                          checked={formData.whatsapp}
-                          onChange={(e) =>
-                            setFormData({ ...formData, whatsapp: e.target.checked })
-                          }
-                          className="h-3.5 w-3.5 rounded border-gray-300 text-brand-deep accent-blue-600 cursor-pointer"
-                        />
-                        <span className="text-[12px] text-gray-700">Whatsapp</span>
-                      </label>
-                      <span className="text-gray-300">|</span>
-                      <label className="inline-flex items-center gap-1.5 cursor-pointer select-none">
-                        <input
-                          type="checkbox"
-                          checked={formData.call}
-                          onChange={(e) =>
-                            setFormData({ ...formData, call: e.target.checked })
-                          }
-                          className="h-3.5 w-3.5 rounded border-gray-300 text-brand-deep accent-blue-600 cursor-pointer"
-                        />
-                        <span className="text-[12px] text-gray-700">Call</span>
-                      </label>
-                      <span
-                        title="Select your preferred communication channels"
-                        className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-gray-400 text-[10px] text-gray-500 cursor-help"
-                      >
-                        i
-                      </span>
-                    </div>
-                  </div>
+                  <label className="block text-[13px] font-semibold text-gray-800 mb-1">
+                    Phone Number
+                  </label>
                   <input
                     type="tel"
                     name="phone"
@@ -360,18 +308,18 @@ function ContactModal({ project = '', onClose }) {
                   </div>
                 </div>
 
-                {/* Submit Button */}
+                {/* Submit Button Matching the Theme */}
                 <div className="pt-2">
                   <button
                     type="submit"
                     disabled={status === 'sending'}
-                    className="w-full bg-[#b4cd34] hover:bg-[#a2ba2c] text-ink font-bold text-sm py-3 transition-colors duration-200 disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full rounded-full border border-brand-deep bg-gradient-to-r from-sun to-brand-deep hover:from-brand-deep hover:to-brand-deeper text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 transition-all duration-300 disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {status === 'sending' ? (
                       <>
                         <span>Submitting…</span>
                         <svg
-                          className="h-4 w-4 animate-spin text-ink"
+                          className="h-4 w-4 animate-spin text-white"
                           viewBox="0 0 24 24"
                           fill="none"
                         >
