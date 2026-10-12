@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { contactForm, projectsPage } from '../data/content'
 
 const inputClass =
-  'mt-2 w-full border border-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-body/50 transition-colors focus:border-brand-deep focus:outline-none focus:ring-2 focus:ring-brand/20'
+  'mt-2 w-full border border-line bg-white px-4 py-3 text-base sm:text-[15px] text-ink placeholder:text-body/50 transition-colors focus:border-brand-deep focus:outline-none focus:ring-2 focus:ring-brand/20'
 
 const labelClass = 'block text-[11px] font-bold uppercase tracking-[0.16em] text-body'
 
@@ -76,8 +76,6 @@ export default function EnquiryForm({ defaultProject = '', showVisitDate = false
           required
           autoComplete="tel"
           inputMode="tel"
-          pattern="(\+91[\s\-]?)?[6-9]\d{4}[\s\-]?\d{5}"
-          title="Enter a valid 10-digit Indian mobile number"
           placeholder="+91 98765 43210"
           className={inputClass}
         />
