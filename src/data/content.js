@@ -16,7 +16,7 @@ import projectResidency from '../assets/images/project-residency.jpg'
 import projectGreens from '../assets/images/project-greens.jpg'
 
 export const company = {
-  name: 'Uday Developers',
+  name: 'Uday Construction',
   logo,
 }
 
@@ -37,18 +37,18 @@ export const about = {
   eyebrow: 'About us',
   title: 'Building places people are proud to call home.',
   paragraphs: [
-    'Uday Developers has shaped homes across Pimpri-Chinchwad since 2004. Founded by Mr. Balasaheb Vyankatrao Gaikwad, we plan, build and hand over residential spaces with the same care from blueprint to brick.',
+    'Uday Construction has shaped homes across Pimpri-Chinchwad since 2004. Founded by Mr. Balasaheb Vyankatrao Gaikwad, we plan, build and hand over residential spaces with the same care from blueprint to brick.',
     'Sites are chosen for daily life — near schools, hospitals and the roads families actually use — and finished to a standard that still feels right years after the keys are handed over.',
   ],
   linkLabel: 'Read more',
   linkHref: '/about',
   image: aboutImage,
-  imageAlt: 'Contemporary residential building by Uday Developers',
+  imageAlt: 'Contemporary residential building by Uday Construction',
 }
 
 export const stats = {
   bigNumber: '10Million+',
-  caption: 'sq. ft. thoughtfully designed spaces across Mumbai and Pune',
+  caption: 'sq. ft. thoughtfully designed spaces across Pune and Pimpri-Chinchwad',
   items: [
     { value: '44', label: 'Projects Delivered' },
     { value: '81', label: 'Completed Developments' },
@@ -86,7 +86,7 @@ export const coreValues = {
 
 export const banners = {
   image: banner,
-  alt: 'Landscaped garden and clubhouse at a Uday Developers residential community',
+  alt: 'Landscaped garden and clubhouse at a Uday Construction residential community',
 }
 
 export const projects = {
@@ -174,6 +174,52 @@ export const testimonials = {
   ],
 }
 
+export const textTestimonials = [
+  {
+    quote: 'Morning light on the hills, and a home that stays quiet after the drive back from Hinjewadi.',
+    client: 'Mr. & Mrs. Kulkarni',
+    role: 'Homeowners',
+    project: 'Uday Emerald Park',
+    location: 'Punawale',
+  },
+  {
+    quote: 'We were told what would be built, and that is what we walked into on handover day. Absolute transparency.',
+    client: 'Dr. Amit & Sneha Patil',
+    role: 'Homeowners',
+    project: 'Uday Residency',
+    location: 'Kiwale',
+  },
+  {
+    quote: 'Two decades in Nigdi and Ravet is why the next generation in our family looked here first.',
+    client: 'The Joshi Family',
+    role: 'Residents',
+    project: 'Uday Heights',
+    location: 'Ravet',
+  },
+  {
+    quote: 'Handover exactly on the promised milestone. Earthquake-resistant structural quality you can feel.',
+    client: 'Rajesh & Meena Deshmukh',
+    role: 'Homeowners',
+    project: 'Uday Hilltop Residency',
+    location: 'Ravet',
+  },
+  {
+    quote: 'Spacious cross-ventilation, open green courtyards, and a truly peaceful community to raise our children.',
+    client: 'Ananya & Sagar Shinde',
+    role: 'Residents',
+    project: 'Uday Royal Park',
+    location: 'Kiwale',
+  },
+  {
+    quote: 'From blueprint to key handover, Mr. Gaikwad’s team delivered with unwavering integrity and craft.',
+    client: 'Mahesh & Priya Kadam',
+    role: 'Homeowners',
+    project: 'Uday Skyline',
+    location: 'Wakad',
+  },
+]
+
+
 export const contactForm = {
   // Set to a form endpoint (e.g. Formspree) to receive enquiries; empty shows the thank-you state only.
   endpoint: '',
@@ -182,7 +228,7 @@ export const contactForm = {
 }
 
 export const footer = {
-  copyright: 'Uday Developers. All rights reserved.',
+  copyright: 'Uday Construction. All rights reserved.',
   since: 'Building trust since 2004',
   blurb:
     'Homes across Pimpri-Chinchwad, planned and handed over with the same care from blueprint to brick.',
@@ -209,17 +255,37 @@ export const footer = {
     { label: 'Projects', href: '/projects' },
     { label: 'Contact Us', href: '/contact' },
   ],
+  socials: [
+    {
+      name: 'Instagram',
+      href: 'https://instagram.com/imperialresidency.pune?cplk=MXFhd285ZnUxNWVqNA%3D%3D',
+      handle: '@imperialresidency.pune',
+      type: 'instagram',
+    },
+    {
+      name: 'YouTube',
+      href: 'https://www.youtube.com/@imperialresidencypune?si=4yxvC01Ul0JpPqUJ',
+      handle: '@imperialresidencypune',
+      type: 'youtube',
+    },
+    {
+      name: 'Facebook',
+      href: 'https://www.facebook.com/udayconstruction',
+      handle: 'Uday Construction',
+      type: 'facebook',
+    },
+  ],
 }
 
 export const aboutPage = {
   eyebrow: 'Legacy & philosophy',
   title: 'Building places people are proud to call home.',
   portrait: founder,
-  portraitAlt: 'Founder portrait for Uday Developers',
+  portraitAlt: 'Founder portrait for Uday Construction',
   founder: 'Mr. Balasaheb Vyankatrao Gaikwad',
   role: 'Founder',
   paragraphs: [
-    'Since 2004, Uday Developers has built homes across Pimpri-Chinchwad for the week a family actually lives — the school, the hospital, the road home.',
+    'Since 2004, Uday Construction has built homes across Pimpri-Chinchwad for the week a family actually lives — the school, the hospital, the road home.',
     'The work starts on paper and ends at the keys. What is drawn, specified and promised is what gets built.',
     'That is the idea Mr. Balasaheb Vyankatrao Gaikwad began with, and it is still how a site is chosen and a home is handed over.',
   ],
@@ -254,7 +320,7 @@ export const aboutPage = {
     title: 'The next address',
     text: 'A new home in Pimpri-Chinchwad is on the board. The name will be shared when the land, the plan and the promise are ready to stand together.',
     image: comingSoonImage,
-    imageAlt: 'A new Uday Developers residence at first light',
+    imageAlt: 'A new Uday Construction residence at first light',
   },
 }
 
@@ -264,7 +330,7 @@ export const projectsPage = {
     typeLines: ['Crafted Spaces,', 'Lasting Homes'],
     text: 'Ongoing, completed and upcoming residences across Pimpri-Chinchwad.',
     image: projectsHeroImg,
-    imageAlt: 'Uday Developers residential towers at sunset over Pune',
+    imageAlt: 'Uday Construction residential towers at sunset over Pune',
   },
   intro: {
     eyebrow: 'Portfolio',
@@ -365,7 +431,7 @@ export const projectGallery = {
   eyebrow: 'Project Gallery',
   title: 'Spaces shaped with conviction',
   subtitle: 'A photographic journey through our residential developments, living environments, and architectural craftsmanship across PCMC.',
-  categories: ['All', 'Ongoing', 'Completed', 'Architecture'],
+  categories: ['All', 'Ongoing', 'Completed', 'Coming Soon'],
   items: [
     {
       id: 1,
@@ -378,12 +444,12 @@ export const projectGallery = {
     },
     {
       id: 2,
-      title: 'Clubhouse & Landscape Pavilions',
-      category: 'Architecture',
-      type: 'Amenities & Greenery',
-      location: 'Punawale',
-      image: banner,
-      caption: 'Private serene pavilion designed with natural stone and lush native plantations.',
+      title: 'Uday Greens',
+      category: 'Coming Soon',
+      type: '3 & 4 BHK Luxury Residences',
+      location: 'Tathawade, Pune',
+      image: projectGreens,
+      caption: 'Upcoming twin towers with vertical gardens and podium-level swimming pool.',
     },
     {
       id: 3,
@@ -396,12 +462,12 @@ export const projectGallery = {
     },
     {
       id: 4,
-      title: 'Signature Twilight Facade',
-      category: 'Architecture',
-      type: 'Architectural Lighting & Form',
-      location: 'Ravet, Pune',
-      image: aboutHeroImg,
-      caption: 'Warm ambient lighting highlighting refined architectural proportions at dusk.',
+      title: 'Uday Riverside',
+      category: 'Coming Soon',
+      type: '2 & 3 BHK Nature Residences',
+      location: 'Moshi, Pune',
+      image: comingSoonImage,
+      caption: 'Upcoming riverfront community with green open spaces and modern amenities.',
     },
     {
       id: 5,
@@ -423,3 +489,98 @@ export const projectGallery = {
     },
   ],
 }
+
+export const visionMission = {
+  eyebrow: 'Our Foundation',
+  title: 'Vision & Mission',
+  vision: {
+    num: '01',
+    title: 'Our Vision',
+    statement: 'To craft enduring homes where natural light, thoughtful spaces, and generations of quiet family life thrive in harmony.',
+    points: [
+      'Light & nature-centric living',
+      'Generational structural endurance',
+      'Peaceful, family-first communities',
+    ],
+  },
+  mission: {
+    num: '02',
+    title: 'Our Mission',
+    statement: 'To build with uncompromising quality, deliver on schedule, and maintain absolute honesty from blueprint to key handover.',
+    points: [
+      'Rigorous Grade-A construction audits',
+      '100% MahaRERA transparency',
+      'Punctual milestone handovers',
+    ],
+  },
+}
+
+export const timelineData = {
+  eyebrow: 'Our Journey',
+  title: 'Two Decades of Building Trust',
+  subtitle:
+    'From our inception in 2004 to developing over 10 Million sq. ft. across Pimpri-Chinchwad and Pune — every milestone reflects our unwavering promise of architectural integrity and enduring quality.',
+  milestones: [
+    {
+      year: '2004',
+      tag: 'Inception & Vision',
+      title: 'The Foundation of Uday Construction',
+      location: 'Nigdi, Pimpri-Chinchwad',
+      description:
+        'Founded by Mr. Balasaheb Vyankatrao Gaikwad with an uncompromising philosophy — "Architecture before commerce." Commenced our first landmark residential project designed around the daily rhythms of family life.',
+      metric: 'Foundation Year',
+      highlight: 'First Residential Landmark',
+    },
+    {
+      year: '2008',
+      tag: 'Engineering Benchmark',
+      title: 'Structural Mastery & Regional Expansion',
+      location: 'Pradhikaran & Akurdi',
+      description:
+        'Pioneered earthquake-resistant structural engineering and grade-A certified materials across PCMC. Solidified a reputation for crystal-clear handovers, zero compromise on specs, and lasting customer relationships.',
+      metric: '10+ Projects',
+      highlight: '100% On-Schedule Handover',
+    },
+    {
+      year: '2014',
+      tag: 'A Decade of Trust',
+      title: '10-Year Milestone & Gated Communities',
+      location: 'Ravet & Kiwale',
+      description:
+        'Celebrated one decade of delivering dream homes. Expanded into integrated residential societies with landscaped open courtyards, children’s play zones, and senior citizen seating corners.',
+      metric: '2,500+ Families',
+      highlight: 'First Gated Society Delivered',
+    },
+    {
+      year: '2018',
+      tag: 'Urban Expansion',
+      title: 'High-Rise Living Along Rapid Growth Corridors',
+      location: 'Punawale & Tathawade',
+      description:
+        'Strategic expansion along the Mumbai-Bengaluru Highway and the booming Hinjewadi IT corridor. Delivered contemporary residences like Uday Heights and Uday Hilltop Residency, blending urban connectivity with peaceful living.',
+      metric: '5M+ Sq. Ft.',
+      highlight: 'IT Hub Corridor Expansion',
+    },
+    {
+      year: '2022',
+      tag: 'Sustainable Living',
+      title: 'Flagship Developments & Eco-Architecture',
+      location: 'Punawale & Kiwale',
+      description:
+        'Launched flagship high-rise projects Uday Emerald Park and Uday Royal Park, incorporating biophilic architectural principles, cross-ventilation, rainwater harvesting, and panoramic balconies.',
+      metric: '8,000+ Keys',
+      highlight: 'Flagship High-Rise Launches',
+    },
+    {
+      year: '2025 – Present',
+      tag: 'Present & Beyond',
+      title: '10 Million+ Sq. Ft. & Future Horizons',
+      location: 'Wakad, Moshi & Tathawade',
+      description:
+        'Crossing 10 Million+ sq. ft. of developed spaces with 44+ delivered landmarks and 81+ completed developments. Embarking on upcoming architectural marvels like Uday Skyline & Uday Greens to shape the future of urban living.',
+      metric: '10M+ Sq. Ft.',
+      highlight: '40+ Years of Builder Heritage',
+    },
+  ],
+}
+

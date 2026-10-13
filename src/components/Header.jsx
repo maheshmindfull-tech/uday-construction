@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { company, navLinks } from '../data/content'
+import { company, navLinks, footer } from '../data/content'
 import { useContact } from '../context/ContactContext'
 
 export default function Header() {
@@ -62,13 +62,13 @@ export default function Header() {
                       to={link.href}
                       className={`relative py-1 text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors duration-200 lg:text-xs ${
                         isActive
-                          ? 'text-sun'
-                          : 'text-ink/75 hover:text-sun'
+                          ? 'text-blue-600 font-bold'
+                          : 'text-ink/80 hover:text-blue-600'
                       }`}
                     >
                       {link.label}
                       {isActive && (
-                        <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-gradient-to-r from-sun to-brand" />
+                        <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-blue-600" />
                       )}
                     </Link>
                   </li>
@@ -88,7 +88,7 @@ export default function Header() {
                   e.stopPropagation()
                   openContact()
                 }}
-                className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:border-brand-deeper hover:bg-brand-deeper hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                className="inline-flex items-center gap-2 rounded-full border border-blue-600 bg-blue-600 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:border-blue-700 hover:bg-blue-700 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer shadow-sm hover:shadow-md"
               >
                 <span>{btn.label}</span>
                 <svg
@@ -117,7 +117,7 @@ export default function Header() {
               e.stopPropagation()
               openContact()
             }}
-            className="rounded-full border border-brand-deep bg-brand-deep px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-brand-deeper cursor-pointer active:scale-95"
+            className="rounded-full border border-blue-600 bg-blue-600 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-blue-700 cursor-pointer active:scale-95 shadow-sm"
           >
             Enquire Now
           </button>
@@ -164,7 +164,7 @@ export default function Header() {
                           openContact()
                         }, 80)
                       }}
-                      className="flex w-full items-center justify-center gap-2 rounded-full border border-brand-deep bg-brand-deep py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-brand-deeper cursor-pointer active:scale-95"
+                      className="flex w-full items-center justify-center gap-2 rounded-full border border-blue-600 bg-blue-600 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-blue-700 cursor-pointer active:scale-95 shadow-sm"
                     >
                       <span>{link.label}</span>
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -184,7 +184,7 @@ export default function Header() {
                     to={link.href}
                     onClick={() => setOpen(false)}
                     className={`block py-1.5 text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${
-                      isActive ? 'text-sun' : 'text-ink/75 hover:text-sun'
+                      isActive ? 'text-blue-600 font-bold' : 'text-ink/80 hover:text-blue-600'
                     }`}
                   >
                     {link.label}
@@ -193,6 +193,26 @@ export default function Header() {
               )
             })}
           </ul>
+
+          {/* Social Links inside Mobile Drawer */}
+          <div className="mt-5 flex items-center justify-between border-t border-line pt-4">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-body">
+              Follow Us:
+            </span>
+            <div className="flex items-center gap-2">
+              {footer.socials?.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-line bg-sand px-2.5 py-1 text-[11px] font-semibold text-ink transition-colors hover:border-orange-500 hover:text-orange-600"
+                >
+                  {social.name}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </header>

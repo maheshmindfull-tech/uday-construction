@@ -7,14 +7,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Brand — taken from the sunrise logo
+        // Brand — taken from Uday Construction logo (crimson red & architectural charcoal)
         brand: {
-          DEFAULT: v('brand'), // bright accent: gradients, lines, dots, icons on dark
-          deep: v('brand-deep'), // buttons and small accent text (AA on light backgrounds)
-          deeper: v('brand-deeper'), // hover / pressed
+          DEFAULT: v('brand'), // signature vibrant red from logo (#E31E24)
+          deep: v('brand-deep'), // royal blue for buttons & links (#2563EB)
+          deeper: v('brand-deeper'), // deep blue for button hover (#1D4ED8)
         },
-        sun: v('sun'), // secondary accent: eyebrows, numbers, highlights
-        gold: v('gold'), // accents on dark imagery only
+        sun: v('sun'), // primary accent: eyebrows, stats, numbers
+        gold: v('gold'), // radiant coral/rose accent for gradient highlights
         // Neutrals
         ink: v('ink'), // headings & primary text
         body: v('body'), // paragraphs & secondary text

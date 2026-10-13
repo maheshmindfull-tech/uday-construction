@@ -12,7 +12,7 @@ const labelClass = 'block text-[11px] font-bold uppercase tracking-[0.16em] text
 const projectOptions = projectsPage.items.map((p) => p.name)
 
 async function submitEnquiry(data) {
-  if (!contactForm.endpoint) {
+  if (!contactForm?.endpoint) {
     await new Promise((resolve) => setTimeout(resolve, 600))
     return
   }
@@ -83,7 +83,7 @@ export default function EnquiryForm({
     if (status === 'sent') {
       return (
         <div className="py-6 sm:py-8 text-center flex flex-col items-center animate-hero-in">
-          <span className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-gradient-to-r from-sun to-brand-deep text-white mb-3 sm:mb-4">
+          <span className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-blue-600 text-white mb-3 sm:mb-4">
             <svg
               width="22"
               height="22"
@@ -225,7 +225,7 @@ export default function EnquiryForm({
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="w-full rounded-full border border-brand-deep bg-gradient-to-r from-sun to-brand-deep hover:from-brand-deep hover:to-brand-deeper text-white font-bold text-xs uppercase tracking-[0.18em] py-3 sm:py-3.5 transition-all duration-300 disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
+              className="w-full rounded-full border border-blue-600 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-[0.18em] py-3 sm:py-3.5 transition-all duration-300 disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99] shadow-sm hover:shadow-md"
             >
               {status === 'sending' ? (
                 <>
@@ -264,7 +264,7 @@ export default function EnquiryForm({
   if (status === 'sent') {
     return (
       <div role="status" className="flex flex-col items-start py-6">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-sun to-brand-deep text-white">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M5 12l5 5L20 7" />
           </svg>
@@ -385,7 +385,7 @@ export default function EnquiryForm({
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-gradient-to-r from-sun to-brand-deep px-7 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:brightness-105 disabled:pointer-events-none disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-full border border-blue-600 bg-blue-600 px-7 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-blue-700 hover:border-blue-700 disabled:pointer-events-none disabled:opacity-60 shadow-sm hover:shadow-md cursor-pointer"
         >
           {status === 'sending' ? 'Sending…' : submitLabel}
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

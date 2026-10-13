@@ -100,7 +100,7 @@ function ContactModal({ project = '', onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-start sm:items-center justify-center p-2.5 sm:p-5 md:p-8 overflow-y-auto overscroll-contain bg-black/75 backdrop-blur-sm"
+      className="fixed inset-0 z-[9999] flex items-start sm:items-center justify-center p-2.5 sm:p-5 md:p-8 overflow-y-auto overscroll-contain bg-black/75 backdrop-blur-sm"
       onPointerDown={handleBackdropPointerDown}
       onClick={handleOverlayClick}
       role="dialog"
@@ -165,7 +165,7 @@ function ContactModal({ project = '', onClose }) {
                       <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                     </svg>
                     <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em]">
-                      Uday Developers
+                      Uday Construction
                     </span>
                   </div>
                   <div className="mt-0.5 font-display text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-wider text-white leading-tight">
@@ -189,7 +189,7 @@ function ContactModal({ project = '', onClose }) {
                 aria-label={`View ${p.name}`}
                 className={`h-1 sm:h-1.5 rounded-full transition-all duration-500 ease-in-out cursor-pointer ${
                   idx === activeIndex
-                    ? 'w-7 sm:w-8 bg-gradient-to-r from-sun to-brand-deep'
+                    ? 'w-7 sm:w-8 bg-blue-600'
                     : 'w-3.5 sm:w-4 bg-white/40 hover:bg-white/80'
                 }`}
               />

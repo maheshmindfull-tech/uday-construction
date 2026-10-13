@@ -3,14 +3,17 @@ import { aboutPage, stats } from '../data/content'
 import Reveal from '../components/Reveal'
 import Typewriter from '../components/Typewriter'
 import Ticker from '../components/Ticker'
+import VisionMission from '../components/VisionMission'
 import ProjectGallery from '../components/ProjectGallery'
+import Timeline from '../components/Timeline'
+import TestimonialTicker from '../components/TestimonialTicker'
 import aboutHeroBg from '../assets/images/about-hero.jpg'
 
 export default function AboutPage() {
   useEffect(() => {
-    document.title = 'About Us — Uday Developers'
+    document.title = 'About Us — Uday Construction'
     return () => {
-      document.title = 'Uday Developers'
+      document.title = 'Uday Construction'
     }
   }, [])
 
@@ -71,13 +74,20 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 2. Legacy Numbers Section - Twilight Charcoal with Sunrise Sun vermilion numbers */}
+      {/* 2. Legacy Numbers Section */}
       <section aria-label="Legacy numbers" className="w-full bg-white text-ink border-b border-line">
         <div className="mx-auto max-w-site px-5 py-16 md:px-10 md:py-24">
           <Reveal>
             <div className="eyebrow text-sun">Legacy</div>
+            <div className="mt-6 overflow-hidden whitespace-nowrap bg-gradient-to-r from-sun via-brand to-gold bg-clip-text font-number text-[clamp(68px,11.5vw,160px)] font-[200] leading-[0.95] tracking-[-0.03em] text-transparent">
+              {stats.bigNumber}
+            </div>
+            <p className="mt-6 max-w-3xl font-display text-2xl font-normal leading-[1.3] text-ink sm:text-[28px] md:text-[32px]">
+              {stats.caption}
+            </p>
           </Reveal>
-          <div className="mt-12 flex flex-wrap gap-x-8 gap-y-10">
+
+          <div className="mt-14 flex flex-wrap gap-x-8 gap-y-10 border-t border-brand/30 pt-11 md:mt-16 md:pt-14">
             {stats.items.map((item, i) => (
               <Reveal key={item.label} delay={i * 80} className="min-w-[150px] flex-[1_1_200px]">
                 <p className="font-number text-5xl font-[200] leading-none tracking-[-0.03em] text-sun md:text-[68px]">
@@ -90,11 +100,17 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* 3. Company Journey & Milestones Timeline */}
+      <Timeline />
+
+      {/* 4. Vision & Mission Section - Dual Architectural Split Duality */}
+      <VisionMission />
+
       {/* Continuous Philosophy Ticker Ribbon */}
       <Ticker />
 
       {/* 3. Non-Negotiables Section - 4 Boxes Structure matching reference */}
-      <section aria-label="Non-negotiables" className="w-full bg-white py-20 text-ink md:py-28">
+      <section aria-label="Non-negotiables" className="w-full bg-white pt-16 pb-8 text-ink md:pt-24 md:pb-10">
         <div className="mx-auto max-w-site px-5 md:px-10">
           <Reveal>
             <h2 className="font-sans text-3xl font-normal tracking-tight text-ink sm:text-4xl md:text-5xl lg:text-[54px] leading-[1.12]">
@@ -137,7 +153,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-
+      {/* Continuous Right-to-Left Moving Text Testimonials Ribbon */}
+      <TestimonialTicker />
 
       {/* 5. Project Gallery Section */}
       <ProjectGallery />

@@ -54,7 +54,7 @@ export default function Hero() {
       <div className="absolute inset-0 flex flex-col justify-end px-5 pb-16 sm:pb-20 md:px-10 md:pb-20 pointer-events-none">
         <div className="max-w-3xl">
           <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-gold md:text-xs">
-            Architectural Excellence &middot; PCMC
+            Coming Soon &middot; PCMC
           </span>
           <h1 className="mt-2.5 font-display text-3xl font-medium leading-[1.12] text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
             Thoughtfully crafted homes for quiet living.
@@ -69,7 +69,7 @@ export default function Hero() {
             type="button"
             onClick={togglePlay}
             aria-label={playing ? 'Pause video' : 'Play video'}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-night/40 text-white backdrop-blur-md transition-all duration-200 hover:border-white hover:bg-night/60"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-night/50 text-white backdrop-blur-md transition-all duration-200 hover:border-blue-500 hover:bg-blue-600 cursor-pointer"
           >
             {playing ? (
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -86,7 +86,7 @@ export default function Hero() {
             type="button"
             onClick={toggleMute}
             aria-label={muted ? 'Unmute video' : 'Mute video'}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-night/40 text-white backdrop-blur-md transition-all duration-200 hover:border-white hover:bg-night/60"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-night/50 text-white backdrop-blur-md transition-all duration-200 hover:border-blue-500 hover:bg-blue-600 cursor-pointer"
           >
             {muted ? (
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

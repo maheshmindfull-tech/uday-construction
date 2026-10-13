@@ -23,7 +23,7 @@ const FAQS = [
       'Yes, fully furnished show residences are open for walk-throughs at our ongoing projects including Uday Emerald Park in Punawale and Uday Royal Park in Kiwale. We recommend scheduling a slot in advance for a private guided tour.',
   },
   {
-    question: 'Are Uday Developers projects MahaRERA registered?',
+    question: 'Are Uday Construction projects MahaRERA registered?',
     answer:
       'All ongoing and delivered developments strictly comply with MahaRERA regulations and local development authorities. RERA registration numbers and verified documentation are provided for every unit.',
   },
@@ -41,10 +41,10 @@ export default function ContactPage() {
   const [sendWhatsApp, setSendWhatsApp] = useState(true)
 
   useEffect(() => {
-    document.title = 'Contact Us — Uday Developers | Pune & PCMC'
+    document.title = 'Contact Us — Uday Construction | Pune & PCMC'
     window.scrollTo(0, 0)
     return () => {
-      document.title = 'Uday Developers'
+      document.title = 'Uday Construction'
     }
   }, [])
 
@@ -57,7 +57,7 @@ export default function ContactPage() {
     setFormStatus('sending')
 
     try {
-      if (contactForm.endpoint) {
+      if (contactForm?.endpoint) {
         const res = await fetch(contactForm.endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -86,7 +86,7 @@ export default function ContactPage() {
       <section className="relative min-h-[500px] w-full overflow-hidden bg-night py-24 pt-36 md:min-h-[580px] md:py-32 md:pt-44">
         <img
           src={aboutHeroBg}
-          alt="Uday Developers architectural excellence"
+          alt="Uday Construction architectural excellence"
           className="absolute inset-0 h-full w-full object-cover object-center md:object-[center_35%]"
         />
 
@@ -112,18 +112,18 @@ export default function ContactPage() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {/* Card 1: Direct Helpline */}
           <div className="group border border-line/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-sun transition-transform duration-300 group-hover:scale-110">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-ink transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-50 group-hover:text-blue-600">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
             </div>
-            <h2 className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-sun">Call Sales & Visits</h2>
+            <h2 className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-ink/70">Call Sales & Visits</h2>
             <div className="mt-3 space-y-2">
               {footer.phones.map((phone) => (
                 <a
                   key={phone.href}
                   href={phone.href}
-                  className="block text-xl font-light tracking-[0.02em] text-ink transition-colors hover:text-sun"
+                  className="block text-xl font-medium tracking-[0.02em] text-ink transition-colors hover:text-blue-600"
                 >
                   {phone.display}
                   <span className="block text-xs font-medium text-body/80">{phone.label}</span>
@@ -138,13 +138,13 @@ export default function ContactPage() {
 
           {/* Card 2: Email Inquiries */}
           <div className="group border border-line/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-sun transition-transform duration-300 group-hover:scale-110">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-ink transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-50 group-hover:text-blue-600">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <rect width="20" height="16" x="2" y="4" rx="2" />
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
               </svg>
             </div>
-            <h2 className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-sun">Email Inquiries</h2>
+            <h2 className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-ink/70">Email Inquiries</h2>
             <div className="mt-3 space-y-3">
               {footer.emails.map((email) => (
                 <a
@@ -152,7 +152,7 @@ export default function ContactPage() {
                   href={`mailto:${email.address}`}
                   className="group/mail block"
                 >
-                  <span className="block text-base font-medium text-ink underline decoration-brand/40 underline-offset-4 transition-colors group-hover/mail:text-sun">
+                  <span className="block text-base font-medium text-ink underline decoration-line/80 underline-offset-4 transition-colors group-hover/mail:text-blue-600 group-hover/mail:decoration-blue-500">
                     {email.address}
                   </span>
                   <span className="text-xs text-body">{email.label} Desk</span>
@@ -213,7 +213,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-display text-xl font-medium text-ink">Zero Brokerage & Direct Dealing</h3>
                     <p className="mt-1 text-sm leading-relaxed text-body">
-                      Deal directly with Uday Developers’ authorized sales team for authentic pricing and transparent payment schedules.
+                      Deal directly with Uday Construction’ authorized sales team for authentic pricing and transparent payment schedules.
                     </p>
                   </div>
                 </div>
@@ -428,7 +428,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={formStatus === 'sending'}
-                      className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-8 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-deeper hover:bg-brand-deeper disabled:pointer-events-none disabled:opacity-60"
+                      className="inline-flex items-center gap-2 rounded-full border border-blue-600 bg-blue-600 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-700 hover:bg-blue-700 disabled:pointer-events-none disabled:opacity-60 shadow-sm hover:shadow-md cursor-pointer"
                     >
                       {formStatus === 'sending' ? (
                         <>
@@ -479,7 +479,7 @@ export default function ContactPage() {
                   Headquarters & Office
                 </span>
                 <h3 className="mt-4 font-display text-3xl font-medium text-ink">
-                  Uday Developers
+                  Uday Construction
                 </h3>
                 <p className="mt-4 text-[15px] font-medium leading-relaxed text-ink">
                   MQ27+6Q9, GPRA Quarters, Pradhikaran, Nigdi, Pimpri-Chinchwad, Maharashtra 411044
@@ -503,7 +503,7 @@ export default function ContactPage() {
                     href="https://maps.google.com/?q=MQ27%2B6Q9%2C+GPRA+Quarters%2C+Pradhikaran%2C+Nigdi%2C+Pimpri-Chinchwad%2C+Maharashtra+411044"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-brand-deep bg-brand-deep px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white hover:bg-brand-deeper transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border border-blue-600 bg-blue-600 px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white hover:bg-blue-700 transition-colors shadow-sm"
                   >
                     <span>Open in Google Maps</span>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -512,10 +512,28 @@ export default function ContactPage() {
                   </a>
                   <a
                     href={footer.phones[0].href}
-                    className="inline-flex items-center gap-2 rounded-full border border-line bg-cream px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-ink hover:text-sun transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border border-line bg-cream px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-ink hover:text-blue-600 hover:border-blue-600 hover:bg-blue-50 transition-colors shadow-sm"
                   >
                     <span>Call Office</span>
                   </a>
+                </div>
+
+                {/* Social Media Links */}
+                <div className="mt-6 flex items-center gap-2 border-t border-line/70 pt-4">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-body mr-1">
+                    Social:
+                  </span>
+                  {footer.socials?.map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full border border-line bg-white px-3 py-1 text-xs font-semibold text-ink transition-all hover:border-orange-500 hover:text-orange-600 shadow-sm"
+                    >
+                      {social.name}
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>

@@ -6,6 +6,7 @@ import CoreValues from '../components/CoreValues'
 import ImageBanner from '../components/ImageBanner'
 import Projects from '../components/Projects'
 import Thoughts from '../components/Thoughts'
+import ComingSoonBanner from '../components/ComingSoonBanner'
 import Testimonials from '../components/Testimonials'
 import Reveal from '../components/Reveal'
 
@@ -32,6 +33,7 @@ export default function HomePage() {
       <Reveal>
         <Thoughts />
       </Reveal>
+      <ComingSoonBanner />
       <Reveal>
         <Testimonials />
       </Reveal>

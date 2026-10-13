@@ -3,18 +3,20 @@
 @tailwind utilities;
 
 @layer base {
-  /* Modern Minimal — white, charcoal, one orange accent */
+  /* Architectural Modern — White, Charcoal & Signature Crimson Red (matching Uday Construction logo) */
   :root {
-    --c-brand: 243 139 27;
-    --c-brand-deep: 194 65 12;
-    --c-brand-deeper: 154 52 18;
-    --c-sun: 194 65 12;
-    --c-gold: 253 186 116;
-    --c-ink: 24 24 27;
+    --c-brand: 227 30 36;
+    --c-brand-deep: 37 99 235; /* Royal Blue for buttons and interactive accents */
+    --c-brand-deeper: 29 78 216; /* Deep Blue for button hover */
+    --c-blue: 37 99 235; /* Primary link blue */
+    --c-blue-hover: 29 78 216; /* Link hover blue */
+    --c-sun: 227 30 36;
+    --c-gold: 248 113 113;
+    --c-ink: 28 28 30;
     --c-body: 82 82 91;
     --c-line: 231 229 228;
     --c-cream: 255 255 255;
-    --c-sand: 245 245 244;
+    --c-sand: 248 249 250;
     --c-night: 24 24 27;
     --c-ember: 63 63 70;
   }
@@ -30,8 +32,17 @@
     box-shadow: none !important;
   }
   :focus-visible {
-    outline: 2px solid rgb(var(--c-brand-deep));
+    outline: 2px solid rgb(var(--c-blue));
     outline-offset: 3px;
+  }
+  a[href^="tel:"],
+  a[href^="mailto:"] {
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+  a[href^="tel:"]:hover,
+  a[href^="mailto:"]:hover {
+    color: rgb(var(--c-blue)) !important;
   }
   @media (prefers-reduced-motion: reduce) {
     html {
@@ -92,6 +103,64 @@
 }
 
 .animate-marquee:hover,
-.animate-marquee-slow:hover {
+.animate-marquee-slow:hover,
+.animate-marquee-cards:hover {
   animation-play-state: paused;
 }
+
+.animate-marquee-cards {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee 65s linear infinite;
+}
+
+
+/* Custom luxury scrollbar for timeline viewport */
+.timeline-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(249 115 22 / 0.45) transparent;
+}
+.timeline-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+.timeline-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.timeline-scroll::-webkit-scrollbar-thumb {
+  background: rgb(249 115 22 / 0.4);
+  border-radius: 9999px;
+}
+.timeline-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgb(249 115 22 / 0.8);
+}
+
+/* Real object gravity drop from top navbar area with physical landing bounce */
+@keyframes gravityObjectDrop {
+  0% {
+    transform: translateY(-240px) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  74% {
+    transform: translateY(0px) scale(1.03);
+    opacity: 1;
+  }
+  86% {
+    transform: translateY(-8px) scale(0.99);
+    opacity: 1;
+  }
+  95% {
+    transform: translateY(1.5px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
+}
+
+
+

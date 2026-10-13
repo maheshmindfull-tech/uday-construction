@@ -6,10 +6,34 @@ import Typewriter from '../components/Typewriter'
 import EnquiryForm from '../components/EnquiryForm'
 import { useContact } from '../context/ContactContext'
 
-const badgeStyles = {
-  Ongoing: 'bg-gradient-to-r from-sun to-brand-deep text-white',
-  Completed: 'bg-ink text-white',
-  'Coming Soon': 'bg-white text-sun',
+function StatusBadge({ status }) {
+  if (status === 'Ongoing') {
+    return (
+      <div className="absolute left-3.5 top-3.5 z-10 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/60 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+        </span>
+        <span>Ongoing</span>
+      </div>
+    )
+  }
+
+  if (status === 'Completed') {
+    return (
+      <div className="absolute left-3.5 top-3.5 z-10 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/60 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
+        <span className="h-2 w-2 rounded-full bg-blue-400" />
+        <span>Completed</span>
+      </div>
+    )
+  }
+
+  return (
+    <div className="absolute left-3.5 top-3.5 z-10 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/60 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
+      <span className="h-2 w-2 rounded-full bg-amber-400" />
+      <span>Coming Soon</span>
+    </div>
+  )
 }
 
 function ArrowIcon() {
@@ -45,9 +69,7 @@ function ProjectCard({ project, number }) {
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
         />
-        <span className={`absolute left-4 top-4 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] ${badgeStyles[project.status]}`}>
-          {project.status}
-        </span>
+        <StatusBadge status={project.status} />
       </div>
 
       <div className="flex flex-1 flex-col p-6 md:p-7">
@@ -56,7 +78,25 @@ function ProjectCard({ project, number }) {
             <span className="text-sun"><PinIcon /></span>
             {project.location}
           </p>
-          <span className="font-number text-xs font-medium tracking-[0.2em] text-sun">{number}</span>
+          <div className="flex items-center gap-2.5">
+            <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+              project.status === 'Ongoing'
+                ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+                : project.status === 'Completed'
+                ? 'bg-blue-50 text-blue-800 border border-blue-200'
+                : 'bg-amber-50 text-amber-800 border border-amber-200'
+            }`}>
+              <span className={`h-1.5 w-1.5 rounded-full ${
+                project.status === 'Ongoing'
+                  ? 'bg-emerald-500'
+                  : project.status === 'Completed'
+                  ? 'bg-blue-600'
+                  : 'bg-amber-500'
+              }`} />
+              {project.status}
+            </span>
+            <span className="font-number text-xs font-medium tracking-[0.2em] text-sun">{number}</span>
+          </div>
         </div>
         <h2 className="mt-3 font-display text-[30px] font-medium leading-[1.1]">{project.name}</h2>
         <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.18em] text-body">{project.typology}</p>
@@ -70,13 +110,13 @@ function ProjectCard({ project, number }) {
               e.stopPropagation()
               openContact(project.name)
             }}
-            className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:text-sun cursor-pointer active:scale-95"
+            className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600 transition-colors hover:text-blue-700 cursor-pointer active:scale-95"
           >
             {upcoming ? 'Register interest' : 'Enquire now'}
             <ArrowIcon />
           </button>
           {!upcoming && (
-            <a href={footer.phones[0].href} className="text-[11px] font-bold uppercase tracking-[0.16em] text-body transition-colors hover:text-sun">
+            <a href={footer.phones[0].href} className="text-[11px] font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:text-blue-600">
               Call sales
             </a>
           )}
@@ -92,9 +132,9 @@ export default function ProjectsPage() {
   const visible = filter === 'All' ? items : items.filter((p) => p.status === filter)
 
   useEffect(() => {
-    document.title = 'Projects — Uday Developers'
+    document.title = 'Projects — Uday Construction'
     return () => {
-      document.title = 'Uday Developers'
+      document.title = 'Uday Construction'
     }
   }, [])
 
@@ -143,8 +183,8 @@ export default function ProjectsPage() {
                     aria-pressed={active}
                     className={`rounded-full px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] transition-all duration-300 ${
                       active
-                        ? 'bg-gradient-to-r from-sun to-brand-deep text-white'
-                        : 'border border-line bg-white text-body hover:border-brand-deep hover:text-sun'
+                        ? 'bg-blue-600 text-white border border-blue-600 shadow-sm'
+                        : 'border border-line bg-white text-body hover:border-blue-600 hover:text-blue-600'
                     }`}
                   >
                     {f} <span className={active ? 'text-white/80' : 'text-body/60'}>({count})</span>
@@ -174,7 +214,7 @@ export default function ProjectsPage() {
               {footer.phones.map((phone) => (
                 <a key={phone.href} href={phone.href} className="group flex items-baseline justify-between gap-6 border-b border-line pb-3">
                   <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-body">{phone.label}</span>
-                  <span className="text-lg font-light tracking-[0.02em] text-ink transition-colors group-hover:text-sun">{phone.display}</span>
+                  <span className="text-lg font-medium tracking-[0.02em] text-ink transition-colors group-hover:text-blue-600">{phone.display}</span>
                 </a>
               ))}
             </div>
