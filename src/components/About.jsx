@@ -3,12 +3,12 @@ import { about } from '../data/content'
 
 export default function About() {
   return (
-    <section id="about" className="mx-auto flex max-w-site flex-wrap items-center gap-12 px-5 pb-20 pt-24 md:gap-20 md:px-10 md:pb-24 md:pt-32">
-      <div className="h-[420px] min-w-[260px] flex-[0_1_420px] self-start overflow-hidden bg-night md:sticky md:top-8 md:h-[560px]">
+    <section id="about" className="mx-auto flex max-w-site flex-wrap items-center gap-10 sm:gap-12 md:gap-20 px-4 sm:px-6 md:px-10 2xl:px-16 pb-16 pt-20 sm:pb-20 sm:pt-24 md:pb-24 md:pt-32">
+      <div className="h-[300px] sm:h-[420px] md:h-[560px] min-w-[min(100%,260px)] flex-[0_1_420px] self-start overflow-hidden bg-night md:sticky md:top-8">
         <img src={about.image} alt={about.imageAlt} className="h-full w-full object-cover object-[45%_center]" />
       </div>
 
-      <div className="min-w-[280px] flex-[1_1_420px]">
+      <div className="min-w-[min(100%,280px)] flex-[1_1_420px]">
         <div className="eyebrow">{about.eyebrow}</div>
         <h2 className="section-title mt-6">{about.title}</h2>
         {about.paragraphs.map((text, i) => (

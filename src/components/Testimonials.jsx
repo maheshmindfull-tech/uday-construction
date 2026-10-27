@@ -43,12 +43,12 @@ export default function Testimonials() {
           {testimonials.items.map((item, index) => {
             const initials = item.clientName
               ? item.clientName
-                  .replace(/^(Mr\.|Mrs\.|Dr\.|The)\s+/gi, '')
-                  .split(' ')
-                  .map((w) => w[0])
-                  .filter(Boolean)
-                  .slice(0, 2)
-                  .join('')
+                .replace(/^(Mr\.|Mrs\.|Dr\.|The)\s+/gi, '')
+                .split(' ')
+                .map((w) => w[0])
+                .filter(Boolean)
+                .slice(0, 2)
+                .join('')
               : 'UC'
 
             return (

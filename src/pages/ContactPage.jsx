@@ -5,11 +5,10 @@ import Typewriter from '../components/Typewriter'
 import aboutHeroBg from '../assets/images/about-hero.jpg'
 
 const inputClass =
-  'mt-2 w-full border border-line bg-cream/50 px-4 py-3 text-[15px] text-ink placeholder:text-body/50 transition-all duration-200 focus:border-brand-deep focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/20'
+  'mt-1.5 w-full border border-line bg-cream/50 px-4 py-2.5 text-[15px] text-ink placeholder:text-body/50 transition-all duration-200 focus:border-brand-deep focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/20'
 
 const labelClass = 'block text-[11px] font-bold uppercase tracking-[0.16em] text-body'
 
-const CONFIGURATIONS = ['1 BHK', '2 BHK', '3 BHK', '4 BHK', 'Any Configuration']
 
 const FAQS = [
   {
@@ -109,25 +108,19 @@ export default function ContactPage() {
 
       {/* Quick Action Contact Cards */}
       <section aria-label="Direct contact channels" className="relative -mt-12 z-20 mx-auto max-w-site px-5 md:px-10">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Card 1: Direct Helpline */}
+        <div className="grid gap-6 sm:grid-cols-2">
+          {/* Card 1: Visit Us */}
           <div className="group border border-line/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-ink transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-50 group-hover:text-blue-600">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
               </svg>
             </div>
-            <h2 className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-ink/70">Call Sales & Visits</h2>
-            <div className="mt-3 space-y-2">
-              {footer.phones.map((phone) => (
-                <a
-                  key={phone.href}
-                  href={phone.href}
-                  className="block text-xl font-medium tracking-[0.02em] text-ink transition-colors hover:text-blue-600"
-                >
-                  {phone.display}
-                  <span className="block text-xs font-medium text-body/80">{phone.label}</span>
-                </a>
+            <h2 className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-ink/70">Visit Our Office</h2>
+            <div className="mt-3 space-y-1 text-base font-medium text-ink">
+              {footer.offices[0].lines.map((line) => (
+                <p key={line}>{line}</p>
               ))}
             </div>
             <p className="mt-4 border-t border-line pt-3 text-xs text-body">
@@ -164,32 +157,6 @@ export default function ContactPage() {
             </p>
           </div>
 
-          {/* Card 3: WhatsApp Instant Connect */}
-          <div className="group border border-line/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1 sm:col-span-2 lg:col-span-1">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-emerald-600 transition-transform duration-300 group-hover:scale-110">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-              </svg>
-            </div>
-            <h2 className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-emerald-600">WhatsApp Instant Chat</h2>
-            <p className="mt-3 text-sm leading-relaxed text-body">
-              Receive immediate PDF brochures, high-res floor plans, and route maps directly on your phone.
-            </p>
-            <a
-              href="https://wa.me/919552569646?text=Hi%2C%20I%20am%20interested%20in%20learning%20more%20about%20Uday%20Developers%20projects."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-600/30 bg-emerald-50 px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-700 transition-all duration-300 hover:bg-emerald-600 hover:text-white"
-            >
-              <span>Chat on WhatsApp</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
-            <p className="mt-4 border-t border-line pt-3 text-xs text-body">
-              Direct interaction with our dedicated sales desk.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -242,18 +209,12 @@ export default function ContactPage() {
               </Reveal>
             </div>
 
-            {/* Quick Call Box */}
-            <div className="mt-10 bg-neutral-50 p-6 border border-line">
-              <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-sun">Prefer calling right away?</span>
-              <p className="mt-2 text-2xl font-light text-ink">+91 95525 69646</p>
-              <p className="mt-1 text-xs text-body">Our team is available right now to answer your inquiries.</p>
-            </div>
           </div>
 
           {/* Right Column: Embedded Contact Us Form Container */}
           <div className="lg:col-span-7">
-            <div className="border border-line bg-white p-6 sm:p-9 md:p-11">
-              <div className="border-b border-line pb-6">
+            <div className="border border-line bg-white p-5 sm:p-7 md:p-8">
+              <div className="border-b border-line pb-4">
                 <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-sun">Online Enquiry Form</span>
                 <h3 className="mt-2 font-display text-2xl font-medium text-ink sm:text-3xl">
                   Send Us an Enquiry
@@ -282,18 +243,6 @@ export default function ContactPage() {
                   </div>
 
                   <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-line pt-6 w-full">
-                    <a
-                      href="https://wa.me/919552569646?text=Hi%2C%20I%20just%20submitted%20an%20enquiry%20on%20your%20website."
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-emerald-600 bg-emerald-600 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-emerald-700"
-                    >
-                      <span>Connect on WhatsApp</span>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                      </svg>
-                    </a>
-
                     <button
                       type="button"
                       onClick={() => setFormStatus('idle')}
@@ -304,7 +253,7 @@ export default function ContactPage() {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="mt-7 grid gap-5 sm:grid-cols-2">
+                <form onSubmit={handleSubmit} className="mt-5 grid gap-3.5 sm:grid-cols-2">
                   {/* Full Name */}
                   <label className="sm:col-span-2">
                     <span className={labelClass}>Full Name *</span>
@@ -373,27 +322,12 @@ export default function ContactPage() {
                     </span>
                   </label>
 
-                  {/* Preferred Configuration */}
-                  <label className="sm:col-span-2">
-                    <span className={labelClass}>Preferred Configuration</span>
-                    <span className="relative block">
-                      <select name="configuration" defaultValue="2 BHK" className={`${inputClass} appearance-none pr-10`}>
-                        {CONFIGURATIONS.map((cfg) => (
-                          <option key={cfg} value={cfg}>{cfg}</option>
-                        ))}
-                      </select>
-                      <svg className="pointer-events-none absolute right-4 top-1/2 mt-1 -translate-y-1/2 text-body" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-                        <path d="M1 1l5 5 5-5" />
-                      </svg>
-                    </span>
-                  </label>
-
                   {/* Detailed Message / Requirements */}
                   <label className="sm:col-span-2">
                     <span className={labelClass}>Your Message / Requirements</span>
                     <textarea
                       name="message"
-                      rows={3}
+                      rows={2}
                       placeholder="Tell us how we can help or specify any particular requirements..."
                       className={`${inputClass} resize-none`}
                     />
@@ -414,11 +348,11 @@ export default function ContactPage() {
                   </div>
 
                   {/* Action Row */}
-                  <div className="sm:col-span-2 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6">
+                  <div className="sm:col-span-2 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-4">
                     <p className="text-xs text-body">
                       {formStatus === 'error' ? (
                         <span className="font-semibold text-sun">
-                          Submission failed. Please call +91 95525 69646 or retry.
+                          Submission failed. Please email us or retry.
                         </span>
                       ) : (
                         'Your privacy is respected. No spam guaranteed.'
@@ -441,9 +375,6 @@ export default function ContactPage() {
                       ) : (
                         <>
                           <span>Send Enquiry</span>
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                          </svg>
                         </>
                       )}
                     </button>
@@ -509,12 +440,6 @@ export default function ContactPage() {
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
                     </svg>
-                  </a>
-                  <a
-                    href={footer.phones[0].href}
-                    className="inline-flex items-center gap-2 rounded-full border border-line bg-cream px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-ink hover:text-blue-600 hover:border-blue-600 hover:bg-blue-50 transition-colors shadow-sm"
-                  >
-                    <span>Call Office</span>
                   </a>
                 </div>
 

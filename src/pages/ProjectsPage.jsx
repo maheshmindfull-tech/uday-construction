@@ -36,14 +36,6 @@ function StatusBadge({ status }) {
   )
 }
 
-function ArrowIcon() {
-  return (
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M5 12h14M12 5l7 7-7 7" />
-    </svg>
-  )
-}
-
 function PinIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -79,20 +71,18 @@ function ProjectCard({ project, number }) {
             {project.location}
           </p>
           <div className="flex items-center gap-2.5">
-            <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
-              project.status === 'Ongoing'
-                ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-                : project.status === 'Completed'
+            <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${project.status === 'Ongoing'
+              ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+              : project.status === 'Completed'
                 ? 'bg-blue-50 text-blue-800 border border-blue-200'
                 : 'bg-amber-50 text-amber-800 border border-amber-200'
-            }`}>
-              <span className={`h-1.5 w-1.5 rounded-full ${
-                project.status === 'Ongoing'
-                  ? 'bg-emerald-500'
-                  : project.status === 'Completed'
+              }`}>
+              <span className={`h-1.5 w-1.5 rounded-full ${project.status === 'Ongoing'
+                ? 'bg-emerald-500'
+                : project.status === 'Completed'
                   ? 'bg-blue-600'
                   : 'bg-amber-500'
-              }`} />
+                }`} />
               {project.status}
             </span>
             <span className="font-number text-xs font-medium tracking-[0.2em] text-sun">{number}</span>
@@ -113,13 +103,7 @@ function ProjectCard({ project, number }) {
             className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600 transition-colors hover:text-blue-700 cursor-pointer active:scale-95"
           >
             {upcoming ? 'Register interest' : 'Enquire now'}
-            <ArrowIcon />
           </button>
-          {!upcoming && (
-            <a href={footer.phones[0].href} className="text-[11px] font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:text-blue-600">
-              Call sales
-            </a>
-          )}
         </div>
       </div>
     </article>
@@ -127,9 +111,9 @@ function ProjectCard({ project, number }) {
 }
 
 export default function ProjectsPage() {
-  const [filter, setFilter] = useState('All')
+  const [filter, setFilter] = useState('Ongoing')
   const { hero, filters, items, visit } = projectsPage
-  const visible = filter === 'All' ? items : items.filter((p) => p.status === filter)
+  const visible = items.filter((p) => p.status === filter)
 
   useEffect(() => {
     document.title = 'Projects — Uday Construction'
@@ -173,7 +157,7 @@ export default function ProjectsPage() {
             </Reveal>
             <div role="group" aria-label="Filter projects by status" className="flex flex-wrap gap-2.5">
               {filters.map((f) => {
-                const count = f === 'All' ? items.length : items.filter((p) => p.status === f).length
+                const count = items.filter((p) => p.status === f).length
                 const active = filter === f
                 return (
                   <button
@@ -181,11 +165,10 @@ export default function ProjectsPage() {
                     type="button"
                     onClick={() => setFilter(f)}
                     aria-pressed={active}
-                    className={`rounded-full px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] transition-all duration-300 ${
-                      active
-                        ? 'bg-blue-600 text-white border border-blue-600 shadow-sm'
-                        : 'border border-line bg-white text-body hover:border-blue-600 hover:text-blue-600'
-                    }`}
+                    className={`rounded-full px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] transition-all duration-300 ${active
+                      ? 'bg-blue-600 text-white border border-blue-600 shadow-sm'
+                      : 'border border-line bg-white text-body hover:border-blue-600 hover:text-blue-600'
+                      }`}
                   >
                     {f} <span className={active ? 'text-white/80' : 'text-body/60'}>({count})</span>
                   </button>
@@ -206,20 +189,20 @@ export default function ProjectsPage() {
 
       <section aria-label={visit.eyebrow} className="w-full border-t border-line bg-white">
         <div className="mx-auto flex max-w-site flex-wrap items-start justify-between gap-12 px-5 py-16 md:px-10 md:py-24">
-          <Reveal className="min-w-[280px] flex-[1_1_360px] lg:max-w-md">
+          <Reveal className="min-w-[min(100%,280px)] flex-[1_1_360px] lg:max-w-md">
             <div className="eyebrow text-sun">{visit.eyebrow}</div>
             <h2 className="mt-5 font-display text-[36px] font-medium leading-[1.1] md:text-[48px]">{visit.title}</h2>
             <p className="mt-5 text-base leading-[1.75] text-body">{visit.text}</p>
             <div className="mt-9 space-y-4">
-              {footer.phones.map((phone) => (
-                <a key={phone.href} href={phone.href} className="group flex items-baseline justify-between gap-6 border-b border-line pb-3">
-                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-body">{phone.label}</span>
-                  <span className="text-lg font-medium tracking-[0.02em] text-ink transition-colors group-hover:text-blue-600">{phone.display}</span>
+              {footer.emails.map((email) => (
+                <a key={email.address} href={`mailto:${email.address}`} className="group flex items-baseline justify-between gap-6 border-b border-line pb-3">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-body">{email.label}</span>
+                  <span className="text-base font-medium text-ink transition-colors group-hover:text-blue-600">{email.address}</span>
                 </a>
               ))}
             </div>
           </Reveal>
-          <Reveal delay={120} className="min-w-[300px] flex-[1_1_520px]">
+          <Reveal delay={120} className="min-w-[min(100%,300px)] flex-[1_1_520px]">
             <div id="site-visit-form" className="scroll-mt-28 border border-line bg-white/80 p-6 backdrop-blur-sm sm:p-8 md:p-10">
               <EnquiryForm showVisitDate submitLabel="Book a site visit" />
             </div>

@@ -47,7 +47,7 @@ export default function AboutPage() {
 
       {/* 1. Founder Story Section */}
       <section className="mx-auto flex max-w-site flex-wrap items-center gap-12 px-5 py-20 md:gap-20 md:px-10 md:pb-28">
-        <div className="h-[480px] min-w-[260px] flex-[0_1_420px] self-start overflow-hidden bg-night md:sticky md:top-28 md:h-[640px]">
+        <div className="h-[480px] min-w-[min(100%,260px)] flex-[0_1_420px] self-start overflow-hidden bg-night md:sticky md:top-28 md:h-[640px]">
           <img
             src={aboutPage.portrait}
             alt={aboutPage.portraitAlt}
@@ -55,7 +55,7 @@ export default function AboutPage() {
           />
         </div>
 
-        <div className="min-w-[280px] flex-[1_1_420px]">
+        <div className="min-w-[min(100%,280px)] flex-[1_1_420px]">
           <Reveal>
             <div className="eyebrow">{aboutPage.eyebrow}</div>
             <h2 className="section-title mt-6">{aboutPage.title}</h2>
@@ -89,7 +89,7 @@ export default function AboutPage() {
 
           <div className="mt-14 flex flex-wrap gap-x-8 gap-y-10 border-t border-brand/30 pt-11 md:mt-16 md:pt-14">
             {stats.items.map((item, i) => (
-              <Reveal key={item.label} delay={i * 80} className="min-w-[150px] flex-[1_1_200px]">
+              <Reveal key={item.label} delay={i * 80} className="min-w-[min(100%,150px)] flex-[1_1_200px]">
                 <p className="font-number text-5xl font-[200] leading-none tracking-[-0.03em] text-sun md:text-[68px]">
                   {item.value}
                 </p>
@@ -123,13 +123,10 @@ export default function AboutPage() {
             {aboutPage.nonNegotiable.items.map((item, index) => (
               <div
                 key={item.num}
-                className={`group relative p-8 transition-colors duration-300 md:p-12 lg:p-14 bg-white hover:bg-neutral-50 ${
-                  index % 2 === 1 ? 'md:border-l md:border-line' : ''
-                } ${
-                  index >= 2 ? 'md:border-t md:border-line' : ''
-                } ${
-                  index > 0 ? 'border-t border-line md:border-t-0' : ''
-                }`}
+                className={`group relative p-8 transition-colors duration-300 md:p-12 lg:p-14 bg-white hover:bg-neutral-50 ${index % 2 === 1 ? 'md:border-l md:border-line' : ''
+                  } ${index >= 2 ? 'md:border-t md:border-line' : ''
+                  } ${index > 0 ? 'border-t border-line md:border-t-0' : ''
+                  }`}
               >
                 <div className="flex items-start gap-6 md:gap-10">
                   {/* Number in Sunrise Vermilion from Logo */}

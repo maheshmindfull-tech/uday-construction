@@ -388,9 +388,6 @@ export default function EnquiryForm({
           className="inline-flex items-center gap-2 rounded-full border border-blue-600 bg-blue-600 px-7 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-blue-700 hover:border-blue-700 disabled:pointer-events-none disabled:opacity-60 shadow-sm hover:shadow-md cursor-pointer"
         >
           {status === 'sending' ? 'Sending…' : submitLabel}
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
         </button>
       </div>
     </form>

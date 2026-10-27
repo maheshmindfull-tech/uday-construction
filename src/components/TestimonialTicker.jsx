@@ -48,12 +48,12 @@ export default function TestimonialTicker({
           {duplicatedList.map((item, idx) => {
             const initials = item.client
               ? item.client
-                  .replace(/^(Mr\.|Mrs\.|Dr\.|The)\s+/gi, '')
-                  .split(' ')
-                  .map((w) => w[0])
-                  .filter(Boolean)
-                  .slice(0, 2)
-                  .join('')
+                .replace(/^(Mr\.|Mrs\.|Dr\.|The)\s+/gi, '')
+                .split(' ')
+                .map((w) => w[0])
+                .filter(Boolean)
+                .slice(0, 2)
+                .join('')
               : 'UC'
 
             return (

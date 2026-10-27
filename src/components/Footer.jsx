@@ -38,22 +38,18 @@ export default function Footer() {
   const socials = footer.socials || []
 
   return (
-    <footer id="contact" className="bg-white text-ink border-t border-line">
+    <footer id="contact" className="border-t border-line bg-white text-ink" aria-label="Site footer">
       <div className="h-1 w-full bg-gradient-to-r from-sun via-brand to-gold" />
 
-      <div className="mx-auto max-w-site px-5 pb-10 pt-14 md:px-10 md:pt-16">
-        <div className="flex flex-wrap items-end justify-between gap-8 border-b border-brand/25 pb-10">
-          <div className="max-w-md">
+      <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16 pt-14 md:pt-16">
+        <div className="grid gap-12 pb-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          {/* Brand */}
+          <div className="sm:col-span-2 lg:col-span-5">
             <Link to="/" aria-label={`${company.name} home`} className="inline-block transition-opacity hover:opacity-90">
               <img src={company.logo} alt={company.name} className="h-16 w-auto object-contain md:h-20" />
             </Link>
-            <p className="mt-6 text-[15px] leading-relaxed text-body">{footer.blurb}</p>
-
-            {/* Social Media Links under Logo */}
-            <div className="mt-7 flex items-center gap-2.5">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-body mr-1">
-                Follow Us:
-              </span>
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-body">{footer.blurb}</p>
+            <div className="mt-6 flex items-center gap-2.5">
               {socials.map((social) => (
                 <a
                   key={social.name}
@@ -68,100 +64,54 @@ export default function Footer() {
               ))}
             </div>
           </div>
-          <p className="font-display text-3xl leading-none text-sun md:text-4xl">{footer.since}</p>
-        </div>
 
-        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] text-sun">Visit</h2>
-            <ul className="mt-5 space-y-6">
+          {/* Quick links */}
+          <nav aria-label="Footer navigation" className="lg:col-span-3 lg:pl-6">
+            <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] text-sun">Quick Links</h2>
+            <ul className="mt-5 space-y-3">
+              {footer.links.map((link) => (
+                <li key={link.label}>
+                  <Link to={link.href} className="text-sm text-body transition-colors hover:text-blue-600">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Contact */}
+          <div className="lg:col-span-4">
+            <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] text-sun">Contact Us</h2>
+            <address className="mt-5 space-y-5 not-italic">
               {footer.offices.map((office) => (
-                <li key={office.title}>
+                <div key={office.title}>
                   <p className="text-sm font-semibold text-ink">{office.title}</p>
                   {office.lines.map((line) => (
                     <p key={line} className="mt-1 text-sm leading-relaxed text-body">
                       {line}
                     </p>
                   ))}
-                </li>
+                </div>
               ))}
-            </ul>
-          </div>
-
-          <div>
-            <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink/70">Call</h2>
-            <ul className="mt-5 space-y-5">
-              {footer.phones.map((phone) => (
-                <li key={phone.href}>
-                  <a href={phone.href} className="group block">
-                    <span className="block text-sm text-body">{phone.label}</span>
-                    <span className="mt-1 block text-lg font-medium tracking-[0.02em] text-ink transition-colors group-hover:text-blue-600">
-                      {phone.display}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink/70">Write</h2>
-            <ul className="mt-5 space-y-5">
               {footer.emails.map((email) => (
-                <li key={email.address}>
-                  <a href={`mailto:${email.address}`} className="group block">
-                    <span className="block text-sm text-body">{email.label}</span>
-                    <span className="mt-1 block text-sm font-medium text-ink underline decoration-line/80 underline-offset-4 transition-colors group-hover:text-blue-600 group-hover:decoration-blue-500">
-                      {email.address}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink/70">Explore</h2>
-            <ul className="mt-5 space-y-3">
-              {footer.links.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-blue-600"
+                <div key={email.address}>
+                  <p className="text-sm font-semibold text-ink">{email.label}</p>
+                  <a
+                    href={`mailto:${email.address}`}
+                    className="mt-1 inline-block text-sm text-body underline decoration-line underline-offset-4 transition-colors hover:text-blue-600 hover:decoration-blue-500"
                   >
-                    {link.label}
-                  </Link>
-                </li>
+                    {email.address}
+                  </a>
+                </div>
               ))}
-            </ul>
+            </address>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-brand/25 pt-6 text-[13px] text-body">
-          <div className="flex flex-wrap items-center gap-3">
-            <span>© {footer.copyright}</span>
-            <span className="hidden sm:inline text-line">&bull;</span>
-            <span className="tracking-[0.08em]">Pradhikaran · Nigdi · Pimpri-Chinchwad</span>
-          </div>
-
-          {/* Social Media Links in bottom bar */}
-          <div className="flex items-center gap-3">
-            <span className="text-xs font-semibold text-body">Social:</span>
-            <div className="flex items-center gap-2">
-              {socials.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1 text-xs font-medium text-ink transition-all hover:border-orange-500 hover:text-orange-600"
-                >
-                  <span className="text-orange-500">{renderSocialIcon(social.type)}</span>
-                  <span>{social.name}</span>
-                </a>
-              ))}
-            </div>
-          </div>
+        {/* Bottom bar */}
+        <div className="flex flex-col items-center justify-between gap-3 border-t border-line py-6 text-[13px] text-body sm:flex-row">
+          <span>© {footer.copyright}</span>
+          <span>Pradhikaran · Nigdi · Pimpri-Chinchwad</span>
         </div>
       </div>
     </footer>

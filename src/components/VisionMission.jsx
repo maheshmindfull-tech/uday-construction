@@ -6,7 +6,7 @@ export default function VisionMission() {
 
   return (
     <section aria-label="Vision and Mission" className="w-full bg-white py-14 md:py-20">
-      <div className="mx-auto max-w-site px-5 md:px-10">
+      <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
         <Reveal>
           <div className="eyebrow text-sun">{eyebrow}</div>
           <h2 className="section-title mt-4">{title}</h2>

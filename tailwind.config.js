@@ -29,8 +29,12 @@ export default {
         sans: ['Manrope', 'system-ui', 'sans-serif'],
         number: ['Montserrat', 'Manrope', 'sans-serif'],
       },
+      screens: {
+        '3xl': '1920px',
+        '4xl': '2560px',
+      },
       maxWidth: {
-        site: '1200px',
+        site: 'min(1560px, 92vw)',
       },
       boxShadow: {
         none: 'none',

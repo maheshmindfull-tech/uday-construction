@@ -241,10 +241,6 @@ export const footer = {
       ],
     },
   ],
-  phones: [
-    { label: 'Sales & site visits', display: '+91 95525 69646', href: 'tel:+919552569646' },
-    { label: 'Enquiries', display: '+91 95525 69647', href: 'tel:+919552569647' },
-  ],
   emails: [
     { label: 'Sales', address: 'sales@udayconstruction.co.in' },
     { label: 'Office', address: 'info@udayconstruction.co.in' },
@@ -337,7 +333,7 @@ export const projectsPage = {
     title: 'Two decades of addresses, one standard.',
     text: 'From Nigdi to Tathawade, each project is planned around daily life: the school run, the hospital nearby, the road home. Explore what is being built today, what families already call home, and what comes next.',
   },
-  filters: ['All', 'Ongoing', 'Completed', 'Coming Soon'],
+  filters: ['Ongoing', 'Completed', 'Coming Soon'],
   items: [
     {
       slug: 'uday-emerald-park',

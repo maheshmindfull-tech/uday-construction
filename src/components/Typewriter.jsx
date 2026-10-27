@@ -72,7 +72,7 @@ export default function Typewriter({ lines, className = '' }) {
         <span
           key={lineObj.line}
           aria-hidden="true"
-          className={`relative block overflow-visible leading-[1.12] pb-1 sm:pb-2 text-4xl sm:text-6xl md:text-7xl lg:text-[84px] ${
+          className={`relative block overflow-visible leading-[1.12] pb-1 sm:pb-2 text-[28px] min-[360px]:text-3xl min-[420px]:text-4xl sm:text-6xl md:text-7xl lg:text-[84px] 2xl:text-[96px] ${
             i > 0 ? 'mt-2' : ''
           }`}
         >
