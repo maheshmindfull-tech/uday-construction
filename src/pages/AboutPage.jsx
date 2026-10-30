@@ -4,9 +4,9 @@ import Reveal from '../components/Reveal'
 import Typewriter from '../components/Typewriter'
 import Ticker from '../components/Ticker'
 import VisionMission from '../components/VisionMission'
-import ProjectGallery from '../components/ProjectGallery'
+
 import Timeline from '../components/Timeline'
-import TestimonialTicker from '../components/TestimonialTicker'
+
 import aboutHeroBg from '../assets/images/about-hero.jpg'
 
 export default function AboutPage() {
@@ -150,11 +150,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Continuous Right-to-Left Moving Text Testimonials Ribbon */}
-      <TestimonialTicker />
 
-      {/* 5. Project Gallery Section */}
       <ProjectGallery />
+
+
+
 
       {/* 6. Coming Soon Section */}
       <section className="mx-auto max-w-site px-5 py-20 md:px-10 md:py-28">
