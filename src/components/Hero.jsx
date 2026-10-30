@@ -73,7 +73,7 @@ export default function Hero() {
                 type="button"
                 onClick={togglePlay}
                 aria-label={playing ? 'Pause video' : 'Play video'}
-                className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/30 bg-night/50 text-white backdrop-blur-md transition-all duration-200 hover:border-blue-500 hover:bg-blue-600 cursor-pointer"
+                className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/30 bg-night/50 text-white backdrop-blur-md transition-all duration-200 hover:border-orange-500 hover:bg-orange-600 cursor-pointer"
               >
                 {playing ? (
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
@@ -90,7 +90,7 @@ export default function Hero() {
                 type="button"
                 onClick={toggleMute}
                 aria-label={muted ? 'Unmute video' : 'Mute video'}
-                className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/30 bg-night/50 text-white backdrop-blur-md transition-all duration-200 hover:border-blue-500 hover:bg-blue-600 cursor-pointer"
+                className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/30 bg-night/50 text-white backdrop-blur-md transition-all duration-200 hover:border-orange-500 hover:bg-orange-600 cursor-pointer"
               >
                 {muted ? (
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

@@ -99,7 +99,7 @@ export default function Testimonials() {
                       type="button"
                       tabIndex={-1}
                       aria-hidden="true"
-                      className="flex h-16 w-16 items-center justify-center rounded-full border border-white/20 bg-black/85 text-white backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white shadow-xl cursor-pointer"
+                      className="flex h-16 w-16 items-center justify-center rounded-full border border-white/20 bg-black/85 text-white backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-orange-600 group-hover:bg-orange-600 group-hover:text-white shadow-xl cursor-pointer"
                     >
                       <svg
                         width="22"

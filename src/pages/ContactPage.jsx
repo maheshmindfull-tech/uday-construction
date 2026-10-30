@@ -246,7 +246,7 @@ export default function ContactPage() {
                     <button
                       type="button"
                       onClick={() => setFormStatus('idle')}
-                      className="text-xs font-bold uppercase tracking-[0.16em] text-sun transition-colors hover:text-brand-deeper"
+                      className="text-xs font-bold uppercase tracking-[0.16em] text-orange-600 transition-colors hover:text-orange-700 cursor-pointer"
                     >
                       Submit another enquiry
                     </button>
@@ -362,7 +362,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={formStatus === 'sending'}
-                      className="inline-flex items-center gap-2 rounded-full border border-blue-600 bg-blue-600 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-700 hover:bg-blue-700 disabled:pointer-events-none disabled:opacity-60 shadow-sm hover:shadow-md cursor-pointer"
+                      className="inline-flex items-center gap-2 rounded-full border border-orange-600 bg-orange-600 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-700 hover:bg-orange-700 disabled:pointer-events-none disabled:opacity-60 shadow-sm hover:shadow-md cursor-pointer"
                     >
                       {formStatus === 'sending' ? (
                         <>
@@ -434,7 +434,7 @@ export default function ContactPage() {
                     href="https://maps.google.com/?q=MQ27%2B6Q9%2C+GPRA+Quarters%2C+Pradhikaran%2C+Nigdi%2C+Pimpri-Chinchwad%2C+Maharashtra+411044"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-blue-600 bg-blue-600 px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white hover:bg-blue-700 transition-colors shadow-sm"
+                    className="inline-flex items-center gap-2 rounded-full border border-orange-600 bg-orange-600 px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white hover:border-orange-700 hover:bg-orange-700 transition-colors shadow-sm"
                   >
                     <span>Open in Google Maps</span>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

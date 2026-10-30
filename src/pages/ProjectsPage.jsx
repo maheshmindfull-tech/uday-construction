@@ -9,7 +9,7 @@ import { useContact } from '../context/ContactContext'
 function StatusBadge({ status }) {
   if (status === 'Ongoing') {
     return (
-      <div className="absolute left-3.5 top-3.5 z-10 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/60 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
+      <div className="absolute left-3.5 top-3.5 z-10 inline-flex items-center gap-2 border border-white/25 bg-black/60 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
         <span className="relative flex h-2 w-2">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
           <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
@@ -21,7 +21,7 @@ function StatusBadge({ status }) {
 
   if (status === 'Completed') {
     return (
-      <div className="absolute left-3.5 top-3.5 z-10 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/60 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
+      <div className="absolute left-3.5 top-3.5 z-10 inline-flex items-center gap-2 border border-white/25 bg-black/60 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
         <span className="h-2 w-2 rounded-full bg-blue-400" />
         <span>Completed</span>
       </div>
@@ -29,7 +29,7 @@ function StatusBadge({ status }) {
   }
 
   return (
-    <div className="absolute left-3.5 top-3.5 z-10 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/60 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
+    <div className="absolute left-3.5 top-3.5 z-10 inline-flex items-center gap-2 border border-white/25 bg-black/60 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
       <span className="h-2 w-2 rounded-full bg-amber-400" />
       <span>Coming Soon</span>
     </div>
@@ -71,7 +71,7 @@ function ProjectCard({ project, number }) {
             {project.location}
           </p>
           <div className="flex items-center gap-2.5">
-            <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${project.status === 'Ongoing'
+            <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${project.status === 'Ongoing'
               ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
               : project.status === 'Completed'
                 ? 'bg-blue-50 text-blue-800 border border-blue-200'
@@ -100,7 +100,7 @@ function ProjectCard({ project, number }) {
               e.stopPropagation()
               openContact(project.name)
             }}
-            className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600 transition-colors hover:text-blue-700 cursor-pointer active:scale-95"
+            className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-orange-600 transition-colors hover:text-orange-700 cursor-pointer active:scale-95"
           >
             {upcoming ? 'Register interest' : 'Enquire now'}
           </button>
@@ -166,8 +166,8 @@ export default function ProjectsPage() {
                     onClick={() => setFilter(f)}
                     aria-pressed={active}
                     className={`rounded-full px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] transition-all duration-300 ${active
-                      ? 'bg-blue-600 text-white border border-blue-600 shadow-sm'
-                      : 'border border-line bg-white text-body hover:border-blue-600 hover:text-blue-600'
+                      ? 'bg-orange-600 text-white border border-orange-600 shadow-sm'
+                      : 'border border-line bg-white text-body hover:border-orange-600 hover:text-orange-600'
                       }`}
                   >
                     {f} <span className={active ? 'text-white/80' : 'text-body/60'}>({count})</span>

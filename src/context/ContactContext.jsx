@@ -189,7 +189,7 @@ function ContactModal({ project = '', onClose }) {
                 aria-label={`View ${p.name}`}
                 className={`h-1 sm:h-1.5 rounded-full transition-all duration-500 ease-in-out cursor-pointer ${
                   idx === activeIndex
-                    ? 'w-7 sm:w-8 bg-blue-600'
+                    ? 'w-7 sm:w-8 bg-orange-600'
                     : 'w-3.5 sm:w-4 bg-white/40 hover:bg-white/80'
                 }`}
               />

@@ -62,13 +62,13 @@ export default function Header() {
                       to={link.href}
                       className={`relative py-1 text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors duration-200 lg:text-xs ${
                         isActive
-                          ? 'text-blue-600 font-bold'
-                          : 'text-ink/80 hover:text-blue-600'
+                          ? 'text-ink font-bold'
+                          : 'text-ink/75 hover:text-ink'
                       }`}
                     >
                       {link.label}
                       {isActive && (
-                        <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-blue-600" />
+                        <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-ink" />
                       )}
                     </Link>
                   </li>
@@ -88,7 +88,7 @@ export default function Header() {
                   e.stopPropagation()
                   openContact()
                 }}
-                className="inline-flex items-center gap-2 rounded-full border border-blue-600 bg-blue-600 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:border-blue-700 hover:bg-blue-700 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer shadow-sm hover:shadow-md"
+                className="inline-flex items-center gap-2 rounded-full border border-orange-600 bg-orange-600 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:border-orange-700 hover:bg-orange-700 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer shadow-sm hover:shadow-md"
               >
                 <span>{btn.label}</span>
               </button>
@@ -104,7 +104,7 @@ export default function Header() {
               e.stopPropagation()
               openContact()
             }}
-            className="rounded-full border border-blue-600 bg-blue-600 px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-blue-700 cursor-pointer active:scale-95 shadow-sm min-[360px]:px-3.5 min-[360px]:text-[10px]"
+            className="rounded-full border border-orange-600 bg-orange-600 px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-wider text-white transition-colors hover:border-orange-700 hover:bg-orange-700 cursor-pointer active:scale-95 shadow-sm min-[360px]:px-3.5 min-[360px]:text-[10px]"
           >
             Enquire Now
           </button>
@@ -151,7 +151,7 @@ export default function Header() {
                           openContact()
                         }, 80)
                       }}
-                      className="flex w-full items-center justify-center gap-2 rounded-full border border-blue-600 bg-blue-600 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-blue-700 cursor-pointer active:scale-95 shadow-sm"
+                      className="flex w-full items-center justify-center gap-2 rounded-full border border-orange-600 bg-orange-600 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition-colors hover:border-orange-700 hover:bg-orange-700 cursor-pointer active:scale-95 shadow-sm"
                     >
                       <span>{link.label}</span>
                     </button>
@@ -168,7 +168,7 @@ export default function Header() {
                     to={link.href}
                     onClick={() => setOpen(false)}
                     className={`block py-1.5 text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${
-                      isActive ? 'text-blue-600 font-bold' : 'text-ink/80 hover:text-blue-600'
+                      isActive ? 'text-ink font-bold' : 'text-ink/75 hover:text-ink'
                     }`}
                   >
                     {link.label}

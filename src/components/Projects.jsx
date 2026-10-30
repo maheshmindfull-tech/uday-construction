@@ -11,7 +11,7 @@ export default function Projects() {
         </div>
         <Link
           to={projects.allHref}
-          className="inline-flex h-11 sm:h-12 items-center gap-3 rounded-full border-[1.5px] border-blue-600 bg-blue-600 px-5 sm:px-7 text-xs sm:text-[13px] font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-blue-700 hover:border-blue-700 shadow-sm hover:shadow-md"
+          className="inline-flex h-11 sm:h-12 items-center gap-3 rounded-full border-[1.5px] border-orange-600 bg-orange-600 px-5 sm:px-7 text-xs sm:text-[13px] font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-orange-700 hover:border-orange-700 shadow-sm hover:shadow-md"
         >
           {projects.allLabel}
           <svg width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M0 5h17M13 1l4 4-4 4" /></svg>
@@ -24,7 +24,7 @@ export default function Projects() {
             <Link to={p.href} className="group block">
               <div className="relative h-[280px] sm:h-[340px] md:h-[380px] overflow-hidden bg-night">
                 <img src={p.image} alt={p.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-                <div className="absolute left-3.5 top-3.5 z-10 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/60 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
+                <div className="absolute left-3.5 top-3.5 z-10 inline-flex items-center gap-2 border border-white/25 bg-black/60 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
                   {p.status === 'Ongoing' ? (
                     <span className="relative flex h-2 w-2">
                       <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />

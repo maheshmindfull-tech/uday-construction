@@ -104,7 +104,7 @@ export default function EnquiryForm({
           <button
             type="button"
             onClick={onClose}
-            className="mt-5 sm:mt-6 rounded-full border border-line bg-cream px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-ink hover:border-brand-deep hover:text-sun transition-colors cursor-pointer"
+            className="mt-5 sm:mt-6 rounded-full border border-line bg-cream px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-ink hover:border-orange-600 hover:text-orange-600 transition-colors cursor-pointer"
           >
             Close
           </button>
@@ -225,7 +225,7 @@ export default function EnquiryForm({
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="w-full rounded-full border border-blue-600 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-[0.18em] py-3 sm:py-3.5 transition-all duration-300 disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99] shadow-sm hover:shadow-md"
+              className="w-full rounded-full border border-orange-600 bg-orange-600 hover:border-orange-700 hover:bg-orange-700 text-white font-bold text-xs uppercase tracking-[0.18em] py-3 sm:py-3.5 transition-all duration-300 disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99] shadow-sm hover:shadow-md"
             >
               {status === 'sending' ? (
                 <>
@@ -276,7 +276,7 @@ export default function EnquiryForm({
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="mt-6 text-[11px] font-bold uppercase tracking-[0.16em] text-sun transition-colors hover:text-brand-deeper"
+          className="mt-6 text-[11px] font-bold uppercase tracking-[0.16em] text-orange-600 transition-colors hover:text-orange-700 cursor-pointer"
         >
           Send another enquiry
         </button>
@@ -385,7 +385,7 @@ export default function EnquiryForm({
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="inline-flex items-center gap-2 rounded-full border border-blue-600 bg-blue-600 px-7 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-blue-700 hover:border-blue-700 disabled:pointer-events-none disabled:opacity-60 shadow-sm hover:shadow-md cursor-pointer"
+          className="inline-flex items-center gap-2 rounded-full border border-orange-600 bg-orange-600 px-7 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-orange-700 hover:border-orange-700 disabled:pointer-events-none disabled:opacity-60 shadow-sm hover:shadow-md cursor-pointer"
         >
           {status === 'sending' ? 'Sending…' : submitLabel}
         </button>
