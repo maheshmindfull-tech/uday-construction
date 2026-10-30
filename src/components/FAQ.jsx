@@ -33,54 +33,74 @@ export default function FAQ() {
   const [openFaq, setOpenFaq] = useState(null)
 
   return (
-    <section aria-label="Frequently Asked Questions" className="w-full bg-white border-t border-line py-20 md:py-28">
-      <div className="mx-auto max-w-site px-5 md:px-10">
-        <div className="mx-auto max-w-3xl text-center">
-          <Reveal>
-            <div className="eyebrow justify-center text-sun">Clear Answers</div>
-            <h2 className="section-title mt-5">Frequently Asked Questions</h2>
-            <p className="mt-4 text-base text-body">
-              Everything you need to know about our residential projects, site visits, and booking process.
-            </p>
-          </Reveal>
-        </div>
-
-        <div className="mx-auto mt-12 max-w-3xl space-y-4">
-          {FAQS.map((faq, index) => {
-            const isOpen = openFaq === index
-            return (
-              <div
-                key={faq.question}
-                className="border border-line bg-white transition-colors duration-200"
-              >
-                <button
-                  type="button"
-                  onClick={() => setOpenFaq(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between p-6 text-left"
-                  aria-expanded={isOpen}
+    <section aria-label="Frequently Asked Questions" className="w-full bg-white border-t border-line py-16 sm:py-20 md:py-28">
+      <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
+          {/* Left Side: Heading, Eyebrow & Description */}
+          <div className="lg:col-span-5 lg:sticky lg:top-28 self-start">
+            <Reveal>
+              <div className="eyebrow text-sun">Clear Answers</div>
+              <h2 className="section-title mt-4 sm:mt-5 text-left">Frequently Asked Questions</h2>
+              <p className="mt-4 text-base leading-relaxed text-body md:text-lg text-left">
+                Everything you need to know about our residential projects, site visits, and booking process.
+              </p>
+              
+              <div className="mt-8 border-t border-line/80 pt-6 hidden sm:block">
+                <p className="text-xs font-bold uppercase tracking-wider text-ink">Have a specific enquiry?</p>
+                <p className="mt-1.5 text-sm text-body leading-relaxed">
+                  Our sales advisors are ready to assist with customized floor plans and site visit arrangements.
+                </p>
+                <a
+                  href="/contact"
+                  className="mt-3.5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-sun transition-colors hover:text-ink"
                 >
-                  <span className="text-base font-semibold text-ink sm:text-lg pr-4 font-display">
-                    {faq.question}
-                  </span>
-                  <span
-                    className={`flex h-8 w-8 flex-shrink-0 items-center justify-center border border-line bg-cream text-sun transition-transform duration-300 ${
-                      isOpen ? 'rotate-180' : ''
-                    }`}
-                  >
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </span>
-                </button>
-
-                {isOpen && (
-                  <div className="border-t border-line/60 px-6 pb-6 pt-3 text-sm leading-relaxed text-body">
-                    {faq.answer}
-                  </div>
-                )}
+                  Contact Project Desk
+                  <svg width="14" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M0 5h17M13 1l4 4-4 4" />
+                  </svg>
+                </a>
               </div>
-            )
-          })}
+            </Reveal>
+          </div>
+
+          {/* Right Side: Accordion Questions */}
+          <div className="space-y-4 lg:col-span-7">
+            {FAQS.map((faq, index) => {
+              const isOpen = openFaq === index
+              return (
+                <div
+                  key={faq.question}
+                  className="border border-line bg-white transition-colors duration-200"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    className="flex w-full items-center justify-between p-5 sm:p-6 text-left transition-colors hover:bg-neutral-50/70"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="text-base font-semibold text-ink sm:text-lg pr-4 font-display">
+                      {faq.question}
+                    </span>
+                    <span
+                      className={`flex h-8 w-8 flex-shrink-0 items-center justify-center border border-line bg-cream text-sun transition-transform duration-300 ${
+                        isOpen ? 'rotate-180 bg-sun text-white border-sun' : ''
+                      }`}
+                    >
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                    </span>
+                  </button>
+
+                  {isOpen && (
+                    <div className="border-t border-line/60 px-5 pb-6 pt-4 text-sm sm:text-[15px] leading-relaxed text-body bg-neutral-50/40">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>
