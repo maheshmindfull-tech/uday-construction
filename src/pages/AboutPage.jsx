@@ -151,7 +151,7 @@ export default function AboutPage() {
       </section>
 
 
-      <ProjectGallery />
+
 
 
 
