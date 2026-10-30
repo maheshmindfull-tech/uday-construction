@@ -8,6 +8,7 @@ import Projects from '../components/Projects'
 import Thoughts from '../components/Thoughts'
 import ComingSoonBanner from '../components/ComingSoonBanner'
 import Testimonials from '../components/Testimonials'
+import FAQ from '../components/FAQ'
 import Reveal from '../components/Reveal'
 
 export default function HomePage() {
@@ -36,6 +37,9 @@ export default function HomePage() {
       <ComingSoonBanner />
       <Reveal>
         <Testimonials />
+      </Reveal>
+      <Reveal>
+        <FAQ />
       </Reveal>
     </>
   )
