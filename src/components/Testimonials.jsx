@@ -116,12 +116,12 @@ export default function Testimonials() {
                   {/* Bottom Video Action Bar */}
                   <div className="absolute inset-x-0 bottom-0 flex items-center justify-between px-4 pb-3.5 text-xs text-white/90">
                     <span className="inline-flex items-center gap-1.5 font-medium tracking-wide">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-white/80 transition-colors group-hover:text-blue-400">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-white/80 transition-colors group-hover:text-white">
                         <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" />
                       </svg>
                       Watch Video Feedback
                     </span>
-                    <span className="text-[11px] uppercase tracking-wider text-white/70 transition-colors group-hover:text-blue-400">
+                    <span className="text-[11px] uppercase tracking-wider text-white/70 transition-colors group-hover:text-white">
                       Play &#9654;
                     </span>
                   </div>

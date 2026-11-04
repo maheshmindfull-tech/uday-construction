@@ -8,8 +8,8 @@
     --c-brand: 227 30 36;
     --c-brand-deep: 37 99 235; /* Royal Blue for buttons and interactive accents */
     --c-brand-deeper: 29 78 216; /* Deep Blue for button hover */
-    --c-blue: 37 99 235; /* Primary link blue */
-    --c-blue-hover: 29 78 216; /* Link hover blue */
+    --c-blue: 0 0 0; /* Black for link hover */
+    --c-blue-hover: 0 0 0; /* Black for link hover */
     --c-sun: 227 30 36;
     --c-gold: 248 113 113;
     --c-ink: 28 28 30;
@@ -62,7 +62,7 @@
     box-shadow: none !important;
   }
   :focus-visible {
-    outline: 2px solid rgb(var(--c-blue));
+    outline: 2px solid rgb(var(--c-ink));
     outline-offset: 3px;
   }
   a[href^="tel:"],
@@ -72,7 +72,7 @@
   }
   a[href^="tel:"]:hover,
   a[href^="mailto:"]:hover {
-    color: rgb(var(--c-blue)) !important;
+    color: #000000 !important;
   }
   @media (prefers-reduced-motion: reduce) {
     html {

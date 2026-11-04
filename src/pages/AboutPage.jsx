@@ -150,12 +150,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-
-
-
-
-
-
       {/* 6. Coming Soon Section */}
       <section className="mx-auto max-w-site px-5 py-20 md:px-10 md:py-28">
         <Reveal>

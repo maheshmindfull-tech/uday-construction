@@ -89,7 +89,7 @@ export default function ContactPage() {
         <div className="grid gap-6 sm:grid-cols-2">
           {/* Card 1: Visit Us */}
           <div className="group border border-line/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-ink transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-50 group-hover:text-blue-600">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-ink transition-all duration-300 group-hover:scale-110 group-hover:bg-neutral-100 group-hover:text-black">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                 <circle cx="12" cy="10" r="3" />
@@ -109,7 +109,7 @@ export default function ContactPage() {
 
           {/* Card 2: Email Inquiries */}
           <div className="group border border-line/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-ink transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-50 group-hover:text-blue-600">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-ink transition-all duration-300 group-hover:scale-110 group-hover:bg-neutral-100 group-hover:text-black">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <rect width="20" height="16" x="2" y="4" rx="2" />
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
@@ -123,7 +123,7 @@ export default function ContactPage() {
                   href={`mailto:${email.address}`}
                   className="group/mail block"
                 >
-                  <span className="block text-base font-medium text-ink underline decoration-line/80 underline-offset-4 transition-colors group-hover/mail:text-blue-600 group-hover/mail:decoration-blue-500">
+                  <span className="block text-base font-medium text-ink underline decoration-line/80 underline-offset-4 transition-colors group-hover/mail:text-black group-hover/mail:decoration-black">
                     {email.address}
                   </span>
                   <span className="text-xs text-body">{email.label} Desk</span>

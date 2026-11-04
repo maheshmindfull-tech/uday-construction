@@ -197,7 +197,7 @@ export default function ProjectsPage() {
               {footer.emails.map((email) => (
                 <a key={email.address} href={`mailto:${email.address}`} className="group flex items-baseline justify-between gap-6 border-b border-line pb-3">
                   <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-body">{email.label}</span>
-                  <span className="text-base font-medium text-ink transition-colors group-hover:text-blue-600">{email.address}</span>
+                  <span className="text-base font-medium text-ink transition-colors group-hover:text-black">{email.address}</span>
                 </a>
               ))}
             </div>
