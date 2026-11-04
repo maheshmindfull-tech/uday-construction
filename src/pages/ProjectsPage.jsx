@@ -54,7 +54,7 @@ function ProjectCard({ project, number }) {
       id={project.slug}
       className="group flex h-full scroll-mt-28 flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:-translate-y-1"
     >
-      <div className="relative h-[260px] overflow-hidden bg-night">
+      <div className="relative h-[240px] sm:h-[16.25rem] 3xl:h-[18.5rem] 4xl:h-[20rem] overflow-hidden bg-night">
         <img
           src={project.image}
           alt={project.imageAlt}
@@ -64,14 +64,14 @@ function ProjectCard({ project, number }) {
         <StatusBadge status={project.status} />
       </div>
 
-      <div className="flex flex-1 flex-col p-6 md:p-7">
-        <div className="flex items-center justify-between gap-4">
-          <p className="flex items-center gap-2 text-sm text-body">
-            <span className="text-sun"><PinIcon /></span>
-            {project.location}
+      <div className="flex flex-1 flex-col p-5 sm:p-6 md:p-7">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="flex items-center gap-1.5 text-xs sm:text-sm text-body">
+            <span className="shrink-0 text-sun"><PinIcon /></span>
+            <span>{project.location}</span>
           </p>
-          <div className="flex items-center gap-2.5">
-            <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${project.status === 'Ongoing'
+          <div className="flex items-center gap-2">
+            <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${project.status === 'Ongoing'
               ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
               : project.status === 'Completed'
                 ? 'bg-blue-50 text-blue-800 border border-blue-200'
@@ -88,11 +88,11 @@ function ProjectCard({ project, number }) {
             <span className="font-number text-xs font-medium tracking-[0.2em] text-sun">{number}</span>
           </div>
         </div>
-        <h2 className="mt-3 font-display text-[30px] font-medium leading-[1.1]">{project.name}</h2>
+        <h2 className="mt-3 font-display text-2xl sm:text-[1.875rem] font-medium leading-[1.12]">{project.name}</h2>
         <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.18em] text-body">{project.typology}</p>
-        <p className="mt-4 flex-1 text-[15px] leading-[1.7] text-body">{project.text}</p>
+        <p className="mt-3.5 sm:mt-4 flex-1 text-sm sm:text-[15px] leading-[1.7] text-body">{project.text}</p>
 
-        <div className="mt-6 flex items-center justify-between border-t border-line pt-5">
+        <div className="mt-5 sm:mt-6 flex items-center justify-between border-t border-line pt-4 sm:pt-5">
           <button
             type="button"
             onClick={(e) => {
@@ -124,7 +124,7 @@ export default function ProjectsPage() {
 
   return (
     <article className="w-full">
-      <section className="relative min-h-[500px] w-full overflow-hidden bg-night py-24 pt-36 md:min-h-[580px] md:py-32 md:pt-44">
+      <section className="relative min-h-[460px] sm:min-h-[500px] w-full overflow-hidden bg-night py-20 pt-32 sm:py-24 sm:pt-36 md:min-h-[36.25rem] 4xl:min-h-[40rem] md:py-32 md:pt-44">
         <img
           src={hero.image}
           alt={hero.imageAlt}
@@ -133,14 +133,14 @@ export default function ProjectsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-night/60 via-ember/20 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-night/35 via-transparent to-transparent" />
 
-        <div className="relative mx-auto flex max-w-site flex-col justify-center px-5 md:px-10">
+        <div className="relative mx-auto flex max-w-site flex-col justify-center px-4 sm:px-6 md:px-10 2xl:px-16">
           <div className="eyebrow text-gold">{hero.eyebrow}</div>
 
-          <div className="mt-6 flex min-h-[105px] items-center sm:mt-8 sm:min-h-[145px] md:min-h-[175px] lg:min-h-[205px]">
+          <div className="mt-5 flex min-h-[85px] min-[390px]:min-h-[100px] items-center sm:mt-8 sm:min-h-[130px] md:min-h-[165px] lg:min-h-[195px]">
             <Typewriter lines={hero.typeLines} />
           </div>
 
-          <p className="mt-6 max-w-2xl font-display text-xl font-normal leading-relaxed text-cream md:mt-8 md:text-2xl lg:text-[28px]">
+          <p className="mt-5 sm:mt-6 max-w-2xl 3xl:max-w-3xl font-display text-lg sm:text-xl font-normal leading-relaxed text-cream md:mt-8 md:text-2xl lg:text-[1.75rem]">
             {hero.text}
           </p>
         </div>
@@ -148,14 +148,14 @@ export default function ProjectsPage() {
 
       <Ticker />
 
-      <section aria-label="Project listing" className="w-full bg-white py-20 md:py-28">
-        <div className="mx-auto max-w-site px-5 md:px-10">
-          <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line pb-8">
+      <section aria-label="Project listing" className="w-full bg-white py-16 sm:py-20 md:py-28">
+        <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
+          <div className="flex flex-wrap items-end justify-between gap-5 sm:gap-6 border-b border-line pb-7 sm:pb-8">
             <Reveal>
               <div className="eyebrow text-sun">Our portfolio</div>
-              <h2 className="section-title mt-5">Find your address</h2>
+              <h2 className="section-title mt-4 sm:mt-5">Find your address</h2>
             </Reveal>
-            <div role="group" aria-label="Filter projects by status" className="flex flex-wrap gap-2.5">
+            <div role="group" aria-label="Filter projects by status" className="flex flex-wrap gap-2 sm:gap-2.5">
               {filters.map((f) => {
                 const count = items.filter((p) => p.status === f).length
                 const active = filter === f
@@ -165,7 +165,7 @@ export default function ProjectsPage() {
                     type="button"
                     onClick={() => setFilter(f)}
                     aria-pressed={active}
-                    className={`rounded-full px-5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] transition-all duration-300 ${active
+                    className={`rounded-full px-3.5 sm:px-5 py-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] sm:tracking-[0.16em] transition-all duration-300 ${active
                       ? 'bg-orange-600 text-white border border-orange-600 shadow-sm'
                       : 'border border-line bg-white text-body hover:border-orange-600 hover:text-orange-600'
                       }`}
@@ -177,7 +177,7 @@ export default function ProjectsPage() {
             </div>
           </div>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 md:mt-14">
+          <div className="mt-10 sm:mt-12 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 md:mt-14">
             {visible.map((project, i) => (
               <Reveal key={project.slug} delay={(i % 3) * 80} className="h-full">
                 <ProjectCard project={project} number={String(items.indexOf(project) + 1).padStart(2, '0')} />
@@ -188,22 +188,22 @@ export default function ProjectsPage() {
       </section>
 
       <section aria-label={visit.eyebrow} className="w-full border-t border-line bg-white">
-        <div className="mx-auto flex max-w-site flex-wrap items-start justify-between gap-12 px-5 py-16 md:px-10 md:py-24">
+        <div className="mx-auto flex max-w-site flex-wrap items-start justify-between gap-10 sm:gap-12 px-4 sm:px-6 py-16 md:px-10 2xl:px-16 md:py-24">
           <Reveal className="min-w-[min(100%,280px)] flex-[1_1_360px] lg:max-w-md">
             <div className="eyebrow text-sun">{visit.eyebrow}</div>
-            <h2 className="mt-5 font-display text-[36px] font-medium leading-[1.1] md:text-[48px]">{visit.title}</h2>
-            <p className="mt-5 text-base leading-[1.75] text-body">{visit.text}</p>
-            <div className="mt-9 space-y-4">
+            <h2 className="mt-4 sm:mt-5 font-display text-[30px] sm:text-[36px] font-medium leading-[1.1] md:text-[3rem]">{visit.title}</h2>
+            <p className="mt-4 sm:mt-5 text-base leading-[1.75] text-body">{visit.text}</p>
+            <div className="mt-8 sm:mt-9 space-y-4">
               {footer.emails.map((email) => (
-                <a key={email.address} href={`mailto:${email.address}`} className="group flex items-baseline justify-between gap-6 border-b border-line pb-3">
+                <a key={email.address} href={`mailto:${email.address}`} className="group flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line pb-3">
                   <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-body">{email.label}</span>
-                  <span className="inline-block text-base font-medium text-ink transition-all duration-200 group-hover:text-black group-hover:scale-105 origin-right">{email.address}</span>
+                  <span className="inline-block break-all sm:break-normal text-sm sm:text-base font-medium text-ink transition-all duration-200 group-hover:text-black group-hover:scale-105 origin-right">{email.address}</span>
                 </a>
               ))}
             </div>
           </Reveal>
-          <Reveal delay={120} className="min-w-[min(100%,300px)] flex-[1_1_520px]">
-            <div id="site-visit-form" className="scroll-mt-28 border border-line bg-white/80 p-6 backdrop-blur-sm sm:p-8 md:p-10">
+          <Reveal delay={120} className="min-w-[min(100%,280px)] flex-[1_1_520px]">
+            <div id="site-visit-form" className="scroll-mt-28 border border-line bg-white/80 p-4 sm:p-8 md:p-10 backdrop-blur-sm">
               <EnquiryForm showVisitDate submitLabel="Book a site visit" />
             </div>
           </Reveal>

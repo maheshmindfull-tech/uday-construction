@@ -109,7 +109,7 @@ function ContactModal({ project = '', onClose }) {
     >
       {/* Modal Dialog Card - explicitly stops click bubbling and cursor-default */}
       <div
-        className="relative z-10 w-full max-w-[860px] my-3 sm:my-auto bg-white border border-line flex flex-col md:flex-row shadow-none motion-safe:animate-hero-in cursor-default"
+        className="relative z-10 w-full max-w-[53.75rem] my-3 sm:my-auto bg-white border border-line flex flex-col md:flex-row shadow-none motion-safe:animate-hero-in cursor-default"
         onClick={(e) => e.stopPropagation()}
         onPointerDown={(e) => e.stopPropagation()}
       >

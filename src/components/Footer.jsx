@@ -98,7 +98,7 @@ export default function Footer() {
                   <p className="text-sm font-semibold text-ink">{email.label}</p>
                   <a
                     href={`mailto:${email.address}`}
-                    className="mt-1 inline-block text-sm text-body underline decoration-line underline-offset-4 transition-all duration-200 hover:text-black hover:decoration-black hover:scale-105 origin-left"
+                    className="mt-1 inline-block break-all sm:break-normal text-sm text-body underline decoration-line underline-offset-4 transition-all duration-200 hover:text-black hover:decoration-black hover:scale-105 origin-left"
                   >
                     {email.address}
                   </a>
@@ -109,7 +109,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col items-center justify-between gap-3 border-t border-line py-6 text-[13px] text-body sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-3 border-t border-line py-6 text-center text-[12px] sm:text-[13px] text-body sm:flex-row sm:text-left">
           <span>© {footer.copyright}</span>
           <span>Pradhikaran · Nigdi · Pimpri-Chinchwad</span>
         </div>

@@ -57,7 +57,7 @@ export default function Hero() {
             <span className="inline-block text-[10px] min-[360px]:text-[11px] font-bold uppercase tracking-[0.25em] text-gold md:text-xs">
               Coming Soon &middot; PCMC
             </span>
-            <h1 className="mt-2.5 font-display text-2xl min-[360px]:text-[28px] min-[420px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[84px] font-medium leading-[1.12] text-white">
+            <h1 className="mt-2.5 font-display text-2xl min-[360px]:text-[28px] min-[420px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[5.25rem] font-medium leading-[1.12] text-white">
               Thoughtfully crafted homes for quiet living.
             </h1>
           </div>
@@ -108,7 +108,7 @@ export default function Hero() {
           )}
 
           <div
-            className="flex items-center gap-2.5 sm:gap-3 text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] text-white/90"
+            className="flex items-center gap-2.5 sm:gap-3 text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-white/90"
             aria-hidden="true"
           >
             <span>SCROLL</span>

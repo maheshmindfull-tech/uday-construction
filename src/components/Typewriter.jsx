@@ -66,13 +66,13 @@ export default function Typewriter({ lines, className = '' }) {
   return (
     <h1
       aria-label={lines.join(' ')}
-      className={`font-display font-medium tracking-[-0.02em] text-white select-none ${className}`}
+      className={`max-w-full font-display font-medium tracking-[-0.02em] text-white select-none ${className}`}
     >
       {linesData.map((lineObj, i) => (
         <span
           key={lineObj.line}
           aria-hidden="true"
-          className={`relative block overflow-visible leading-[1.12] pb-1 sm:pb-2 text-[28px] min-[360px]:text-3xl min-[420px]:text-4xl sm:text-6xl md:text-7xl lg:text-[84px] 2xl:text-[96px] ${
+          className={`relative block overflow-visible leading-[1.12] pb-1 sm:pb-2 text-[23px] min-[340px]:text-[27px] min-[390px]:text-[32px] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[84px] 2xl:text-[5.5rem] ${
             i > 0 ? 'mt-2' : ''
           }`}
         >

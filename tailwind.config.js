@@ -34,7 +34,7 @@ export default {
         '4xl': '2560px',
       },
       maxWidth: {
-        site: 'min(1560px, 92vw)',
+        site: 'min(97.5rem, 92vw)',
       },
       boxShadow: {
         none: 'none',

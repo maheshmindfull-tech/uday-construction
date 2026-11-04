@@ -10,8 +10,15 @@ export default function Ticker() {
     'Biophilia Inspired',
   ]
 
-  // Duplicate items 4 times to guarantee a seamless, gap-free infinite scroll loop on wide monitors
-  const duplicatedList = [...points, ...points, ...points, ...points]
+  // Duplicate items 6 times (even count for -50% loop) so 2560px & 3840px monitors never show a gap
+  const duplicatedList = [
+    ...points,
+    ...points,
+    ...points,
+    ...points,
+    ...points,
+    ...points,
+  ]
 
   return (
     <div
@@ -30,7 +37,7 @@ export default function Ticker() {
               aria-hidden="true"
             />
             {/* Uppercase Tracked Typography */}
-            <span className="font-number text-[11px] font-medium uppercase tracking-[0.22em] text-ink md:text-[12px]">
+            <span className="font-number text-[11px] font-medium uppercase tracking-[0.22em] text-ink md:text-xs">
               {item}
             </span>
           </div>

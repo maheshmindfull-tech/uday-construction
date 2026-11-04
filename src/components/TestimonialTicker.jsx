@@ -15,7 +15,7 @@ export default function TestimonialTicker({
       className={`relative w-full overflow-hidden border-b border-line bg-sand/40 py-5 sm:py-7 ${className}`}
     >
       {showHeader && (
-        <div className="mx-auto max-w-site px-5 pb-6 md:px-10 md:pb-8">
+        <div className="mx-auto max-w-site px-4 sm:px-6 pb-6 md:px-10 2xl:px-16 md:pb-8">
           <Reveal>
             <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-orange-600">
               <span className="block h-0.5 w-10 bg-gradient-to-r from-orange-500 to-amber-400" />
@@ -37,14 +37,14 @@ export default function TestimonialTicker({
         {/* Soft Left & Right Fade Masks for graceful edge transitions */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute left-0 inset-y-0 z-10 w-12 bg-gradient-to-r from-sand/90 to-transparent sm:w-20"
+          className="pointer-events-none absolute left-0 inset-y-0 z-10 w-8 sm:w-20 bg-gradient-to-r from-sand/90 to-transparent"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute right-0 inset-y-0 z-10 w-12 bg-gradient-to-l from-sand/90 to-transparent sm:w-20"
+          className="pointer-events-none absolute right-0 inset-y-0 z-10 w-8 sm:w-20 bg-gradient-to-l from-sand/90 to-transparent"
         />
 
-        <div className="animate-marquee-cards flex items-stretch gap-5 px-3 py-1 sm:gap-7 select-none">
+        <div className="animate-marquee-cards flex items-stretch gap-4 sm:gap-7 px-3 py-1 select-none">
           {duplicatedList.map((item, idx) => {
             const initials = item.client
               ? item.client
@@ -59,7 +59,7 @@ export default function TestimonialTicker({
             return (
               <div
                 key={idx}
-                className="group relative flex w-[320px] sm:w-[370px] md:w-[410px] shrink-0 flex-col justify-between border border-line bg-white p-5 sm:p-6 transition-all duration-300 hover:border-orange-500/70 hover:-translate-y-1 hover:shadow-sm"
+                className="group relative flex w-[250px] min-[360px]:w-[300px] sm:w-[370px] md:w-[410px] 3xl:w-[26rem] shrink-0 flex-col justify-between border border-line bg-white p-4 sm:p-6 transition-all duration-300 hover:border-orange-500/70 hover:-translate-y-1 hover:shadow-sm"
               >
                 {/* Top Subtle Orange Accent Line on hover */}
                 <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-transparent transition-colors duration-300 group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-amber-400" />
@@ -81,15 +81,15 @@ export default function TestimonialTicker({
                   </div>
 
                   {/* Testimonial Quote */}
-                  <p className="mt-4 font-display text-[17px] sm:text-[19px] leading-relaxed text-ink italic">
+                  <p className="mt-3 sm:mt-4 font-display text-[16px] sm:text-[19px] leading-relaxed text-ink italic">
                     &ldquo;{item.quote}&rdquo;
                   </p>
                 </div>
 
                 {/* Bottom Row: Client Avatar, Name & Project Badge */}
-                <div className="mt-6 flex items-center gap-3 border-t border-line/70 pt-4 sm:mt-8">
+                <div className="mt-5 flex items-center gap-3 border-t border-line/70 pt-3.5 sm:mt-8 sm:pt-4">
                   {/* Avatar Initials Badge */}
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-orange-200 bg-orange-50 text-xs font-bold text-orange-600">
+                  <div className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full border border-orange-200 bg-orange-50 text-xs font-bold text-orange-600">
                     {initials}
                   </div>
 

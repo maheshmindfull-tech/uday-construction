@@ -25,12 +25,12 @@ export default function Testimonials() {
   }, [activeVideo])
 
   return (
-    <section id="testimonials" className="w-full bg-sand py-20 md:py-28">
-      <div className="mx-auto max-w-site px-5 md:px-10">
+    <section id="testimonials" className="w-full bg-sand py-16 sm:py-20 md:py-28">
+      <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
         {/* Header */}
         <div className="max-w-2xl">
           <div className="eyebrow">{testimonials.eyebrow}</div>
-          <h2 className="section-title mt-5">
+          <h2 className="section-title mt-4 sm:mt-5">
             {testimonials.title || 'Client Feedback & Stories'}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-body md:text-lg">
@@ -39,7 +39,7 @@ export default function Testimonials() {
         </div>
 
         {/* Video Testimonials Boxes Grid */}
-        <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.items.map((item, index) => {
             const initials = item.clientName
               ? item.clientName
@@ -80,30 +80,30 @@ export default function Testimonials() {
 
                   {/* Top Tag */}
                   {item.tag && (
-                    <span className="absolute left-4 top-4 border border-white/20 bg-night/60 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
+                    <span className="absolute left-3 top-3 sm:left-4 sm:top-4 border border-white/20 bg-night/60 px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
                       {item.tag}
                     </span>
                   )}
 
                   {/* Duration Badge */}
                   {item.duration && (
-                    <span className="absolute right-4 top-4 flex items-center gap-1.5 border border-white/10 bg-night/60 px-2 py-0.5 text-[11px] font-medium text-white/90 backdrop-blur-sm">
+                    <span className="absolute right-3 top-3 sm:right-4 sm:top-4 flex items-center gap-1.5 border border-white/10 bg-night/60 px-2 py-0.5 text-[10px] sm:text-[11px] font-medium text-white/90 backdrop-blur-sm">
                       <span className="inline-block h-1.5 w-1.5 rounded-full bg-blue-500" />
                       {item.duration}
                     </span>
                   )}
 
-                  {/* Play Button - Black initially, Blue on hover */}
+                  {/* Play Button */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <button
                       type="button"
                       tabIndex={-1}
                       aria-hidden="true"
-                      className="flex h-16 w-16 items-center justify-center rounded-full border border-white/20 bg-black/85 text-white backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-orange-600 group-hover:bg-orange-600 group-hover:text-white shadow-xl cursor-pointer"
+                      className="flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-full border border-white/20 bg-black/85 text-white backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-orange-600 group-hover:bg-orange-600 group-hover:text-white shadow-xl cursor-pointer"
                     >
                       <svg
-                        width="22"
-                        height="22"
+                        width="20"
+                        height="20"
                         viewBox="0 0 24 24"
                         fill="currentColor"
                         className="ml-0.5 transition-colors"
@@ -114,21 +114,21 @@ export default function Testimonials() {
                   </div>
 
                   {/* Bottom Video Action Bar */}
-                  <div className="absolute inset-x-0 bottom-0 flex items-center justify-between px-4 pb-3.5 text-xs text-white/90">
-                    <span className="inline-flex items-center gap-1.5 font-medium tracking-wide">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-white/80 transition-all duration-200 group-hover:text-white group-hover:scale-110">
+                  <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 px-3 sm:px-4 pb-2.5 sm:pb-3.5 text-[11px] sm:text-xs text-white/90">
+                    <span className="inline-flex min-w-0 items-center gap-1.5 font-medium tracking-wide truncate">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="shrink-0 text-white/80 transition-all duration-200 group-hover:text-white group-hover:scale-110">
                         <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" />
                       </svg>
-                      Watch Video Feedback
+                      <span className="truncate">Watch Video Feedback</span>
                     </span>
-                    <span className="text-[11px] uppercase tracking-wider text-white/70 transition-all duration-200 group-hover:text-white group-hover:scale-105">
+                    <span className="shrink-0 text-[10px] sm:text-[11px] uppercase tracking-wider text-white/70 transition-all duration-200 group-hover:text-white group-hover:scale-105">
                       Play &#9654;
                     </span>
                   </div>
                 </div>
 
                 {/* Feedback Content Box */}
-                <div className="flex flex-1 flex-col justify-between p-6">
+                <div className="flex flex-1 flex-col justify-between p-4 sm:p-6">
                   <div>
                     {/* 5-Star Rating in Yellow */}
                     <div className="flex items-center gap-1 text-amber-400" aria-label="5 out of 5 stars">
@@ -140,20 +140,20 @@ export default function Testimonials() {
                     </div>
 
                     {/* Quote */}
-                    <blockquote className="mt-4">
-                      <p className="font-display text-[21px] font-medium leading-[1.35] text-ink">
+                    <blockquote className="mt-3.5 sm:mt-4">
+                      <p className="font-display text-[19px] sm:text-[21px] font-medium leading-[1.35] text-ink">
                         &ldquo;{item.quote}&rdquo;
                       </p>
                     </blockquote>
                   </div>
 
                   {/* Client Info Footer */}
-                  <div className="mt-6 flex items-center gap-3.5 border-t border-line/70 pt-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 font-sans text-xs font-bold uppercase tracking-wider text-brand-deeper">
+                  <div className="mt-5 sm:mt-6 flex items-center gap-3 sm:gap-3.5 border-t border-line/70 pt-4">
+                    <div className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 font-sans text-xs font-bold uppercase tracking-wider text-brand-deeper">
                       {initials}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h4 className="truncate text-[15px] font-semibold text-ink">
+                      <h4 className="truncate text-sm sm:text-[15px] font-semibold text-ink">
                         {item.clientName}
                       </h4>
                       <p className="truncate text-xs text-body">
@@ -168,7 +168,7 @@ export default function Testimonials() {
         </div>
 
         {/* Continuous Moving Text Testimonials Ribbon (Right to Left) */}
-        <div className="mt-14 md:mt-20">
+        <div className="mt-12 sm:mt-14 md:mt-20">
           <TestimonialTicker showHeader={false} className="py-6 border-none bg-transparent" />
         </div>
       </div>
@@ -176,7 +176,7 @@ export default function Testimonials() {
       {/* Video Player Modal */}
       {activeVideo && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-night/90 p-4 backdrop-blur-md md:p-8"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-night/90 p-3 sm:p-4 backdrop-blur-md md:p-8 overflow-y-auto"
           role="dialog"
           aria-modal="true"
           aria-label={`Video Feedback from ${activeVideo.clientName}`}
@@ -187,14 +187,14 @@ export default function Testimonials() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between border-b border-white/10 px-5 py-4 text-white">
-              <div className="flex items-center gap-3">
-                <span className="flex h-2.5 w-2.5 rounded-full bg-blue-500 animate-pulse" />
-                <div>
-                  <h3 className="text-sm font-semibold tracking-wide md:text-base">
+            <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 sm:px-5 py-3.5 sm:py-4 text-white">
+              <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
+                <span className="flex h-2.5 w-2.5 shrink-0 rounded-full bg-blue-500 animate-pulse" />
+                <div className="min-w-0">
+                  <h3 className="truncate text-xs sm:text-sm font-semibold tracking-wide md:text-base">
                     {activeVideo.clientName} &mdash; Client Video Feedback
                   </h3>
-                  <p className="text-xs text-white/60">
+                  <p className="truncate text-[11px] sm:text-xs text-white/60">
                     {activeVideo.project} {activeVideo.location ? `(${activeVideo.location})` : ''}
                   </p>
                 </div>
@@ -204,7 +204,7 @@ export default function Testimonials() {
                 type="button"
                 onClick={() => setActiveVideo(null)}
                 aria-label="Close video"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/80 transition-colors hover:border-white hover:bg-white/10 hover:text-white"
+                className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full border border-white/20 text-white/80 transition-colors hover:border-white hover:bg-white/10 hover:text-white"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M18 6L6 18M6 6l12 12" />
@@ -213,7 +213,7 @@ export default function Testimonials() {
             </div>
 
             {/* Video Viewport */}
-            <div className="relative aspect-video w-full bg-night">
+            <div className="relative min-h-[240px] aspect-video w-full bg-night">
               {activeVideo.videoSrc ? (
                 <video
                   src={activeVideo.videoSrc}
@@ -223,23 +223,23 @@ export default function Testimonials() {
                   className="h-full w-full object-contain"
                 />
               ) : (
-                <div className="relative flex h-full w-full flex-col items-center justify-center p-6 text-center text-white">
+                <div className="relative flex h-full w-full flex-col items-center justify-center p-4 sm:p-6 text-center text-white">
                   <img
                     src={activeVideo.poster || testimonials.background}
                     alt=""
                     className="absolute inset-0 h-full w-full object-cover opacity-25"
                   />
-                  <div className="relative z-10 max-w-md border border-white/15 bg-night/80 p-6 backdrop-blur-md">
-                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-blue-600 bg-blue-500/20 text-blue-400">
+                  <div className="relative z-10 max-w-md border border-white/15 bg-night/80 p-4 sm:p-6 backdrop-blur-md">
+                    <div className="mx-auto hidden sm:flex h-14 w-14 items-center justify-center rounded-full border border-blue-600 bg-blue-500/20 text-blue-400">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" />
                       </svg>
                     </div>
-                    <h4 className="mt-4 text-lg font-semibold text-white">Video Ready to Link</h4>
-                    <p className="mt-2 text-xs leading-relaxed text-cream/70">
-                      Place your client feedback video file into <code className="bg-white/10 px-1.5 py-0.5 text-brand">public/videos/</code> and set <code className="bg-white/10 px-1.5 py-0.5 text-brand">videoSrc</code> in <code className="bg-white/10 px-1.5 py-0.5 text-brand">src/data/content.js</code>.
+                    <h4 className="sm:mt-4 text-base sm:text-lg font-semibold text-white">Video Ready to Link</h4>
+                    <p className="mt-1.5 sm:mt-2 text-[11px] sm:text-xs leading-relaxed text-cream/70">
+                      Place your client feedback video file into <code className="bg-white/10 px-1 py-0.5 text-brand">public/videos/</code> and set <code className="bg-white/10 px-1 py-0.5 text-brand">videoSrc</code> in <code className="bg-white/10 px-1 py-0.5 text-brand">src/data/content.js</code>.
                     </p>
-                    <blockquote className="mt-4 border-t border-white/10 pt-3 text-xs italic text-cream">
+                    <blockquote className="mt-3 sm:mt-4 border-t border-white/10 pt-2.5 sm:pt-3 text-[11px] sm:text-xs italic text-cream line-clamp-2 sm:line-clamp-none">
                       &ldquo;{activeVideo.quote}&rdquo;
                     </blockquote>
                   </div>
@@ -248,7 +248,7 @@ export default function Testimonials() {
             </div>
 
             {/* Modal Footer */}
-            <div className="bg-ink px-5 py-3 text-xs text-white/70">
+            <div className="bg-ink px-4 sm:px-5 py-3 text-xs text-white/70">
               <span className="font-semibold text-brand">Quote:</span> &ldquo;{activeVideo.quote}&rdquo;
             </div>
           </div>

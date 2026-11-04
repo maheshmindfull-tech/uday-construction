@@ -5,11 +5,9 @@ import Typewriter from '../components/Typewriter'
 import aboutHeroBg from '../assets/images/about-hero.jpg'
 
 const inputClass =
-  'mt-1.5 w-full border border-line bg-cream/50 px-4 py-2.5 text-[15px] text-ink placeholder:text-body/50 transition-all duration-200 focus:border-brand-deep focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/20'
+  'mt-1.5 w-full border border-line bg-cream/50 px-3.5 sm:px-4 py-2.5 text-[15px] text-ink placeholder:text-body/50 transition-all duration-200 focus:border-brand-deep focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/20'
 
 const labelClass = 'block text-[11px] font-bold uppercase tracking-[0.16em] text-body'
-
-
 
 export default function ContactPage() {
   const [formStatus, setFormStatus] = useState('idle')
@@ -60,7 +58,7 @@ export default function ContactPage() {
   return (
     <article className="w-full">
       {/* Hero Section */}
-      <section className="relative min-h-[500px] w-full overflow-hidden bg-night py-24 pt-36 md:min-h-[580px] md:py-32 md:pt-44">
+      <section className="relative min-h-[460px] sm:min-h-[500px] w-full overflow-hidden bg-night py-20 pt-32 sm:py-24 sm:pt-36 md:min-h-[36.25rem] 4xl:min-h-[40rem] md:py-32 md:pt-44">
         <img
           src={aboutHeroBg}
           alt="Uday Construction architectural excellence"
@@ -71,24 +69,24 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-night/80 via-ember/40 to-night/70" />
         <div className="absolute inset-0 bg-gradient-to-t from-night via-transparent to-transparent" />
 
-        <div className="relative mx-auto flex max-w-site flex-col justify-center px-5 md:px-10">
+        <div className="relative mx-auto flex max-w-site flex-col justify-center px-4 sm:px-6 md:px-10 2xl:px-16">
           <div className="eyebrow text-gold">GET IN TOUCH</div>
 
-          <div className="mt-6 flex min-h-[105px] items-center sm:mt-8 sm:min-h-[145px] md:min-h-[175px] lg:min-h-[205px]">
+          <div className="mt-5 flex min-h-[85px] min-[390px]:min-h-[100px] items-center sm:mt-8 sm:min-h-[130px] md:min-h-[165px] lg:min-h-[195px]">
             <Typewriter lines={['Connect With Us,', 'Visit Our Spaces']} />
           </div>
 
-          <p className="mt-6 max-w-2xl font-display text-xl font-normal leading-relaxed text-cream md:mt-8 md:text-2xl lg:text-[28px]">
+          <p className="mt-5 sm:mt-6 max-w-2xl 3xl:max-w-3xl font-display text-lg sm:text-xl font-normal leading-relaxed text-cream md:mt-8 md:text-2xl lg:text-[1.75rem]">
             Have a question about our residences or planning a visit? Our property advisors in Nigdi Pradhikaran are here to guide you with complete transparency.
           </p>
         </div>
       </section>
 
       {/* Quick Action Contact Cards */}
-      <section aria-label="Direct contact channels" className="relative -mt-12 z-20 mx-auto max-w-site px-5 md:px-10">
-        <div className="grid gap-6 sm:grid-cols-2">
+      <section aria-label="Direct contact channels" className="relative -mt-10 sm:-mt-12 z-20 mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
+        <div className="grid gap-5 sm:gap-6 sm:grid-cols-2">
           {/* Card 1: Visit Us */}
-          <div className="group border border-line/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1">
+          <div className="group border border-line/80 bg-white p-5 sm:p-7 transition-all duration-300 hover:-translate-y-1">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-ink transition-all duration-300 group-hover:scale-110 group-hover:bg-neutral-100 group-hover:text-black">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
@@ -96,7 +94,7 @@ export default function ContactPage() {
               </svg>
             </div>
             <h2 className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-ink/70">Visit Our Office</h2>
-            <div className="mt-3 space-y-1 text-base font-medium text-ink">
+            <div className="mt-3 space-y-1 text-sm sm:text-base font-medium text-ink">
               {footer.offices[0].lines.map((line) => (
                 <p key={line}>{line}</p>
               ))}
@@ -108,7 +106,7 @@ export default function ContactPage() {
           </div>
 
           {/* Card 2: Email Inquiries */}
-          <div className="group border border-line/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1">
+          <div className="group border border-line/80 bg-white p-5 sm:p-7 transition-all duration-300 hover:-translate-y-1">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-ink transition-all duration-300 group-hover:scale-110 group-hover:bg-neutral-100 group-hover:text-black">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <rect width="20" height="16" x="2" y="4" rx="2" />
@@ -123,10 +121,10 @@ export default function ContactPage() {
                   href={`mailto:${email.address}`}
                   className="group/mail block"
                 >
-                  <span className="inline-block text-base font-medium text-ink underline decoration-line/80 underline-offset-4 transition-all duration-200 group-hover/mail:text-black group-hover/mail:decoration-black group-hover/mail:scale-105 origin-left">
+                  <span className="inline-block break-all sm:break-normal text-sm sm:text-base font-medium text-ink underline decoration-line/80 underline-offset-4 transition-all duration-200 group-hover/mail:text-black group-hover/mail:decoration-black group-hover/mail:scale-105 origin-left">
                     {email.address}
                   </span>
-                  <span className="text-xs text-body">{email.label} Desk</span>
+                  <span className="block sm:inline sm:ml-2 text-xs text-body">{email.label} Desk</span>
                 </a>
               ))}
             </div>
@@ -134,25 +132,24 @@ export default function ContactPage() {
               Expected email response within 24 business hours with project floor plans.
             </p>
           </div>
-
         </div>
       </section>
 
       {/* Main Contact Form Section */}
-      <section id="form" className="mx-auto max-w-site px-5 py-20 md:px-10 md:py-28">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16 items-start">
+      <section id="form" className="mx-auto max-w-site px-4 sm:px-6 py-16 sm:py-20 md:px-10 2xl:px-16 md:py-28">
+        <div className="grid gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-16 items-start">
           {/* Left Column: Context, Trust Points, Visit Promise */}
           <div className="lg:col-span-5">
             <Reveal>
               <div className="eyebrow text-sun">Direct Dialogue</div>
-              <h2 className="section-title mt-5">Let’s begin the conversation.</h2>
-              <p className="mt-6 text-base leading-[1.8] text-body">
+              <h2 className="section-title mt-4 sm:mt-5">Let’s begin the conversation.</h2>
+              <p className="mt-5 sm:mt-6 text-base leading-[1.8] text-body">
                 Whether you are looking for your family’s next home, seeking detailed floor plans, or booking a weekend site inspection, our team provides straightforward guidance without aggressive sales pitches.
               </p>
             </Reveal>
 
             {/* Value Pillars */}
-            <div className="mt-10 space-y-6">
+            <div className="mt-8 sm:mt-10 space-y-6">
               <Reveal delay={80}>
                 <div className="flex items-start gap-4 border-l-2 border-brand-deep pl-4">
                   <div>
@@ -186,12 +183,11 @@ export default function ContactPage() {
                 </div>
               </Reveal>
             </div>
-
           </div>
 
           {/* Right Column: Embedded Contact Us Form Container */}
           <div className="lg:col-span-7">
-            <div className="border border-line bg-white p-5 sm:p-7 md:p-8">
+            <div className="border border-line bg-white p-4 sm:p-7 md:p-8">
               <div className="border-b border-line pb-4">
                 <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-sun">Online Enquiry Form</span>
                 <h3 className="mt-2 font-display text-2xl font-medium text-ink sm:text-3xl">
@@ -318,7 +314,7 @@ export default function ContactPage() {
                       type="checkbox"
                       checked={sendWhatsApp}
                       onChange={(e) => setSendWhatsApp(e.target.checked)}
-                      className="mt-1 h-4 w-4 rounded border-line text-brand-deep focus:ring-brand"
+                      className="mt-1 h-4 w-4 shrink-0 rounded border-line text-brand-deep focus:ring-brand"
                     />
                     <label htmlFor="whatsapp-optin" className="text-xs text-body leading-relaxed cursor-pointer select-none">
                       Send project brochure, floor plans, and pricing sheet directly to my WhatsApp number for easy offline viewing.
@@ -340,7 +336,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={formStatus === 'sending'}
-                      className="inline-flex items-center gap-2 rounded-full border border-orange-600 bg-orange-600 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-700 hover:bg-orange-700 disabled:pointer-events-none disabled:opacity-60 shadow-sm hover:shadow-md cursor-pointer"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-orange-600 bg-orange-600 px-6 sm:px-8 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-700 hover:bg-orange-700 disabled:pointer-events-none disabled:opacity-60 shadow-sm hover:shadow-md cursor-pointer"
                     >
                       {formStatus === 'sending' ? (
                         <>
@@ -351,9 +347,7 @@ export default function ContactPage() {
                           </svg>
                         </>
                       ) : (
-                        <>
-                          <span>Send Enquiry</span>
-                        </>
+                        <span>Send Enquiry</span>
                       )}
                     </button>
                   </div>
@@ -365,14 +359,14 @@ export default function ContactPage() {
       </section>
 
       {/* Office Location & Interactive Map */}
-      <section aria-label="Our office location" className="w-full bg-white py-20 md:py-28 border-t border-line">
-        <div className="mx-auto max-w-site px-5 md:px-10">
-          <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line pb-8">
+      <section aria-label="Our office location" className="w-full bg-white py-16 sm:py-20 md:py-28 border-t border-line">
+        <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
+          <div className="flex flex-wrap items-end justify-between gap-4 sm:gap-6 border-b border-line pb-7 sm:pb-8">
             <Reveal>
               <div className="eyebrow text-sun">Our Presence</div>
-              <h2 className="section-title mt-5">Visit our office.</h2>
+              <h2 className="section-title mt-4 sm:mt-5">Visit our office.</h2>
             </Reveal>
-            <div className="text-right">
+            <div className="text-left sm:text-right">
               <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-sun">
                 Pimpri-Chinchwad &middot; Pune
               </span>
@@ -380,49 +374,49 @@ export default function ContactPage() {
           </div>
 
           {/* Office Details & Visual Map Card */}
-          <div className="mt-12 grid gap-8 lg:grid-cols-12 items-center">
+          <div className="mt-10 sm:mt-12 grid gap-8 lg:grid-cols-12 items-center">
             {/* Office Description */}
-            <div className="lg:col-span-5 bg-white border border-line p-8 md:p-10">
+            <div className="lg:col-span-5 bg-white border border-line p-5 sm:p-8 md:p-10">
               <div>
                 <span className="inline-block rounded-full bg-sand px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-sun">
                   Headquarters & Office
                 </span>
-                <h3 className="mt-4 font-display text-3xl font-medium text-ink">
+                <h3 className="mt-4 font-display text-2xl sm:text-3xl font-medium text-ink">
                   Uday Construction
                 </h3>
-                <p className="mt-4 text-[15px] font-medium leading-relaxed text-ink">
+                <p className="mt-3 sm:mt-4 text-sm sm:text-[15px] font-medium leading-relaxed text-ink">
                   MQ27+6Q9, GPRA Quarters, Pradhikaran, Nigdi, Pimpri-Chinchwad, Maharashtra 411044
                 </p>
 
                 <div className="mt-6 border-t border-line pt-5">
-                  <dl className="grid grid-cols-[100px_1fr] sm:grid-cols-[115px_1fr] gap-x-4 gap-y-3.5 text-xs text-body">
+                  <dl className="grid grid-cols-1 min-[380px]:grid-cols-[95px_1fr] sm:grid-cols-[115px_1fr] gap-x-4 gap-y-2.5 min-[380px]:gap-y-3.5 text-xs text-body">
                     <dt className="font-bold text-ink">Location:</dt>
                     <dd className="m-0 leading-relaxed">GPRA Quarters, Pradhikaran, Nigdi, Pimpri-Chinchwad.</dd>
 
-                    <dt className="font-bold text-ink">Office Hours:</dt>
+                    <dt className="font-bold text-ink mt-1 min-[380px]:mt-0">Office Hours:</dt>
                     <dd className="m-0 leading-relaxed">Monday to Saturday: 9:30 AM to 7:00 PM (Sunday by Appointment).</dd>
 
-                    <dt className="font-bold text-ink">Services:</dt>
+                    <dt className="font-bold text-ink mt-1 min-[380px]:mt-0">Services:</dt>
                     <dd className="m-0 leading-relaxed">Project Enquiries, Documentation, Site Visit Coordination & Customer Support.</dd>
                   </dl>
                 </div>
 
-                <div className="mt-8 flex flex-wrap gap-4">
+                <div className="mt-7 sm:mt-8 flex flex-wrap gap-4">
                   <a
                     href="https://maps.google.com/?q=MQ27%2B6Q9%2C+GPRA+Quarters%2C+Pradhikaran%2C+Nigdi%2C+Pimpri-Chinchwad%2C+Maharashtra+411044"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-orange-600 bg-orange-600 px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white hover:border-orange-700 hover:bg-orange-700 transition-colors shadow-sm"
+                    className="inline-flex items-center gap-2 rounded-full border border-orange-600 bg-orange-600 px-4 sm:px-5 py-2.5 text-[10.5px] sm:text-[11px] font-bold uppercase tracking-wider text-white hover:border-orange-700 hover:bg-orange-700 transition-colors shadow-sm"
                   >
                     <span>Open in Google Maps</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="shrink-0">
                       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
                     </svg>
                   </a>
                 </div>
 
                 {/* Social Media Links */}
-                <div className="mt-6 flex items-center gap-2 border-t border-line/70 pt-4">
+                <div className="mt-6 flex flex-wrap items-center gap-2 border-t border-line/70 pt-4">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-body mr-1">
                     Social:
                   </span>
@@ -442,16 +436,16 @@ export default function ContactPage() {
             </div>
 
             {/* Visual Location Frame / Embedded Map */}
-            <div className="lg:col-span-7 h-[380px] md:h-[440px] overflow-hidden border border-line bg-night relative">
+            <div className="lg:col-span-7 h-[320px] sm:h-[380px] md:h-[27.5rem] 4xl:h-[31rem] overflow-hidden border border-line bg-night relative">
               <iframe
                 title="Office Location Map"
                 src="https://maps.google.com/maps?q=MQ27%2B6Q9%2C%20GPRA%20Quarters%2C%20Pradhikaran%2C%20Nigdi%2C%20Pimpri-Chinchwad%2C%20Maharashtra%20411044&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 className="w-full h-full border-0 filter contrast-[1.05] opacity-90 transition-opacity duration-500 hover:opacity-100"
                 loading="lazy"
               />
-              <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full text-xs font-semibold text-ink flex items-center gap-2 shadow-none border border-line/60">
-                <span className="h-2 w-2 rounded-full bg-sun animate-ping" />
-                <span>MQ27+6Q9 &middot; Pradhikaran, Nigdi</span>
+              <div className="absolute top-3 left-3 sm:top-4 sm:left-4 max-w-[calc(100%-1.5rem)] sm:max-w-[calc(100%-2rem)] bg-white/95 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-semibold text-ink flex items-center gap-2 shadow-none border border-line/60">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-sun animate-ping" />
+                <span className="truncate">MQ27+6Q9 &middot; Pradhikaran, Nigdi</span>
               </div>
             </div>
           </div>
