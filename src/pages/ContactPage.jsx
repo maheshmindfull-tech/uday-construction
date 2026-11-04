@@ -123,7 +123,7 @@ export default function ContactPage() {
                   href={`mailto:${email.address}`}
                   className="group/mail block"
                 >
-                  <span className="block text-base font-medium text-ink underline decoration-line/80 underline-offset-4 transition-colors group-hover/mail:text-black group-hover/mail:decoration-black">
+                  <span className="inline-block text-base font-medium text-ink underline decoration-line/80 underline-offset-4 transition-all duration-200 group-hover/mail:text-black group-hover/mail:decoration-black group-hover/mail:scale-105 origin-left">
                     {email.address}
                   </span>
                   <span className="text-xs text-body">{email.label} Desk</span>

@@ -60,10 +60,10 @@ export default function Header() {
                   <li key={link.label}>
                     <Link
                       to={link.href}
-                      className={`relative py-1 text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors duration-200 lg:text-xs ${
+                      className={`relative py-1 text-[11px] font-semibold uppercase tracking-[0.2em] transition-all duration-200 lg:text-xs inline-block hover:scale-105 origin-center ${
                         isActive
                           ? 'text-ink font-bold'
-                          : 'text-ink/75 hover:text-ink'
+                          : 'text-ink/75 hover:text-black'
                       }`}
                     >
                       {link.label}
@@ -167,8 +167,8 @@ export default function Header() {
                   <Link
                     to={link.href}
                     onClick={() => setOpen(false)}
-                    className={`block py-1.5 text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${
-                      isActive ? 'text-ink font-bold' : 'text-ink/75 hover:text-ink'
+                    className={`block py-1.5 text-xs font-semibold uppercase tracking-[0.18em] transition-all duration-200 hover:scale-105 origin-left ${
+                      isActive ? 'text-ink font-bold' : 'text-ink/75 hover:text-black'
                     }`}
                   >
                     {link.label}

@@ -71,7 +71,7 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {footer.links.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.href} className="text-sm text-body transition-colors hover:text-black">
+                  <Link to={link.href} className="inline-block text-sm text-body transition-all duration-200 hover:text-black hover:scale-105 origin-left">
                     {link.label}
                   </Link>
                 </li>
@@ -98,7 +98,7 @@ export default function Footer() {
                   <p className="text-sm font-semibold text-ink">{email.label}</p>
                   <a
                     href={`mailto:${email.address}`}
-                    className="mt-1 inline-block text-sm text-body underline decoration-line underline-offset-4 transition-colors hover:text-black hover:decoration-black"
+                    className="mt-1 inline-block text-sm text-body underline decoration-line underline-offset-4 transition-all duration-200 hover:text-black hover:decoration-black hover:scale-105 origin-left"
                   >
                     {email.address}
                   </a>

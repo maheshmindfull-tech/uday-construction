@@ -38,7 +38,7 @@ export default function Projects() {
                   <span>{p.status}</span>
                 </div>
               </div>
-              <h3 className="mt-4 sm:mt-5 font-display text-2xl sm:text-[30px] font-medium transition-colors group-hover:text-black">{p.name}</h3>
+              <h3 className="mt-4 sm:mt-5 font-display text-2xl sm:text-[30px] font-medium transition-all duration-200 group-hover:text-black group-hover:scale-[1.02] origin-left">{p.name}</h3>
               <p className="mt-1 text-sm text-body">{p.location}</p>
             </Link>
           </li>
