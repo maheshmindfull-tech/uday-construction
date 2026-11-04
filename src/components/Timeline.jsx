@@ -3,448 +3,473 @@ import { timelineData } from '../data/content'
 import Reveal from './Reveal'
 
 import legacyImg from '../assets/images/legacy.jpg'
-import bannerImg from '../assets/images/banner.jpg'
+import project3Img from '../assets/images/project-3.jpg'
 import project2Img from '../assets/images/project-2.jpg'
 import project1Img from '../assets/images/project-1.jpg'
 import residencyImg from '../assets/images/project-residency.jpg'
 import skylineImg from '../assets/images/project-skyline.jpg'
 
-const milestoneImages = {
-  '2004': legacyImg,
-  '2008': bannerImg,
-  '2014': project2Img,
-  '2018': project1Img,
-  '2022': residencyImg,
-  '2025 - Present': skylineImg,
-}
-
-const tagPillStyles = [
-  'bg-[#A85520] text-white', // 2004 — Warm Terracotta
-  'bg-[#A85520] text-white', // 2008 — Warm Terracotta
-  'bg-[#5E5476] text-white', // 2014 — Muted Plum Slate
-  'bg-[#6E5D53] text-white', // 2018 — Warm Umber
-  'bg-[#5E5476] text-white', // 2022 — Muted Plum Slate
-  'bg-[#A85520] text-white', // 2025+ — Warm Terracotta
+const milestonePhotos = [
+  legacyImg,
+  project3Img,
+  project2Img,
+  project1Img,
+  residencyImg,
+  skylineImg,
 ]
 
 export default function Timeline() {
   const { eyebrow, title, subtitle, milestones } = timelineData
-  // openIndex: null when closed; opens full milestone info when user clicks a circle
-  const [openIndex, setOpenIndex] = useState(null)
-  // selectedIndex: controls which milestone photo is showcased on the left portrait card
+  // Default active milestone in the left image box = 2014 (index 2), matching reference format
   const [selectedIndex, setSelectedIndex] = useState(2)
-  const [svgPath, setSvgPath] = useState('')
+  // Turns the clicked year's side label into a sharp-cornered small info box (null = all closed pills)
+  const [openIndex, setOpenIndex] = useState(null)
+  const [linePoints, setLinePoints] = useState('')
 
-  const zigzagContainerRef = useRef(null)
-  const circleRefs = useRef([])
+  const zigzagRef = useRef(null)
+  const desktopCircleRefs = useRef([])
+  const mobileCircleRefs = useRef([])
 
   const activeMilestone = milestones[selectedIndex] || milestones[0]
-  const activeYearShort =
-    activeMilestone.year === '2025 - Present' ? '2025+' : activeMilestone.year
+  const is2025Year = (yearStr) => String(yearStr).trim().startsWith('2025')
+  const activeYearLabel = is2025Year(activeMilestone.year)
+    ? '2025'
+    : activeMilestone.year
 
-  const handleCircleToggle = (idx) => {
+  const handleMilestoneClick = (idx) => {
     setSelectedIndex(idx)
     setOpenIndex((prev) => (prev === idx ? null : idx))
   }
 
-  // Compute smooth rounded zig-zag SVG path through exact center of every Year Circle
-  const computeZigzagPath = useCallback(() => {
-    const container = zigzagContainerRef.current
+  // Measure exact centers of the visible 6 Year Circles for the diagonal warm-gold zig-zag line
+  const updateZigzagLines = useCallback(() => {
+    const container = zigzagRef.current
     if (!container) return
 
-    const containerRect = container.getBoundingClientRect()
-    const points = circleRefs.current
+    const isDesktopLayout = window.innerWidth >= 640
+    const activeRefs = isDesktopLayout
+      ? desktopCircleRefs.current
+      : mobileCircleRefs.current
+
+    const rect = container.getBoundingClientRect()
+    const coords = activeRefs
+      .slice(0, milestones.length)
       .map((el) => {
         if (!el) return null
         const r = el.getBoundingClientRect()
-        return {
-          x: r.left - containerRect.left + r.width / 2,
-          y: r.top - containerRect.top + r.height / 2,
-        }
+        if (r.width === 0 && r.height === 0) return null
+        const x = r.left - rect.left + r.width / 2
+        const y = r.top - rect.top + r.height / 2
+        return `${x.toFixed(1)},${y.toFixed(1)}`
       })
       .filter(Boolean)
 
-    if (points.length < 2) return
-
-    let d = `M ${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`
-
-    for (let i = 0; i < points.length - 1; i++) {
-      const p1 = points[i]
-      const p2 = points[i + 1]
-      const dy = p2.y - p1.y
-
-      // Keep a crisp vertical drop when a card is expanded, then sweep in a smooth rounded S-curve
-      const curveSpan = Math.min(135, dy)
-      const turnStartY = p2.y - curveSpan
-      const midY = (turnStartY + p2.y) / 2
-
-      if (turnStartY > p1.y + 4) {
-        d += ` L ${p1.x.toFixed(1)} ${turnStartY.toFixed(1)}`
-      }
-
-      d += ` C ${p1.x.toFixed(1)} ${midY.toFixed(1)}, ${p2.x.toFixed(1)} ${midY.toFixed(1)}, ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`
+    if (coords.length >= 2) {
+      setLinePoints(coords.join(' '))
     }
-
-    setSvgPath(d)
-  }, [])
+  }, [milestones.length])
 
   useLayoutEffect(() => {
-    computeZigzagPath()
-
-    let rafId = null
-    const start = performance.now()
-    const tick = (now) => {
-      computeZigzagPath()
-      if (now - start < 380) {
-        rafId = requestAnimationFrame(tick)
-      }
-    }
-    rafId = requestAnimationFrame(tick)
-
-    return () => {
-      if (rafId) cancelAnimationFrame(rafId)
-    }
-  }, [computeZigzagPath, openIndex])
+    updateZigzagLines()
+  }, [updateZigzagLines, openIndex])
 
   useEffect(() => {
-    const container = zigzagContainerRef.current
+    const container = zigzagRef.current
     if (!container) return
 
     let rafId = null
-    const scheduleUpdate = () => {
+    const onResize = () => {
       if (rafId) cancelAnimationFrame(rafId)
-      rafId = requestAnimationFrame(computeZigzagPath)
+      rafId = requestAnimationFrame(updateZigzagLines)
     }
 
-    const observer = new ResizeObserver(scheduleUpdate)
+    const observer = new ResizeObserver(onResize)
     observer.observe(container)
-    window.addEventListener('resize', scheduleUpdate)
+    window.addEventListener('resize', onResize)
 
     return () => {
       observer.disconnect()
-      window.removeEventListener('resize', scheduleUpdate)
+      window.removeEventListener('resize', onResize)
       if (rafId) cancelAnimationFrame(rafId)
     }
-  }, [computeZigzagPath])
+  }, [updateZigzagLines])
 
   return (
     <section
       id="timeline"
       aria-label="Company Milestones Timeline"
-      className="relative w-full border-b border-black/[0.08] bg-[#F4F1EA] text-[#18181B]"
+      className="relative w-full border-b border-line bg-white py-16 md:py-24 text-[#18181B]"
     >
-      {/* Subtle Architectural CAD Drafting Lines & Perspective Wireframe */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="hidden lg:block absolute top-0 bottom-0 left-[max(24px,calc((100%-1560px)/2+40px))] w-[1px] bg-black/[0.055]" />
-        <div className="hidden lg:block absolute top-0 bottom-0 right-[max(24px,calc((100%-1560px)/2+40px))] w-[1px] bg-black/[0.055]" />
-
-        <svg
-          viewBox="0 0 260 520"
-          fill="none"
-          className="hidden sm:block absolute bottom-0 left-0 h-[440px] w-[220px] text-[#18181B]/[0.08]"
-        >
-          <path d="M18 520V120L128 58L210 108V520" stroke="currentColor" strokeWidth="1" />
-          <path d="M52 520V98" stroke="currentColor" strokeWidth="0.8" />
-          <path d="M90 520V79" stroke="currentColor" strokeWidth="0.8" />
-          <path d="M128 520V58" stroke="currentColor" strokeWidth="1" />
-          <path d="M168 520V82" stroke="currentColor" strokeWidth="0.8" />
-          <path d="M0 165L128 96L240 160" stroke="currentColor" strokeWidth="0.75" />
-          <path d="M0 215L128 148L240 210" stroke="currentColor" strokeWidth="0.75" />
-          <path d="M0 265L128 200L240 260" stroke="currentColor" strokeWidth="0.75" />
-          <path d="M0 315L128 252L240 310" stroke="currentColor" strokeWidth="0.75" />
-          <path d="M0 365L128 304L240 360" stroke="currentColor" strokeWidth="0.75" />
-          <path d="M0 415L128 356L240 410" stroke="currentColor" strokeWidth="0.75" />
-          <path d="M0 465L128 408L240 460" stroke="currentColor" strokeWidth="0.75" />
-        </svg>
-      </div>
-
-      {/* Top Centered Editorial Header */}
-      <div className="relative mx-auto max-w-site px-5 pt-16 pb-10 md:px-10 md:pt-24 md:pb-12">
-        <div className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-site px-5 md:px-10">
+        {/* Section Header */}
+        <div className="mx-auto mb-12 md:mb-16 max-w-3xl text-center">
           <Reveal>
-            <span className="inline-block rounded-full bg-[#F49D49] px-5 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#18181B]">
-              {eyebrow}
-            </span>
-
-            <h2 className="mt-4 font-display text-[36px] sm:text-[46px] md:text-[56px] lg:text-[62px] font-normal leading-[1.08] tracking-[-0.015em] text-[#18181B]">
-              {title}
-            </h2>
-
-            <p className="mx-auto mt-3.5 max-w-[650px] text-[14px] sm:text-[15.5px] leading-[1.6] text-[#4A4A4F]">
-              <strong className="font-semibold text-[#18181B]">Uday Construction</strong> —{' '}
-              {subtitle.charAt(0).toLowerCase() + subtitle.slice(1)}
+            <div className="eyebrow justify-center text-sun">{eyebrow}</div>
+            <h2 className="section-title mt-4 text-ink">{title}</h2>
+            <p className="mx-auto mt-3.5 max-w-2xl text-sm sm:text-base leading-relaxed text-body">
+              {subtitle}
             </p>
           </Reveal>
         </div>
-      </div>
 
-      {/* Full-Width Horizontal Architectural Hairline */}
-      <div className="h-[1px] w-full bg-black/[0.065]" aria-hidden="true" />
-
-      {/* Split-Screen Editorial Stage */}
-      <div className="relative mx-auto max-w-site px-5 py-10 md:px-10 md:py-14 lg:py-16">
-        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-14">
-          {/* LEFT COLUMN: Tall Golden-Hour Architectural Tower Showcase */}
-          <div className="lg:col-span-5 xl:col-span-4">
-            <div className="relative w-full h-[390px] sm:h-[460px] lg:h-[660px] overflow-hidden rounded-[22px] bg-[#2C1A0E]">
-              {milestones.map((item, idx) => {
-                const imgSrc = milestoneImages[item.year] || legacyImg
-                const isCurrent = selectedIndex === idx
-                return (
-                  <img
-                    key={item.year}
-                    src={imgSrc}
-                    alt={`${item.year} — ${item.title}`}
-                    className={`absolute inset-0 h-full w-full object-cover object-center transition-all duration-700 ease-out ${
-                      isCurrent ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
-                    }`}
-                  />
-                )
-              })}
-
-              {/* Golden-Hour Warm Atmospheric Architectural Grading */}
+        {/* Main Split Stage: Left Rounded Building Photo Box + Right Gold Zig-Zag Circle Timeline */}
+        <div className="mx-auto grid max-w-[1260px] grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-6 xl:gap-12">
+          {/* LEFT COLUMN: Rounded Architectural Image Box */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative w-full max-w-[435px]">
+              {/* Soft Ambient Shadow Underlay (unaffected by global box-shadow: none) */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#B45309]/35 via-[#92400E]/10 to-black/75"
-              />
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-[#D97706]/15"
+                className="pointer-events-none absolute inset-x-5 -bottom-3 top-6 rounded-[30px] bg-black/[0.11] blur-xl"
               />
 
-              {/* Bottom Frosted Glassmorphic Active Milestone Pill */}
-              <div className="absolute inset-x-4 bottom-5 sm:inset-x-6 sm:bottom-7 z-10 flex justify-center">
-                <div className="w-full max-w-[345px] rounded-full border border-white/35 bg-[#2A2A2E]/65 px-5 py-2.5 sm:py-3 text-center backdrop-blur-md">
-                  <p className="truncate text-[12px] sm:text-[13.5px] font-normal tracking-[0.01em] text-white/95">
-                    Active Milestone: <span className="font-medium text-white">{activeYearShort}</span>{' '}
-                    <span className="mx-1 text-white/60">|</span> {activeMilestone.location}
-                  </p>
+              <div className="relative h-[400px] sm:h-[470px] lg:h-[515px] w-full overflow-hidden rounded-[28px] bg-[#EFECE6]">
+                {milestones.map((item, idx) => {
+                  const imgSrc = milestonePhotos[idx % milestonePhotos.length]
+                  const isCurrent = selectedIndex === idx
+                  return (
+                    <img
+                      key={item.year}
+                      src={imgSrc}
+                      alt={`${item.year} — ${item.title}`}
+                      className={`absolute inset-0 h-full w-full object-cover object-center transition-all duration-500 ease-out ${
+                        isCurrent
+                          ? 'opacity-100 scale-100'
+                          : 'opacity-0 scale-105 pointer-events-none'
+                      }`}
+                    />
+                  )
+                })}
+
+                {/* Subtle Bottom Gradient Vignette for Pill Contrast */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/40 via-black/10 to-transparent"
+                />
+
+                {/* Bottom Dark Translucent Active Milestone Pill */}
+                <div className="absolute inset-x-4 bottom-4 sm:bottom-5 z-10 flex justify-center">
+                  <div className="inline-flex max-w-full items-center justify-center gap-2 rounded-full bg-[#221F1B]/80 px-4 sm:px-5 py-2.5 text-white backdrop-blur-md">
+                    {/* Warm Gold Map Pin Icon */}
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                      className="shrink-0 text-[#E9A944]"
+                    >
+                      <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                        fill="currentColor"
+                      />
+                      <circle cx="12" cy="9" r="2.6" fill="#221F1B" />
+                    </svg>
+                    <p className="truncate text-[12px] sm:text-[13px] font-normal tracking-[0.01em] text-white/95">
+                      Active Milestone:{' '}
+                      <span className="font-medium text-white">{activeYearLabel}</span>
+                      <span className="mx-2 font-semibold text-[#E9A944]">|</span>
+                      <span>{activeMilestone.location}</span>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Rounded Zig-Zag Year Circle Timeline */}
-          <div className="lg:col-span-7 xl:col-span-8">
-            <div
-              ref={zigzagContainerRef}
-              className="relative py-2 space-y-5 sm:space-y-7"
-            >
-              {/* Continuous Rounded Zig-Zag SVG Connector Path */}
+          {/* RIGHT COLUMN: Gold-Outlined Zig-Zag Year Circles + Side Labels / Sharp Small Info Box */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            <div ref={zigzagRef} className="relative w-full py-1 space-y-2.5 sm:space-y-2">
+              {/* Crisp Diagonal Warm-Gold Zig-Zag Connector Lines */}
               <svg
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 h-full w-full overflow-visible z-0"
               >
-                <defs>
-                  <linearGradient id="timelineZigzagGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#F59E0B" />
-                    <stop offset="50%" stopColor="#EA580C" />
-                    <stop offset="100%" stopColor="#D97706" />
-                  </linearGradient>
-                </defs>
-                {svgPath && (
-                  <>
-                    {/* Soft Ambient Orange Glow Aura */}
-                    <path
-                      d={svgPath}
-                      fill="none"
-                      stroke="rgba(249, 115, 22, 0.28)"
-                      strokeWidth="12"
-                      strokeLinecap="round"
-                      style={{ filter: 'blur(7px)' }}
-                    />
-                    {/* Subtle Outer Architectural Track */}
-                    <path
-                      d={svgPath}
-                      fill="none"
-                      stroke="rgba(232, 120, 37, 0.2)"
-                      strokeWidth="6"
-                      strokeLinecap="round"
-                    />
-                    {/* Crisp Sunrise-Orange Rounded Zig-Zag Line */}
-                    <path
-                      d={svgPath}
-                      fill="none"
-                      stroke="url(#timelineZigzagGrad)"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                    />
-                  </>
+                {linePoints && (
+                  <polyline
+                    points={linePoints}
+                    fill="none"
+                    stroke="#E5AD53"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 )}
               </svg>
 
               {milestones.map((item, idx) => {
-                const isLeft = idx % 2 === 0
+                const isEven = idx % 2 === 0
+                const isSelected = selectedIndex === idx
                 const isOpen = openIndex === idx
-                const yearShort = item.year === '2025 - Present' ? '2025+' : item.year
-                const pillStyle = tagPillStyles[idx % tagPillStyles.length]
+                const is2025 = is2025Year(item.year)
+                const isFirst = idx === 0
+                const isLast = idx === milestones.length - 1
+
+                // Keep top/bottom opened boxes flush within timeline vertical bounds
+                const boxVerticalAnchor = isFirst
+                  ? 'top-0'
+                  : isLast
+                    ? 'bottom-0'
+                    : 'top-1/2 -translate-y-1/2'
 
                 return (
-                  <div key={item.year} className="relative z-10">
-                    {/* Zig-Zag Circle + Label Row */}
-                    <div
-                      className={`flex items-center ${
-                        isLeft
-                          ? 'justify-start pl-1 sm:pl-6 md:pl-10 xl:pl-16'
-                          : 'justify-end pr-1 sm:pr-6 md:pr-10 xl:pr-16'
-                      }`}
-                    >
+                  <div
+                    key={item.year}
+                    className={`relative ${isOpen ? 'z-30' : 'z-10'}`}
+                  >
+                    {/* DESKTOP / TABLET SYMMETRIC ZIG-ZAG ROW (sm and up) */}
+                    <div className="relative hidden sm:flex h-[78px] w-full items-center justify-center">
+                      {/* Side Label: Pill when closed -> Sharp-Cornered Small Box in-place when clicked */}
                       <div
-                        className={`flex items-center gap-3 sm:gap-4 ${
-                          isLeft ? 'flex-row' : 'flex-row-reverse'
+                        className={`absolute ${
+                          isOpen ? boxVerticalAnchor : 'top-1/2 -translate-y-1/2'
+                        } ${
+                          isEven
+                            ? 'right-[calc(50%+82px)] xl:right-[calc(50%+90px)]'
+                            : 'left-[calc(50%+82px)] xl:left-[calc(50%+90px)]'
                         }`}
                       >
-                        {/* YEAR CIRCLE (Only the Year inside the Circle) */}
-                        <button
-                          ref={(el) => (circleRefs.current[idx] = el)}
-                          type="button"
-                          onClick={() => handleCircleToggle(idx)}
-                          aria-expanded={isOpen}
-                          aria-label={`${yearShort} — ${item.tag}. Click to ${isOpen ? 'close' : 'open'} full details`}
-                          className="group relative flex h-[74px] w-[74px] sm:h-[84px] sm:w-[84px] shrink-0 items-center justify-center rounded-full focus:outline-none cursor-pointer select-none"
-                        >
-                          {/* Ambient Glow Halo */}
-                          <span
-                            aria-hidden="true"
-                            className={`pointer-events-none absolute rounded-full transition-all duration-300 ${
-                              isOpen
-                                ? 'h-24 w-24 bg-[#F97316]/40 blur-md'
-                                : 'h-16 w-16 bg-[#F97316]/20 blur-[6px] group-hover:bg-[#F97316]/35'
-                            }`}
-                          />
-
-                          {/* Concentric Outer Ring */}
-                          <span
-                            className={`relative flex h-full w-full items-center justify-center rounded-full border transition-all duration-300 ${
-                              isOpen
-                                ? 'scale-105 border-[2px] border-[#EA580C]/65 bg-[#FDE6CE]/90'
-                                : 'border-[1.5px] border-[#E87825]/45 bg-white/90 group-hover:scale-105 group-hover:border-[#EA580C]'
-                            }`}
-                          >
-                            {/* Inner Year Circle */}
+                        {isOpen ? (
+                          /* SHARP-CORNERED SMALL BOX (Replaces the pill label in-place, never between 2 nodes) */
+                          <div className="relative w-[210px] md:w-[245px] lg:w-[210px] xl:w-[260px]">
                             <span
-                              className={`flex h-[58px] w-[58px] sm:h-[66px] sm:w-[66px] items-center justify-center rounded-full transition-all duration-300 ${
-                                isOpen
-                                  ? 'bg-gradient-to-br from-[#FB923C] via-[#F97316] to-[#EA580C] text-white'
-                                  : 'border border-[#E87825]/30 bg-gradient-to-b from-white to-[#FAF6F0] text-[#18181B] group-hover:border-[#EA580C]/60 group-hover:text-[#EA580C]'
+                              aria-hidden="true"
+                              className="pointer-events-none absolute inset-x-1 -bottom-1.5 top-1.5 rounded-none bg-black/[0.10] blur-[7px]"
+                            />
+                            <div className="relative rounded-none border-[1.5px] border-[#E5AD53] bg-white p-3 xl:p-3.5 text-left">
+                              {/* Box Header: Square Gold Marker + Category Tag + Sharp Close Button */}
+                              <div className="flex items-start justify-between gap-2">
+                                <div className="flex items-center gap-1.5 min-w-0">
+                                  <span className="h-2.5 w-2.5 shrink-0 rounded-none bg-[#E5AD53]" />
+                                  <span className="truncate font-sans text-[10.5px] xl:text-[11px] font-bold uppercase tracking-[0.05em] text-[#B7791F]">
+                                    {item.tag}
+                                  </span>
+                                </div>
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    setOpenIndex(null)
+                                  }}
+                                  aria-label="Close milestone box"
+                                  className="flex h-5 w-5 shrink-0 items-center justify-center rounded-none border border-black/15 bg-[#F8F7F4] text-[10px] font-bold text-[#18181B] transition-colors hover:bg-[#18181B] hover:text-white cursor-pointer"
+                                >
+                                  ✕
+                                </button>
+                              </div>
+
+                              {/* Milestone Title */}
+                              <h3 className="mt-1.5 font-display text-[13.5px] xl:text-[15px] font-semibold leading-[1.28] text-[#18181B]">
+                                {item.title}
+                              </h3>
+
+                              {/* Milestone Description */}
+                              <p className="mt-1.5 text-[11px] xl:text-[11.5px] leading-[1.5] text-[#4A4A4F]">
+                                {item.description}
+                              </p>
+
+                              {/* Compact Box Footer: Location + Metric */}
+                              <div className="mt-2.5 flex flex-wrap items-center justify-between gap-1.5 border-t border-black/[0.08] pt-2">
+                                <span className="inline-flex items-center gap-1 text-[10px] xl:text-[10.5px] font-medium text-[#1C1C1E]">
+                                  <svg
+                                    width="10"
+                                    height="10"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    aria-hidden="true"
+                                    className="shrink-0 text-[#DC9630]"
+                                  >
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                                  </svg>
+                                  <span>{item.location}</span>
+                                </span>
+
+                                <span className="inline-flex items-center rounded-none border border-[#E5AD53]/50 bg-[#FDF6EA] px-1.5 py-0.5 text-[9.5px] xl:text-[10px] font-bold text-[#9A6212]">
+                                  {item.metric}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          /* RESTING FLOATING PILL LABEL */
+                          <div className="relative">
+                            <span
+                              aria-hidden="true"
+                              className="pointer-events-none absolute inset-x-1.5 -bottom-1.5 top-1.5 rounded-full bg-black/[0.065] blur-[6px]"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => handleMilestoneClick(idx)}
+                              aria-expanded={isOpen}
+                              className={`relative inline-flex xl:min-w-[198px] items-center gap-2.5 rounded-full border bg-white px-3.5 xl:px-4 py-2.5 text-left transition-all duration-200 hover:scale-[1.03] cursor-pointer ${
+                                isSelected
+                                  ? 'border-[#E5AD53]/65'
+                                  : 'border-black/[0.04] hover:border-[#E5AD53]/50'
                               }`}
                             >
-                              <span className="font-number text-[15px] sm:text-[17px] font-bold leading-none tracking-[-0.02em]">
-                                {yearShort}
+                              <span className="h-3 w-3 shrink-0 rounded-full bg-gradient-to-br from-[#F6C875] to-[#E29B32]" />
+                              <span className="whitespace-nowrap font-sans text-[12.5px] xl:text-[13.5px] font-medium text-[#18181B]">
+                                {item.tag}
+                              </span>
+                            </button>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Gold-Outlined White Year Circle */}
+                      <div
+                        className={`relative ${
+                          isEven
+                            ? '-translate-x-[32px] xl:-translate-x-[38px]'
+                            : 'translate-x-[32px] xl:translate-x-[38px]'
+                        }`}
+                      >
+                        {/* Soft Circle Shadow Underlay */}
+                        <span
+                          aria-hidden="true"
+                          className="pointer-events-none absolute inset-1 translate-y-1.5 rounded-full bg-black/[0.085] blur-[6px]"
+                        />
+
+                        <button
+                          ref={(el) => {
+                            desktopCircleRefs.current[idx] = el
+                          }}
+                          type="button"
+                          onClick={() => handleMilestoneClick(idx)}
+                          aria-expanded={isOpen}
+                          aria-label={`${item.year} — ${item.tag}. Click to view milestone details`}
+                          className={`group relative flex h-[76px] w-[76px] items-center justify-center rounded-full border-[2px] bg-white transition-transform duration-200 hover:scale-105 focus:outline-none cursor-pointer select-none ${
+                            isSelected
+                              ? 'border-[#DC9630] bg-[#FFFDF9]'
+                              : 'border-[#E5AD53] hover:border-[#DC9630]'
+                          }`}
+                        >
+                          {is2025 ? (
+                            <span className="flex flex-col items-center leading-none">
+                              <span className="font-sans text-[16.5px] font-extrabold tracking-[-0.02em] text-[#111827]">
+                                2025
+                              </span>
+                              <span className="mt-0.5 font-sans text-[11px] font-semibold text-[#111827]">
+                                Present
                               </span>
                             </span>
-                          </span>
-                        </button>
-
-                        {/* LABEL FOR EACH CIRCLE */}
-                        <button
-                          type="button"
-                          onClick={() => handleCircleToggle(idx)}
-                          aria-expanded={isOpen}
-                          className={`group inline-flex items-center gap-2 rounded-full px-3.5 sm:px-4 py-1.5 text-[11px] sm:text-xs font-medium tracking-[0.01em] transition-all duration-200 hover:scale-[1.03] cursor-pointer ${pillStyle}`}
-                        >
-                          <span>{item.tag}</span>
-                          <span
-                            aria-hidden="true"
-                            className={`flex h-4 w-4 items-center justify-center rounded-full bg-white/20 text-[11px] leading-none transition-transform duration-300 ${
-                              isOpen ? 'rotate-45' : ''
-                            }`}
-                          >
-                            +
-                          </span>
+                          ) : (
+                            <span className="font-sans text-[18px] font-extrabold leading-none tracking-[-0.02em] text-[#111827]">
+                              {item.year}
+                            </span>
+                          )}
                         </button>
                       </div>
                     </div>
 
-                    {/* EXPANDABLE FULL INFORMATION PANEL (Opens on Circle Click) */}
+                    {/* MOBILE ZIG-ZAG ROW (< sm) */}
                     <div
-                      className={`grid transition-all duration-300 ease-out ${
-                        isOpen ? 'grid-rows-[1fr] opacity-100 mt-3.5' : 'grid-rows-[0fr] opacity-0 mt-0 pointer-events-none'
+                      className={`flex sm:hidden items-center py-1 ${
+                        isEven ? 'justify-start' : 'justify-end'
                       }`}
                     >
-                      <div className="overflow-hidden">
-                        <div
-                          className={`max-w-[500px] rounded-2xl border border-[#E87825]/35 bg-white/95 p-5 sm:p-6 backdrop-blur-md ${
-                            isLeft
-                              ? 'mr-auto ml-1 sm:ml-6 md:ml-10 xl:ml-16'
-                              : 'ml-auto mr-1 sm:mr-6 md:mr-10 xl:mr-16'
-                          }`}
-                        >
-                          {/* Top Row: Year + Category Tag + Close Button */}
-                          <div className="flex items-center justify-between gap-3">
-                            <div className="flex flex-wrap items-center gap-2">
-                              <span className="font-number text-lg font-bold tracking-tight text-[#EA580C]">
+                      <div
+                        className={`flex items-center gap-3 ${
+                          isEven ? 'flex-row' : 'flex-row-reverse'
+                        }`}
+                      >
+                        <div className="relative shrink-0">
+                          <span
+                            aria-hidden="true"
+                            className="pointer-events-none absolute inset-1 translate-y-1 rounded-full bg-black/[0.08] blur-[5px]"
+                          />
+                          <button
+                            ref={(el) => {
+                              mobileCircleRefs.current[idx] = el
+                            }}
+                            type="button"
+                            onClick={() => handleMilestoneClick(idx)}
+                            aria-expanded={isOpen}
+                            className={`relative flex h-[68px] w-[68px] items-center justify-center rounded-full border-[2px] bg-white transition-transform duration-200 active:scale-95 cursor-pointer ${
+                              isSelected
+                                ? 'border-[#DC9630] bg-[#FFFDF9]'
+                                : 'border-[#E5AD53]'
+                            }`}
+                          >
+                            {is2025 ? (
+                              <span className="flex flex-col items-center leading-none">
+                                <span className="font-sans text-[15px] font-extrabold text-[#111827]">
+                                  2025
+                                </span>
+                                <span className="mt-0.5 font-sans text-[10px] font-semibold text-[#111827]">
+                                  Present
+                                </span>
+                              </span>
+                            ) : (
+                              <span className="font-sans text-[16px] font-extrabold text-[#111827]">
                                 {item.year}
                               </span>
-                              <span
-                                className={`inline-flex items-center rounded-full px-3 py-0.5 text-[10.5px] font-medium ${pillStyle}`}
-                              >
-                                {item.tag}
-                              </span>
-                            </div>
+                            )}
+                          </button>
+                        </div>
 
+                        {/* Mobile Side Label: Pill when closed -> Sharp-Cornered Small Box beside circle when clicked */}
+                        {isOpen ? (
+                          <div className="relative max-w-[235px]">
+                            <span
+                              aria-hidden="true"
+                              className="pointer-events-none absolute inset-x-1 -bottom-1 top-1 rounded-none bg-black/[0.09] blur-[6px]"
+                            />
+                            <div className="relative rounded-none border-[1.5px] border-[#E5AD53] bg-white p-3 text-left">
+                              <div className="flex items-start justify-between gap-2">
+                                <div className="flex items-center gap-1.5 min-w-0">
+                                  <span className="h-2 w-2 shrink-0 rounded-none bg-[#E5AD53]" />
+                                  <span className="truncate font-sans text-[10px] font-bold uppercase tracking-[0.05em] text-[#B7791F]">
+                                    {item.tag}
+                                  </span>
+                                </div>
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    setOpenIndex(null)
+                                  }}
+                                  aria-label="Close milestone box"
+                                  className="flex h-5 w-5 shrink-0 items-center justify-center rounded-none border border-black/15 bg-[#F8F7F4] text-[10px] font-bold text-[#18181B] cursor-pointer"
+                                >
+                                  ✕
+                                </button>
+                              </div>
+                              <h3 className="mt-1 font-display text-[13px] font-semibold leading-snug text-[#18181B]">
+                                {item.title}
+                              </h3>
+                              <p className="mt-1 text-[11px] leading-[1.48] text-[#4A4A4F]">
+                                {item.description}
+                              </p>
+                              <div className="mt-2 flex flex-wrap items-center justify-between gap-1 border-t border-black/[0.08] pt-1.5">
+                                <span className="text-[10px] font-medium text-[#1C1C1E]">
+                                  {item.location}
+                                </span>
+                                <span className="rounded-none border border-[#E5AD53]/50 bg-[#FDF6EA] px-1.5 py-0.5 text-[9.5px] font-bold text-[#9A6212]">
+                                  {item.metric}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="relative">
+                            <span
+                              aria-hidden="true"
+                              className="pointer-events-none absolute inset-x-1 -bottom-1 top-1 rounded-full bg-black/[0.06] blur-[5px]"
+                            />
                             <button
                               type="button"
-                              onClick={() => setOpenIndex(null)}
-                              aria-label="Close milestone details"
-                              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-black/10 bg-[#F4F1EA] text-xs font-bold text-[#18181B] transition-colors hover:bg-[#18181B] hover:text-white cursor-pointer"
+                              onClick={() => handleMilestoneClick(idx)}
+                              aria-expanded={isOpen}
+                              className="relative inline-flex items-center gap-2 rounded-full border border-black/[0.04] bg-white px-3.5 py-2 text-left cursor-pointer"
                             >
-                              ✕
+                              <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-gradient-to-br from-[#F6C875] to-[#E29B32]" />
+                              <span className="font-sans text-xs font-medium text-[#18181B]">
+                                {item.tag}
+                              </span>
                             </button>
                           </div>
-
-                          {/* Full Milestone Title */}
-                          <h3 className="mt-2.5 font-display text-[22px] sm:text-[25px] font-semibold leading-snug text-[#18181B]">
-                            {item.title}
-                          </h3>
-
-                          {/* Complete Unabridged Description */}
-                          <p className="mt-2 text-[13.5px] sm:text-[14px] leading-[1.68] text-[#4A4A4F]">
-                            {item.description}
-                          </p>
-
-                          {/* Full Metadata Pills: Location + Verified Highlight + Metric */}
-                          <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-black/[0.08] pt-3.5">
-                            {/* Location Pill */}
-                            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#E5E0D6] px-3 py-1 text-[11px] font-medium text-[#1C1C1E]">
-                              <svg
-                                width="11"
-                                height="11"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                aria-hidden="true"
-                                className="shrink-0 text-[#18181B]"
-                              >
-                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                              </svg>
-                              <span>{item.location}</span>
-                            </span>
-
-                            {/* Sage-Mint Verified Highlight Pill */}
-                            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#CFE7CF] px-3 py-1 text-[11px] font-medium text-[#183A24]">
-                              <svg
-                                width="11"
-                                height="11"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2.8"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                aria-hidden="true"
-                                className="shrink-0 text-[#183A24]"
-                              >
-                                <path d="M20 6L9 17l-5-5" />
-                              </svg>
-                              <span>{item.highlight}</span>
-                            </span>
-
-                            {/* Metric Pill */}
-                            <span className="inline-flex items-center rounded-full border border-[#EA580C]/25 bg-[#FFF7ED] px-3 py-1 text-[11px] font-semibold text-[#C2410C]">
-                              {item.metric}
-                            </span>
-                          </div>
-                        </div>
+                        )}
                       </div>
                     </div>
                   </div>
