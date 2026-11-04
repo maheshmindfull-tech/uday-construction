@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import { timelineData } from '../data/content'
 import Reveal from './Reveal'
 
@@ -18,264 +18,348 @@ const milestoneImages = {
   '2025 - Present': skylineImg,
 }
 
+const tagPillStyles = [
+  'bg-[#A85520] text-white', // 2004 — Warm Terracotta
+  'bg-[#A85520] text-white', // 2008 — Warm Terracotta
+  'bg-[#5E5476] text-white', // 2014 — Muted Plum Slate
+  'bg-[#6E5D53] text-white', // 2018 — Warm Umber
+  'bg-[#5E5476] text-white', // 2022 — Muted Plum Slate
+  'bg-[#A85520] text-white', // 2025+ — Warm Terracotta
+]
+
+const desktopRowPlacement = [
+  { card: 'md:col-start-1 md:row-start-1 md:row-span-2', node: 'md:col-start-2 md:row-start-1', side: 'left' },
+  { card: 'md:col-start-3 md:row-start-2 md:row-span-2', node: 'md:col-start-2 md:row-start-2', side: 'right' },
+  { card: 'md:col-start-1 md:row-start-3 md:row-span-2 md:pt-4', node: 'md:col-start-2 md:row-start-3 md:pt-4', side: 'left' },
+  { card: 'md:col-start-3 md:row-start-4 md:row-span-2 md:pt-4', node: 'md:col-start-2 md:row-start-4 md:pt-4', side: 'right' },
+  { card: 'md:col-start-1 md:row-start-5 md:row-span-2 md:pt-4', node: 'md:col-start-2 md:row-start-5 md:pt-4', side: 'left' },
+  { card: 'md:col-start-3 md:row-start-6 md:row-span-2 md:pt-4', node: 'md:col-start-2 md:row-start-6 md:pt-4', side: 'right' },
+]
+
+function SpineNode({ isActive, onClick, label }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      className="group relative z-20 flex h-[30px] w-[30px] shrink-0 items-center justify-center focus:outline-none cursor-pointer"
+    >
+      {isActive ? (
+        <>
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute h-14 w-14 rounded-full bg-[#F97316]/40 blur-md"
+          />
+          <span className="pointer-events-none absolute flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-[#F97316]/55 bg-[#FDE6CE]/85 transition-all duration-300">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full border border-[#F97316]/30 bg-white">
+              <span className="h-3.5 w-3.5 rounded-full bg-gradient-to-br from-[#FDBA74] via-[#F97316] to-[#EA580C]" />
+            </span>
+          </span>
+        </>
+      ) : (
+        <>
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute h-8 w-8 rounded-full bg-[#F97316]/25 blur-[6px] transition-opacity duration-300 group-hover:bg-[#F97316]/40"
+          />
+          <span className="relative flex h-6 w-6 items-center justify-center rounded-full border border-[#E87825]/40 bg-white/95 transition-transform duration-300 group-hover:scale-110">
+            <span className="h-3 w-3 rounded-full bg-gradient-to-br from-[#FDBA74] to-[#EA580C]" />
+          </span>
+        </>
+      )}
+    </button>
+  )
+}
+
+function MilestoneContent({ item, index, isActive, onActivate }) {
+  const yearDisplay = item.year === '2025 - Present' ? '2025+' : item.year
+  const pillColor = tagPillStyles[index % tagPillStyles.length]
+
+  return (
+    <div
+      onClick={onActivate}
+      onMouseEnter={onActivate}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onActivate()
+        }
+      }}
+      className={`group relative pb-3 text-left transition-opacity duration-300 cursor-pointer focus:outline-none ${
+        isActive ? 'opacity-100' : 'opacity-90 hover:opacity-100'
+      }`}
+    >
+      {/* Year + Colored Category Tag Pill */}
+      <div className="flex min-h-[30px] flex-wrap items-center gap-2.5">
+        <span className="font-number text-[26px] sm:text-[28px] xl:text-[31px] font-semibold leading-none tracking-[-0.02em] text-[#18181B]">
+          {yearDisplay}
+        </span>
+        <span
+          className={`inline-flex items-center rounded-full px-3 py-1 text-[10.5px] xl:text-[11px] font-medium tracking-[0.01em] transition-transform duration-200 group-hover:scale-[1.02] ${pillColor}`}
+        >
+          {item.tag}
+        </span>
+      </div>
+
+      {/* Milestone Headline */}
+      <h3 className="mt-2 font-sans text-[15.5px] sm:text-[16.5px] xl:text-[17.5px] font-semibold leading-snug tracking-[-0.01em] text-[#18181B]">
+        {item.title}
+      </h3>
+
+      {/* Narrative Description */}
+      <p className="mt-1.5 text-[12.5px] xl:text-[13px] leading-[1.58] text-[#4A4A4F] line-clamp-3">
+        {item.description}
+      </p>
+
+      {/* Bottom Pills: Location + Verified Delivery Metric */}
+      <div className="mt-3 flex flex-wrap items-center gap-1.5">
+        {/* Warm Stone Location Pill */}
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#E5E0D6] px-2.5 py-1 text-[10.5px] xl:text-[11px] font-medium text-[#1C1C1E]">
+          <svg
+            width="11"
+            height="11"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+            className="shrink-0 text-[#18181B]"
+          >
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
+          </svg>
+          <span>{item.location}</span>
+        </span>
+
+        {/* Sage-Mint Verified Highlight Pill */}
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#CFE7CF] px-2.5 py-1 text-[10.5px] xl:text-[11px] font-medium text-[#183A24]">
+          <svg
+            width="11"
+            height="11"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+            className="shrink-0 text-[#183A24]"
+          >
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+          <span>{item.highlight}</span>
+        </span>
+      </div>
+    </div>
+  )
+}
+
 export default function Timeline() {
   const { eyebrow, title, subtitle, milestones } = timelineData
-  // Default to 2014 (index 2) exactly matching the mockup design
+  // Default to 2014 (index 2) matching Option V2 Editorial Split-Screen design
   const [activeIndex, setActiveIndex] = useState(2)
-  const touchStartX = useRef(null)
-
-  const goToNext = () => {
-    setActiveIndex((prev) => (prev < milestones.length - 1 ? prev + 1 : prev))
-  }
-
-  const goToPrev = () => {
-    setActiveIndex((prev) => (prev > 0 ? prev - 1 : prev))
-  }
-
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX
-  }
-
-  const handleTouchEnd = (e) => {
-    if (touchStartX.current === null) return
-    const diff = touchStartX.current - e.changedTouches[0].clientX
-    if (Math.abs(diff) > 40) {
-      if (diff > 0) goToNext()
-      else goToPrev()
-    }
-    touchStartX.current = null
-  }
-
-  // Keyboard navigation (ArrowLeft, ArrowRight)
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowRight') goToNext()
-      if (e.key === 'ArrowLeft') goToPrev()
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [])
-
-  const progressPercent = (activeIndex / (milestones.length - 1)) * 100
+  const activeMilestone = milestones[activeIndex] || milestones[0]
+  const activeYearShort =
+    activeMilestone.year === '2025 - Present' ? '2025+' : activeMilestone.year
 
   return (
     <section
       id="timeline"
       aria-label="Company Milestones Timeline"
-      className="relative w-full overflow-hidden bg-sand/40 py-16 md:py-24 border-b border-line"
+      className="relative w-full border-b border-black/[0.08] bg-[#F4F1EA] text-[#18181B]"
     >
-      <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10">
-        {/* Header - Centered Layout matching mockup */}
+      {/* Subtle Architectural CAD Drafting Lines & Perspective Wireframe */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        {/* Left & Right Vertical Drafting Margin Hairlines */}
+        <div className="hidden lg:block absolute top-0 bottom-0 left-[max(24px,calc((100%-1560px)/2+40px))] w-[1px] bg-black/[0.055]" />
+        <div className="hidden lg:block absolute top-0 bottom-0 right-[max(24px,calc((100%-1560px)/2+40px))] w-[1px] bg-black/[0.055]" />
+
+        {/* Bottom-Left Architectural High-Rise Perspective Wireframe */}
+        <svg
+          viewBox="0 0 260 520"
+          fill="none"
+          className="hidden sm:block absolute bottom-0 left-0 h-[440px] w-[220px] text-[#18181B]/[0.08]"
+        >
+          <path d="M18 520V120L128 58L210 108V520" stroke="currentColor" strokeWidth="1" />
+          <path d="M52 520V98" stroke="currentColor" strokeWidth="0.8" />
+          <path d="M90 520V79" stroke="currentColor" strokeWidth="0.8" />
+          <path d="M128 520V58" stroke="currentColor" strokeWidth="1" />
+          <path d="M168 520V82" stroke="currentColor" strokeWidth="0.8" />
+          <path d="M0 165L128 96L240 160" stroke="currentColor" strokeWidth="0.75" />
+          <path d="M0 215L128 148L240 210" stroke="currentColor" strokeWidth="0.75" />
+          <path d="M0 265L128 200L240 260" stroke="currentColor" strokeWidth="0.75" />
+          <path d="M0 315L128 252L240 310" stroke="currentColor" strokeWidth="0.75" />
+          <path d="M0 365L128 304L240 360" stroke="currentColor" strokeWidth="0.75" />
+          <path d="M0 415L128 356L240 410" stroke="currentColor" strokeWidth="0.75" />
+          <path d="M0 465L128 408L240 460" stroke="currentColor" strokeWidth="0.75" />
+        </svg>
+      </div>
+
+      {/* Top Centered Editorial Header */}
+      <div className="relative mx-auto max-w-site px-5 pt-16 pb-10 md:px-10 md:pt-24 md:pb-12">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
-            <div className="inline-block rounded-full bg-gradient-to-r from-orange-600 to-amber-600 px-5 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-white shadow-sm">
+            <span className="inline-block rounded-full bg-[#F49D49] px-5 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#18181B]">
               {eyebrow}
-            </div>
+            </span>
 
-            <h2 className="mt-4 font-display text-3xl font-medium tracking-tight text-ink sm:text-4xl md:text-5xl lg:text-[54px] leading-tight">
+            <h2 className="mt-4 font-display text-[36px] sm:text-[46px] md:text-[56px] lg:text-[62px] font-normal leading-[1.08] tracking-[-0.015em] text-[#18181B]">
               {title}
             </h2>
 
-            <p className="mt-3.5 text-sm sm:text-base leading-relaxed text-body max-w-2xl mx-auto">
-              {subtitle}
+            <p className="mx-auto mt-3.5 max-w-[650px] text-[14px] sm:text-[15.5px] leading-[1.6] text-[#4A4A4F]">
+              <strong className="font-semibold text-[#18181B]">Uday Construction</strong> —{' '}
+              {subtitle.charAt(0).toLowerCase() + subtitle.slice(1)}
             </p>
           </Reveal>
         </div>
-
-        {/* Timeline Horizontal Scrubber Bar */}
-        <Reveal delay={100}>
-          <div className="mx-auto mt-10 md:mt-12 flex max-w-4xl items-center justify-center gap-3 sm:gap-4 px-2">
-            {/* Left Previous Arrow Button */}
-            <button
-              type="button"
-              onClick={goToPrev}
-              disabled={activeIndex === 0}
-              aria-label="Previous milestone"
-              className="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-full border border-gray-200/90 bg-white text-zinc-700 shadow-sm transition-all duration-200 hover:scale-105 hover:border-orange-500 hover:text-orange-600 disabled:pointer-events-none disabled:opacity-30 cursor-pointer"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-
-            {/* Horizontal Timeline Track */}
-            <div className="relative flex-1 py-4">
-              {/* Inactive Line (Right side / Remaining) */}
-              <div className="absolute top-1/2 left-0 right-0 h-[2.5px] -translate-y-1/2 bg-zinc-200 rounded-full" />
-
-              {/* Active Dark Progress Line (Left side up to active node) */}
-              <div
-                className="absolute top-1/2 left-0 h-[2.5px] -translate-y-1/2 bg-zinc-800 rounded-full transition-all duration-500 ease-out"
-                style={{ width: `${progressPercent}%` }}
-              />
-
-              {/* Year Nodes along the line */}
-              <div className="relative flex items-center justify-between gap-1 sm:gap-2">
-                {milestones.map((item, index) => {
-                  const isActive = activeIndex === index
-                  const yearDisplay = item.year.split(' ')[0]
-
-                  return (
-                    <button
-                      key={item.year}
-                      type="button"
-                      onClick={() => setActiveIndex(index)}
-                      aria-label={`Jump to ${item.year}`}
-                      className={`relative z-10 transition-all duration-300 focus:outline-none cursor-pointer select-none ${
-                        isActive
-                          ? 'rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-amber-500 px-4 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-bold text-white shadow-[0_0_22px_rgba(234,88,12,0.45)] ring-4 ring-orange-500/20 scale-110'
-                          : 'rounded-full border border-gray-200/90 bg-white px-2.5 sm:px-4 py-1 sm:py-1.5 text-[11px] sm:text-xs font-semibold text-zinc-700 shadow-sm hover:scale-105 hover:border-zinc-400 hover:text-black'
-                      }`}
-                    >
-                      {yearDisplay}
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
-
-            {/* Right Next Arrow Button */}
-            <button
-              type="button"
-              onClick={goToNext}
-              disabled={activeIndex === milestones.length - 1}
-              aria-label="Next milestone"
-              className="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-full border border-gray-200/90 bg-white text-zinc-700 shadow-sm transition-all duration-200 hover:scale-105 hover:border-orange-500 hover:text-orange-600 disabled:pointer-events-none disabled:opacity-30 cursor-pointer"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
-          </div>
-        </Reveal>
       </div>
 
-      {/* 3-Card Carousel Exhibition Stage matching mockup */}
-      <div
-        className="relative mt-8 md:mt-12 w-full overflow-hidden px-4"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        <div className="relative mx-auto flex h-[350px] sm:h-[420px] md:h-[480px] lg:h-[520px] max-w-7xl items-center justify-center">
-          {milestones.map((item, index) => {
-            const diff = index - activeIndex
-            const isVisible = Math.abs(diff) <= 2
-            if (!isVisible) return null
+      {/* Full-Width Horizontal Architectural Hairline */}
+      <div className="h-[1px] w-full bg-black/[0.065]" aria-hidden="true" />
 
-            const isCenter = diff === 0
-            const isLeft = diff === -1
-            const isRight = diff === 1
-            const isFarLeft = diff === -2
-            const isFarRight = diff === 2
+      {/* Split-Screen Editorial Stage */}
+      <div className="relative mx-auto max-w-site px-5 py-10 md:px-10 md:py-14 lg:py-16">
+        <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+          {/* LEFT COLUMN: Tall Golden-Hour Architectural Tower Showcase */}
+          <div className="lg:col-span-4 xl:col-span-4 flex">
+            <div className="relative w-full h-[400px] sm:h-[470px] lg:h-full lg:min-h-[660px] overflow-hidden rounded-[22px] bg-[#2C1A0E]">
+              {milestones.map((item, idx) => {
+                const imgSrc = milestoneImages[item.year] || legacyImg
+                const isCurrent = activeIndex === idx
+                return (
+                  <img
+                    key={item.year}
+                    src={imgSrc}
+                    alt={`${item.year} — ${item.title}`}
+                    className={`absolute inset-0 h-full w-full object-cover object-center transition-all duration-700 ease-out ${
+                      isCurrent ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
+                    }`}
+                  />
+                )
+              })}
 
-            let transformClass = ''
-            let zIndex = 10
-            let opacityClass = 'opacity-0 pointer-events-none'
-
-            if (isCenter) {
-              transformClass = 'translate-x-0 scale-100'
-              zIndex = 30
-              opacityClass = 'opacity-100 shadow-2xl shadow-black/30'
-            } else if (isLeft) {
-              transformClass = '-translate-x-[75%] sm:-translate-x-[70%] md:-translate-x-[62%] lg:-translate-x-[58%] scale-[0.88]'
-              zIndex = 20
-              opacityClass = 'opacity-70 hover:opacity-90 cursor-pointer'
-            } else if (isRight) {
-              transformClass = 'translate-x-[75%] sm:translate-x-[70%] md:translate-x-[62%] lg:translate-x-[58%] scale-[0.88]'
-              zIndex = 20
-              opacityClass = 'opacity-70 hover:opacity-90 cursor-pointer'
-            } else if (isFarLeft) {
-              transformClass = '-translate-x-[130%] scale-[0.75]'
-              zIndex = 10
-              opacityClass = 'opacity-0 pointer-events-none'
-            } else if (isFarRight) {
-              transformClass = 'translate-x-[130%] scale-[0.75]'
-              zIndex = 10
-              opacityClass = 'opacity-0 pointer-events-none'
-            }
-
-            const image = milestoneImages[item.year] || legacyImg
-
-            return (
+              {/* Golden-Hour Warm Atmospheric Architectural Grading */}
               <div
-                key={item.year}
-                onClick={() => {
-                  if (!isCenter) setActiveIndex(index)
-                }}
-                className={`absolute w-[90vw] max-w-[760px] h-[340px] sm:h-[400px] md:h-[460px] lg:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-500 ease-out select-none ${transformClass} ${opacityClass}`}
-                style={{ zIndex }}
-              >
-                {/* Full-bleed Architectural Photograph */}
-                <img
-                  src={image}
-                  alt={item.title}
-                  className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-out"
-                />
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#B45309]/35 via-[#92400E]/10 to-black/75"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-[#D97706]/15"
+              />
 
-                {/* Subtle Cinematic Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent" />
-
-                {/* Giant Watermark Year in bottom-left */}
-                <span className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-5 sm:left-8 md:left-10 font-number text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight text-white/50 select-none leading-none drop-shadow-md pointer-events-none">
-                  {item.year.split(' ')[0]}
-                </span>
-
-                {/* Frosted Glassmorphism Content Card in bottom-right (matching mockup) */}
-                <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 right-5 sm:right-8 md:right-10 bg-black/40 backdrop-blur-md border border-white/20 rounded-2xl p-4 sm:p-5 sm:px-6 text-left max-w-[260px] sm:max-w-[320px] shadow-xl">
-                  {/* Tag Label */}
-                  <p className="text-[11px] sm:text-xs font-medium text-white/80">
-                    {item.tag}
+              {/* Bottom Frosted Glassmorphic Active Milestone Pill */}
+              <div className="absolute inset-x-4 bottom-5 sm:inset-x-6 sm:bottom-7 z-10 flex justify-center">
+                <div className="w-full max-w-[345px] rounded-full border border-white/35 bg-[#2A2A2E]/65 px-5 py-2.5 sm:py-3 text-center backdrop-blur-md">
+                  <p className="truncate text-[12px] sm:text-[13.5px] font-normal tracking-[0.01em] text-white/95">
+                    Active Milestone: <span className="font-medium text-white">{activeYearShort}</span>{' '}
+                    <span className="mx-1 text-white/60">|</span> {activeMilestone.location}
                   </p>
-
-                  {/* Milestone Title */}
-                  <h3 className="mt-1 font-display text-base sm:text-lg md:text-xl font-bold text-white leading-snug">
-                    {item.title}
-                  </h3>
-
-                  {/* Location */}
-                  <p className="mt-1 text-xs text-white/90">
-                    {item.location}
-                  </p>
-
-                  {/* Verified Metric Pill with White background & Checkmark */}
-                  <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[11px] sm:text-xs font-bold text-zinc-900 shadow-sm">
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-zinc-900"
-                    >
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg>
-                    <span>{item.highlight}</span>
-                  </div>
                 </div>
               </div>
-            )
-          })}
-        </div>
+            </div>
+          </div>
 
-        {/* Bottom Pagination Indicators (Elongated active pill + dots matching mockup) */}
-        <div className="mt-6 sm:mt-8 flex items-center justify-center gap-2">
-          {milestones.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setActiveIndex(i)}
-              aria-label={`Go to slide ${i + 1}`}
-              className={`transition-all duration-300 rounded-full cursor-pointer ${
-                activeIndex === i
-                  ? 'h-1.5 w-7 bg-zinc-800'
-                  : 'h-1.5 w-2 bg-zinc-300 hover:bg-zinc-400'
-              }`}
-            />
-          ))}
+          {/* RIGHT COLUMN: Vertical Glowing Orange Spine + Staggered Chronological Milestones */}
+          <div className="lg:col-span-8 xl:col-span-8 flex flex-col justify-center">
+            {/* DESKTOP & TABLET DUAL-COLUMN STAGGERED TIMELINE (md and up) */}
+            <div className="relative hidden md:grid md:grid-cols-[1fr_64px_1fr] xl:grid-cols-[1fr_76px_1fr] md:auto-rows-[minmax(105px,auto)] items-start">
+              {/* Continuous Central Glowing Orange Spine */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute top-0 bottom-0 left-1/2 -translate-x-1/2 flex justify-center"
+              >
+                <div className="h-full w-4 bg-gradient-to-b from-transparent via-[#F97316]/25 to-transparent blur-md" />
+                <div className="absolute inset-y-0 left-1/2 w-[2px] -translate-x-1/2 bg-gradient-to-b from-[#E87825]/10 via-[#E87825] to-[#E87825]/15" />
+              </div>
+
+              {milestones.map((item, idx) => {
+                const isActive = activeIndex === idx
+                const placement = desktopRowPlacement[idx]
+                const isLeft = placement.side === 'left'
+
+                return (
+                  <div key={item.year} className="contents">
+                    {/* Milestone Content Block */}
+                    <div
+                      className={`${placement.card} ${
+                        isLeft ? 'pr-3 xl:pr-5' : 'pl-3 xl:pl-5'
+                      } relative z-10`}
+                    >
+                      <MilestoneContent
+                        item={item}
+                        index={idx}
+                        isActive={isActive}
+                        onActivate={() => setActiveIndex(idx)}
+                      />
+                    </div>
+
+                    {/* Synchronized Glowing Spine Node + Horizontal Connector Hairline */}
+                    <div
+                      className={`${placement.node} relative z-20 flex items-center justify-center`}
+                    >
+                      <div className="relative flex h-[30px] w-full items-center justify-center">
+                        {/* Thin Horizontal Orange Connector Hairline directly from Node Center */}
+                        <div
+                          aria-hidden="true"
+                          className={`pointer-events-none absolute top-1/2 h-[1px] -translate-y-1/2 bg-[#E87825]/45 transition-all duration-300 ${
+                            isLeft
+                              ? 'right-1/2 w-12 xl:w-16'
+                              : 'left-1/2 w-9 xl:w-11'
+                          } ${isActive ? 'bg-[#EA580C]/70' : ''}`}
+                        />
+
+                        <SpineNode
+                          isActive={isActive}
+                          onClick={() => setActiveIndex(idx)}
+                          label={`Select ${item.year} milestone`}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* MOBILE VERTICAL TIMELINE (< md) */}
+            <div className="relative md:hidden pl-12 space-y-8 py-2">
+              {/* Left Glowing Orange Spine */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute top-0 bottom-0 left-4 -translate-x-1/2 flex justify-center"
+              >
+                <div className="h-full w-3.5 bg-gradient-to-b from-transparent via-[#F97316]/25 to-transparent blur-md" />
+                <div className="absolute inset-y-0 left-1/2 w-[2px] -translate-x-1/2 bg-gradient-to-b from-[#E87825]/15 via-[#E87825] to-[#E87825]/15" />
+              </div>
+
+              {milestones.map((item, idx) => {
+                const isActive = activeIndex === idx
+                return (
+                  <div key={item.year} className="relative">
+                    {/* Mobile Node + Connector on Left Spine */}
+                    <div className="absolute -left-8 top-0 -translate-x-1/2 z-20 flex h-[30px] items-center justify-center">
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute left-1/2 top-1/2 h-[1px] w-6 -translate-y-1/2 bg-[#E87825]/45"
+                      />
+                      <SpineNode
+                        isActive={isActive}
+                        onClick={() => setActiveIndex(idx)}
+                        label={`Select ${item.year} milestone`}
+                      />
+                    </div>
+
+                    <MilestoneContent
+                      item={item}
+                      index={idx}
+                      isActive={isActive}
+                      onActivate={() => setActiveIndex(idx)}
+                    />
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>
