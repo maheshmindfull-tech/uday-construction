@@ -26,7 +26,7 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" className="w-full bg-sand py-16 sm:py-20 md:py-28">
-      <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
+      <div className="site-pad mx-auto max-w-site">
         {/* Header */}
         <div className="max-w-2xl">
           <div className="eyebrow">{testimonials.eyebrow}</div>
@@ -88,7 +88,7 @@ export default function Testimonials() {
                   {/* Duration Badge */}
                   {item.duration && (
                     <span className="absolute right-3 top-3 sm:right-4 sm:top-4 flex items-center gap-1.5 border border-white/10 bg-night/60 px-2 py-0.5 text-[10px] sm:text-[11px] font-medium text-white/90 backdrop-blur-sm">
-                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-blue-500" />
+                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-white/80" />
                       {item.duration}
                     </span>
                   )}
@@ -99,7 +99,7 @@ export default function Testimonials() {
                       type="button"
                       tabIndex={-1}
                       aria-hidden="true"
-                      className="flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-full border border-white/20 bg-black/85 text-white backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-orange-600 group-hover:bg-orange-600 group-hover:text-white shadow-xl cursor-pointer"
+                      className="flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-full border border-white/20 bg-black/85 text-white backdrop-blur-sm transition-colors duration-300 group-hover:border-white group-hover:bg-white group-hover:text-black cursor-pointer"
                     >
                       <svg
                         width="20"
@@ -149,7 +149,7 @@ export default function Testimonials() {
 
                   {/* Client Info Footer */}
                   <div className="mt-5 sm:mt-6 flex items-center gap-3 sm:gap-3.5 border-t border-line/70 pt-4">
-                    <div className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 font-sans text-xs font-bold uppercase tracking-wider text-brand-deeper">
+                    <div className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-sand font-sans text-xs font-bold uppercase tracking-wider text-ink">
                       {initials}
                     </div>
                     <div className="min-w-0 flex-1">
@@ -189,7 +189,7 @@ export default function Testimonials() {
             {/* Modal Header */}
             <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 sm:px-5 py-3.5 sm:py-4 text-white">
               <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
-                <span className="flex h-2.5 w-2.5 shrink-0 rounded-full bg-blue-500 animate-pulse" />
+                <span className="flex h-2.5 w-2.5 shrink-0 rounded-full bg-brand animate-pulse" />
                 <div className="min-w-0">
                   <h3 className="truncate text-xs sm:text-sm font-semibold tracking-wide md:text-base">
                     {activeVideo.clientName} &mdash; Client Video Feedback
@@ -230,7 +230,7 @@ export default function Testimonials() {
                     className="absolute inset-0 h-full w-full object-cover opacity-25"
                   />
                   <div className="relative z-10 max-w-md border border-white/15 bg-night/80 p-4 sm:p-6 backdrop-blur-md">
-                    <div className="mx-auto hidden sm:flex h-14 w-14 items-center justify-center rounded-full border border-blue-600 bg-blue-500/20 text-blue-400">
+                    <div className="mx-auto hidden sm:flex h-14 w-14 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" />
                       </svg>

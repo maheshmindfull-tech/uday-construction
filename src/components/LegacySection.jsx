@@ -133,7 +133,7 @@ export default function LegacySection() {
       {/* Top In-Flow Split Row: Left aligned to max-w-site + Right flush-bleed slanted architecture frame */}
       <div className="flex w-full flex-col lg:flex-row lg:items-center lg:justify-between lg:pl-[calc((100%-min(97.5rem,92vw))/2+2.5rem)] 2xl:pl-[calc((100%-min(97.5rem,92vw))/2+4rem)]">
         {/* Left Editorial Legacy Copy */}
-        <div className="w-full px-4 sm:px-6 md:px-10 lg:w-[43%] lg:shrink-0 lg:px-0 lg:pr-6">
+        <div className="site-pad w-full lg:w-[43%] lg:shrink-0 lg:px-0 lg:pr-6">
           <Reveal>
             {/* Eyebrow: Crimson Horizontal Bar + LEGACY */}
             <div className="flex items-center gap-3 sm:gap-4">
@@ -199,7 +199,7 @@ export default function LegacySection() {
       </div>
 
       {/* Bottom 4-Column Metrics Row + Bottom Crimson/Gray Accent Track */}
-      <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
+      <div className="site-pad mx-auto max-w-site">
         <div className="mt-10 sm:mt-14 lg:mt-16 grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4 lg:gap-x-0">
           {legacyMetrics.map(({ value, label, Icon }, idx) => (
             <Reveal

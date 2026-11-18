@@ -6,9 +6,9 @@
   /* Architectural Modern — White, Charcoal & Signature Crimson Red (matching Uday Construction logo) */
   :root {
     --c-brand: 227 30 36;
-    --c-brand-deep: 37 99 235; /* Royal Blue for buttons and interactive accents */
-    --c-brand-deeper: 29 78 216; /* Deep Blue for button hover */
-    --c-blue: 28 28 30; /* Replaced blue with ink black */
+    --c-brand-deep: 39 39 42; /* Charcoal for accents (was royal blue) */
+    --c-brand-deeper: 0 0 0; /* Black for interactive / hover accents */
+    --c-blue: 28 28 30; /* Ink black (legacy token) */
     --c-blue-hover: 0 0 0; /* Link hover black */
     --c-sun: 227 30 36;
     --c-gold: 248 113 113;
@@ -97,6 +97,14 @@
   }
   .section-title {
     @apply font-display text-[26px] min-[360px]:text-[30px] sm:text-[38px] md:text-[3rem] lg:text-[3.5rem] font-medium leading-[1.1] tracking-[-0.01em];
+  }
+  /* Shared horizontal page gutters — keep header / sections / footer aligned */
+  .site-pad {
+    @apply px-4 sm:px-6 md:px-10 2xl:px-16;
+  }
+  /* Standard text-link treatment: muted gray → black on hover */
+  .link-quiet {
+    @apply text-body transition-colors duration-200 hover:text-black;
   }
   .reveal {
     opacity: 0;

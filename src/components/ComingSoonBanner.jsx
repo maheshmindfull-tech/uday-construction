@@ -6,7 +6,7 @@ export default function ComingSoonBanner() {
 
   return (
     <section aria-label="Coming Soon" className="w-full bg-white pb-16 sm:pb-20 md:pb-28">
-      <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
+      <div className="site-pad mx-auto max-w-site">
         <Reveal>
           <div className="relative h-[380px] sm:h-[460px] md:h-[35rem] 4xl:h-[39rem] overflow-hidden bg-night">
             <img

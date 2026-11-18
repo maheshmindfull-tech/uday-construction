@@ -22,7 +22,7 @@ function StatusBadge({ status }) {
   if (status === 'Completed') {
     return (
       <div className="absolute left-3.5 top-3.5 z-10 inline-flex items-center gap-2 border border-white/25 bg-black/60 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
-        <span className="h-2 w-2 rounded-full bg-blue-400" />
+        <span className="h-2 w-2 rounded-full bg-zinc-300" />
         <span>Completed</span>
       </div>
     )
@@ -74,13 +74,13 @@ function ProjectCard({ project, number }) {
             <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${project.status === 'Ongoing'
               ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
               : project.status === 'Completed'
-                ? 'bg-blue-50 text-blue-800 border border-blue-200'
+                ? 'bg-zinc-100 text-zinc-700 border border-zinc-200'
                 : 'bg-amber-50 text-amber-800 border border-amber-200'
               }`}>
               <span className={`h-1.5 w-1.5 rounded-full ${project.status === 'Ongoing'
                 ? 'bg-emerald-500'
                 : project.status === 'Completed'
-                  ? 'bg-blue-600'
+                  ? 'bg-zinc-500'
                   : 'bg-amber-500'
                 }`} />
               {project.status}
@@ -100,7 +100,7 @@ function ProjectCard({ project, number }) {
               e.stopPropagation()
               openContact(project.name)
             }}
-            className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-orange-600 transition-colors hover:text-orange-700 cursor-pointer active:scale-95"
+            className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-body transition-colors hover:text-black cursor-pointer"
           >
             {upcoming ? 'Register interest' : 'Enquire now'}
           </button>
@@ -133,7 +133,7 @@ export default function ProjectsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-night/60 via-ember/20 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-night/35 via-transparent to-transparent" />
 
-        <div className="relative mx-auto flex max-w-site flex-col justify-center px-4 sm:px-6 md:px-10 2xl:px-16">
+        <div className="site-pad relative mx-auto flex max-w-site flex-col justify-center">
           <div className="eyebrow text-gold">{hero.eyebrow}</div>
 
           <div className="mt-5 flex min-h-[85px] min-[390px]:min-h-[100px] items-center sm:mt-8 sm:min-h-[130px] md:min-h-[165px] lg:min-h-[195px]">
@@ -149,7 +149,7 @@ export default function ProjectsPage() {
       <Ticker />
 
       <section aria-label="Project listing" className="w-full bg-white py-16 sm:py-20 md:py-28">
-        <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
+        <div className="site-pad mx-auto max-w-site">
           <div className="flex flex-wrap items-end justify-between gap-5 sm:gap-6 border-b border-line pb-7 sm:pb-8">
             <Reveal>
               <div className="eyebrow text-sun">Our portfolio</div>
@@ -165,9 +165,9 @@ export default function ProjectsPage() {
                     type="button"
                     onClick={() => setFilter(f)}
                     aria-pressed={active}
-                    className={`rounded-full px-3.5 sm:px-5 py-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] sm:tracking-[0.16em] transition-all duration-300 ${active
-                      ? 'bg-orange-600 text-white border border-orange-600 shadow-sm'
-                      : 'border border-line bg-white text-body hover:border-orange-600 hover:text-orange-600'
+                    className={`rounded-full px-3.5 sm:px-5 py-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] sm:tracking-[0.16em] transition-colors duration-200 ${active
+                      ? 'bg-ink text-white border border-ink'
+                      : 'border border-line bg-white text-body hover:border-ink hover:text-black'
                       }`}
                   >
                     {f} <span className={active ? 'text-white/80' : 'text-body/60'}>({count})</span>
@@ -188,7 +188,7 @@ export default function ProjectsPage() {
       </section>
 
       <section aria-label={visit.eyebrow} className="w-full border-t border-line bg-white">
-        <div className="mx-auto flex max-w-site flex-wrap items-start justify-between gap-10 sm:gap-12 px-4 sm:px-6 py-16 md:px-10 2xl:px-16 md:py-24">
+        <div className="site-pad mx-auto flex max-w-site flex-wrap items-start justify-between gap-10 sm:gap-12 py-16 md:py-24">
           <Reveal className="min-w-[min(100%,280px)] flex-[1_1_360px] lg:max-w-md">
             <div className="eyebrow text-sun">{visit.eyebrow}</div>
             <h2 className="mt-4 sm:mt-5 font-display text-[30px] sm:text-[36px] font-medium leading-[1.1] md:text-[3rem]">{visit.title}</h2>
@@ -197,7 +197,7 @@ export default function ProjectsPage() {
               {footer.emails.map((email) => (
                 <a key={email.address} href={`mailto:${email.address}`} className="group flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line pb-3">
                   <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-body">{email.label}</span>
-                  <span className="inline-block break-all sm:break-normal text-sm sm:text-base font-medium text-ink transition-all duration-200 group-hover:text-black group-hover:scale-105 origin-right">{email.address}</span>
+                  <span className="inline-block break-all sm:break-normal text-sm sm:text-base font-medium text-body transition-colors duration-200 group-hover:text-black">{email.address}</span>
                 </a>
               ))}
             </div>

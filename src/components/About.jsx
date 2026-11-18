@@ -3,8 +3,8 @@ import { about } from '../data/content'
 
 export default function About() {
   return (
-    <section id="about" className="mx-auto flex max-w-site flex-wrap items-center gap-10 sm:gap-12 md:gap-20 px-4 sm:px-6 md:px-10 2xl:px-16 pb-16 pt-20 sm:pb-20 sm:pt-24 md:pb-24 md:pt-32">
-      <div className="h-[300px] sm:h-[420px] md:h-[35rem] 4xl:h-[38rem] min-w-[min(100%,260px)] flex-[0_1_26.25rem] 4xl:flex-[0_1_30rem] self-start overflow-hidden bg-night md:sticky md:top-8">
+    <section id="about" className="site-pad mx-auto flex max-w-site flex-wrap items-center gap-10 sm:gap-12 md:gap-20 pb-16 pt-20 sm:pb-20 sm:pt-24 md:pb-24 md:pt-32">
+      <div className="h-[300px] sm:h-[420px] md:h-[35rem] 4xl:h-[38rem] min-w-[min(100%,260px)] flex-[0_1_26.25rem] 4xl:flex-[0_1_30rem] self-start overflow-hidden bg-night md:sticky md:top-28">
         <img src={about.image} alt={about.imageAlt} className="h-full w-full object-cover object-[45%_center]" />
       </div>
 
@@ -18,7 +18,7 @@ export default function About() {
         ))}
         <Link
           to={about.linkHref}
-          className="mt-9 inline-flex items-center gap-3 border-b-[1.5px] border-ink pb-1.5 text-[0.8125rem] font-bold uppercase tracking-[0.16em] text-ink transition-all duration-200 hover:border-black hover:text-black hover:scale-105 origin-left"
+          className="mt-9 inline-flex items-center gap-3 border-b-[1.5px] border-ink pb-1.5 text-[0.8125rem] font-bold uppercase tracking-[0.16em] text-ink transition-colors duration-200 hover:border-black hover:text-black"
         >
           {about.linkLabel}
           <svg width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M0 5h17M13 1l4 4-4 4" /></svg>

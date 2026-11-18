@@ -2,7 +2,7 @@ import { coreValues } from '../data/content'
 
 export default function CoreValues() {
   return (
-    <section className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16 py-16 sm:py-20 md:py-28">
+    <section className="site-pad mx-auto max-w-site py-16 sm:py-20 md:py-28">
       <div className="eyebrow">{coreValues.eyebrow}</div>
       <div className="mt-7 sm:mt-9 grid grid-cols-1 gap-y-6 md:grid-cols-3">
         {coreValues.items.map((item, i) => (

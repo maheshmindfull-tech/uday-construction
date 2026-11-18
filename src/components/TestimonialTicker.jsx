@@ -59,15 +59,15 @@ export default function TestimonialTicker({
             return (
               <div
                 key={idx}
-                className="group relative flex w-[250px] min-[360px]:w-[300px] sm:w-[370px] md:w-[410px] 3xl:w-[26rem] shrink-0 flex-col justify-between border border-line bg-white p-4 sm:p-6 transition-all duration-300 hover:border-orange-500/70 hover:-translate-y-1 hover:shadow-sm"
+                className="group relative flex w-[250px] min-[360px]:w-[300px] sm:w-[370px] md:w-[410px] 3xl:w-[26rem] shrink-0 flex-col justify-between border border-line bg-white p-4 sm:p-6 transition-colors duration-300 hover:border-ink"
               >
-                {/* Top Subtle Orange Accent Line on hover */}
-                <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-transparent transition-colors duration-300 group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-amber-400" />
+                {/* Top accent line on hover */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-transparent transition-colors duration-300 group-hover:bg-ink" />
 
                 <div>
-                  {/* Top Row: 5 Warm Orange Stars & Quotation Mark */}
+                  {/* Top Row: Stars & Quotation Mark */}
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1 text-orange-500 text-xs sm:text-sm">
+                    <div className="flex items-center gap-1 text-ink/40 text-xs sm:text-sm">
                       <span>★</span>
                       <span>★</span>
                       <span>★</span>
@@ -75,7 +75,7 @@ export default function TestimonialTicker({
                       <span>★</span>
                     </div>
 
-                    <span className="font-display text-3xl font-bold leading-none text-orange-500/30 group-hover:text-orange-500/60 transition-colors">
+                    <span className="font-display text-3xl font-bold leading-none text-ink/15 group-hover:text-ink/35 transition-colors">
                       &ldquo;
                     </span>
                   </div>

@@ -32,7 +32,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-night/60 via-ember/20 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-night/35 via-transparent to-transparent" />
 
-        <div className="relative mx-auto flex max-w-site flex-col justify-center px-4 sm:px-6 md:px-10 2xl:px-16">
+        <div className="site-pad relative mx-auto flex max-w-site flex-col justify-center">
           <div className="eyebrow text-gold">ABOUT US</div>
 
           <div className="mt-5 sm:mt-8 min-h-[85px] min-[390px]:min-h-[100px] sm:min-h-[130px] md:min-h-[165px] lg:min-h-[195px] flex items-center">
@@ -46,7 +46,7 @@ export default function AboutPage() {
       </section>
 
       {/* 1. Founder Story Section */}
-      <section className="mx-auto flex max-w-site flex-wrap items-center gap-10 sm:gap-12 px-4 sm:px-6 py-16 sm:py-20 md:gap-20 md:px-10 2xl:px-16 md:pb-28">
+      <section className="site-pad mx-auto flex max-w-site flex-wrap items-center gap-10 sm:gap-12 py-16 sm:py-20 md:gap-20 md:pb-28">
         <div className="h-[360px] sm:h-[480px] min-w-[min(100%,260px)] flex-[0_1_26.25rem] 4xl:flex-[0_1_30rem] self-start overflow-hidden bg-night md:sticky md:top-28 md:h-[40rem]">
           <img
             src={aboutPage.portrait}
@@ -88,7 +88,7 @@ export default function AboutPage() {
 
       {/* 5. Non-Negotiables Section - 4 Boxes Structure matching reference */}
       <section aria-label="Non-negotiables" className="w-full bg-white pt-14 sm:pt-16 pb-8 text-ink md:pt-24 md:pb-10">
-        <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
+        <div className="site-pad mx-auto max-w-site">
           <Reveal>
             <h2 className="font-sans text-2xl min-[360px]:text-3xl font-normal tracking-tight text-ink sm:text-4xl md:text-5xl lg:text-[3.375rem] leading-[1.12]">
               {aboutPage.nonNegotiable.title}
@@ -129,7 +129,7 @@ export default function AboutPage() {
       </section>
 
       {/* 6. Coming Soon Section */}
-      <section className="mx-auto max-w-site px-4 sm:px-6 py-16 sm:py-20 md:px-10 2xl:px-16 md:py-28">
+      <section className="site-pad mx-auto max-w-site py-16 sm:py-20 md:py-28">
         <Reveal>
           <div className="relative h-[380px] sm:h-[460px] overflow-hidden bg-night md:h-[35rem] 4xl:h-[39rem]">
             <img

@@ -5,7 +5,7 @@ import Typewriter from '../components/Typewriter'
 import aboutHeroBg from '../assets/images/about-hero.jpg'
 
 const inputClass =
-  'mt-1.5 w-full border border-line bg-cream/50 px-3.5 sm:px-4 py-2.5 text-[15px] text-ink placeholder:text-body/50 transition-all duration-200 focus:border-brand-deep focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/20'
+  'mt-1.5 w-full border border-line bg-cream/50 px-3.5 sm:px-4 py-2.5 text-[15px] text-ink placeholder:text-body/50 transition-all duration-200 focus:border-ink focus:bg-white focus:outline-none focus:ring-2 focus:ring-ink/10'
 
 const labelClass = 'block text-[11px] font-bold uppercase tracking-[0.16em] text-body'
 
@@ -69,7 +69,7 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-night/80 via-ember/40 to-night/70" />
         <div className="absolute inset-0 bg-gradient-to-t from-night via-transparent to-transparent" />
 
-        <div className="relative mx-auto flex max-w-site flex-col justify-center px-4 sm:px-6 md:px-10 2xl:px-16">
+        <div className="site-pad relative mx-auto flex max-w-site flex-col justify-center">
           <div className="eyebrow text-gold">GET IN TOUCH</div>
 
           <div className="mt-5 flex min-h-[85px] min-[390px]:min-h-[100px] items-center sm:mt-8 sm:min-h-[130px] md:min-h-[165px] lg:min-h-[195px]">
@@ -83,11 +83,11 @@ export default function ContactPage() {
       </section>
 
       {/* Quick Action Contact Cards */}
-      <section aria-label="Direct contact channels" className="relative -mt-10 sm:-mt-12 z-20 mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
+      <section aria-label="Direct contact channels" className="site-pad relative -mt-10 sm:-mt-12 z-20 mx-auto max-w-site">
         <div className="grid gap-5 sm:gap-6 sm:grid-cols-2">
           {/* Card 1: Visit Us */}
-          <div className="group border border-line/80 bg-white p-5 sm:p-7 transition-all duration-300 hover:-translate-y-1">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-ink transition-all duration-300 group-hover:scale-110 group-hover:bg-neutral-100 group-hover:text-black">
+          <div className="group border border-line/80 bg-white p-5 sm:p-7 transition-colors duration-300 hover:bg-sand/60">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-body transition-colors duration-300 group-hover:bg-ink group-hover:text-white">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                 <circle cx="12" cy="10" r="3" />
@@ -106,8 +106,8 @@ export default function ContactPage() {
           </div>
 
           {/* Card 2: Email Inquiries */}
-          <div className="group border border-line/80 bg-white p-5 sm:p-7 transition-all duration-300 hover:-translate-y-1">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-ink transition-all duration-300 group-hover:scale-110 group-hover:bg-neutral-100 group-hover:text-black">
+          <div className="group border border-line/80 bg-white p-5 sm:p-7 transition-colors duration-300 hover:bg-sand/60">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand text-body transition-colors duration-300 group-hover:bg-ink group-hover:text-white">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <rect width="20" height="16" x="2" y="4" rx="2" />
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
@@ -121,7 +121,7 @@ export default function ContactPage() {
                   href={`mailto:${email.address}`}
                   className="group/mail block"
                 >
-                  <span className="inline-block break-all sm:break-normal text-sm sm:text-base font-medium text-ink underline decoration-line/80 underline-offset-4 transition-all duration-200 group-hover/mail:text-black group-hover/mail:decoration-black group-hover/mail:scale-105 origin-left">
+                  <span className="inline-block break-all sm:break-normal text-sm sm:text-base font-medium text-body underline decoration-line/80 underline-offset-4 transition-colors duration-200 group-hover/mail:text-black group-hover/mail:decoration-black">
                     {email.address}
                   </span>
                   <span className="block sm:inline sm:ml-2 text-xs text-body">{email.label} Desk</span>
@@ -136,7 +136,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main Contact Form Section */}
-      <section id="form" className="mx-auto max-w-site px-4 sm:px-6 py-16 sm:py-20 md:px-10 2xl:px-16 md:py-28">
+      <section id="form" className="site-pad mx-auto max-w-site py-16 sm:py-20 md:py-28">
         <div className="grid gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-16 items-start">
           {/* Left Column: Context, Trust Points, Visit Promise */}
           <div className="lg:col-span-5">
@@ -151,7 +151,7 @@ export default function ContactPage() {
             {/* Value Pillars */}
             <div className="mt-8 sm:mt-10 space-y-6">
               <Reveal delay={80}>
-                <div className="flex items-start gap-4 border-l-2 border-brand-deep pl-4">
+                <div className="flex items-start gap-4 border-l-2 border-ink pl-4">
                   <div>
                     <h3 className="font-display text-xl font-medium text-ink">Zero Brokerage & Direct Dealing</h3>
                     <p className="mt-1 text-sm leading-relaxed text-body">
@@ -162,7 +162,7 @@ export default function ContactPage() {
               </Reveal>
 
               <Reveal delay={140}>
-                <div className="flex items-start gap-4 border-l-2 border-brand-deep pl-4">
+                <div className="flex items-start gap-4 border-l-2 border-ink pl-4">
                   <div>
                     <h3 className="font-display text-xl font-medium text-ink">Personal Guided Walkthrough</h3>
                     <p className="mt-1 text-sm leading-relaxed text-body">
@@ -173,7 +173,7 @@ export default function ContactPage() {
               </Reveal>
 
               <Reveal delay={200}>
-                <div className="flex items-start gap-4 border-l-2 border-brand-deep pl-4">
+                <div className="flex items-start gap-4 border-l-2 border-ink pl-4">
                   <div>
                     <h3 className="font-display text-xl font-medium text-ink">Established PCMC Heritage</h3>
                     <p className="mt-1 text-sm leading-relaxed text-body">
@@ -201,13 +201,13 @@ export default function ContactPage() {
               {/* Form Content or Thank You Screen */}
               {formStatus === 'sent' ? (
                 <div role="status" className="flex flex-col items-start py-10 animate-hero-in">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-sun to-brand-deep text-white">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-ink text-white">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M5 12l5 5L20 7" />
                     </svg>
                   </span>
                   <div className="mt-6">
-                    <span className="inline-block rounded-full bg-sand px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-sun">
+                    <span className="inline-block rounded-full bg-sand px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-ink">
                       Reference ID: {referenceId}
                     </span>
                     <h3 className="mt-3 font-display text-3xl font-medium sm:text-4xl text-ink">Thank you for reaching out!</h3>
@@ -220,7 +220,7 @@ export default function ContactPage() {
                     <button
                       type="button"
                       onClick={() => setFormStatus('idle')}
-                      className="text-xs font-bold uppercase tracking-[0.16em] text-orange-600 transition-colors hover:text-orange-700 cursor-pointer"
+                      className="text-xs font-bold uppercase tracking-[0.16em] text-body transition-colors hover:text-black cursor-pointer"
                     >
                       Submit another enquiry
                     </button>
@@ -314,7 +314,7 @@ export default function ContactPage() {
                       type="checkbox"
                       checked={sendWhatsApp}
                       onChange={(e) => setSendWhatsApp(e.target.checked)}
-                      className="mt-1 h-4 w-4 shrink-0 rounded border-line text-brand-deep focus:ring-brand"
+                      className="mt-1 h-4 w-4 shrink-0 rounded border-line text-ink focus:ring-ink"
                     />
                     <label htmlFor="whatsapp-optin" className="text-xs text-body leading-relaxed cursor-pointer select-none">
                       Send project brochure, floor plans, and pricing sheet directly to my WhatsApp number for easy offline viewing.
@@ -336,7 +336,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={formStatus === 'sending'}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-orange-600 bg-orange-600 px-6 sm:px-8 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-700 hover:bg-orange-700 disabled:pointer-events-none disabled:opacity-60 shadow-sm hover:shadow-md cursor-pointer"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-orange-600 bg-orange-600 px-6 sm:px-8 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-white transition-colors duration-200 hover:border-orange-700 hover:bg-orange-700 disabled:pointer-events-none disabled:opacity-60 cursor-pointer"
                     >
                       {formStatus === 'sending' ? (
                         <>
@@ -360,7 +360,7 @@ export default function ContactPage() {
 
       {/* Office Location & Interactive Map */}
       <section aria-label="Our office location" className="w-full bg-white py-16 sm:py-20 md:py-28 border-t border-line">
-        <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
+        <div className="site-pad mx-auto max-w-site">
           <div className="flex flex-wrap items-end justify-between gap-4 sm:gap-6 border-b border-line pb-7 sm:pb-8">
             <Reveal>
               <div className="eyebrow text-sun">Our Presence</div>
@@ -426,7 +426,7 @@ export default function ContactPage() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full border border-line bg-white px-3 py-1 text-xs font-semibold text-ink transition-all hover:border-orange-500 hover:text-orange-600 shadow-sm"
+                      className="rounded-full border border-line bg-white px-3 py-1 text-xs font-semibold text-body transition-colors hover:border-ink hover:text-black"
                     >
                       {social.name}
                     </a>

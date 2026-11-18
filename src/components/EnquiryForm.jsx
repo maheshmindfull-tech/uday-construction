@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import { contactForm, projectsPage } from '../data/content'
 
 const inputClass =
-  'w-full border border-gray-300 bg-white px-3 py-2 sm:px-3.5 sm:py-2.5 text-base sm:text-sm text-ink placeholder:text-gray-400 focus:border-brand-deep focus:outline-none transition-colors'
+  'w-full border border-gray-300 bg-white px-3 py-2 sm:px-3.5 sm:py-2.5 text-base sm:text-sm text-ink placeholder:text-gray-400 focus:border-ink focus:outline-none transition-colors'
 
 const inlineInputClass =
-  'mt-2 w-full border border-line bg-white px-4 py-3 text-base sm:text-[15px] text-ink placeholder:text-body/50 transition-colors focus:border-brand-deep focus:outline-none focus:ring-2 focus:ring-brand/20'
+  'mt-2 w-full border border-line bg-white px-4 py-3 text-base sm:text-[15px] text-ink placeholder:text-body/50 transition-colors focus:border-ink focus:outline-none focus:ring-2 focus:ring-ink/10'
 
 const labelClass = 'block text-[11px] font-bold uppercase tracking-[0.16em] text-body'
 
@@ -83,7 +83,7 @@ export default function EnquiryForm({
     if (status === 'sent') {
       return (
         <div className="py-6 sm:py-8 text-center flex flex-col items-center animate-hero-in">
-          <span className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-blue-600 text-white mb-3 sm:mb-4">
+          <span className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-ink text-white mb-3 sm:mb-4">
             <svg
               width="22"
               height="22"
@@ -104,7 +104,7 @@ export default function EnquiryForm({
           <button
             type="button"
             onClick={onClose}
-            className="mt-5 sm:mt-6 rounded-full border border-line bg-cream px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-ink hover:border-orange-600 hover:text-orange-600 transition-colors cursor-pointer"
+            className="mt-5 sm:mt-6 rounded-full border border-line bg-cream px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-body hover:border-ink hover:text-black transition-colors cursor-pointer"
           >
             Close
           </button>
@@ -264,7 +264,7 @@ export default function EnquiryForm({
   if (status === 'sent') {
     return (
       <div role="status" className="flex flex-col items-start py-6">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ink text-white">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M5 12l5 5L20 7" />
           </svg>
@@ -276,7 +276,7 @@ export default function EnquiryForm({
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="mt-6 text-[11px] font-bold uppercase tracking-[0.16em] text-orange-600 transition-colors hover:text-orange-700 cursor-pointer"
+          className="mt-6 text-[11px] font-bold uppercase tracking-[0.16em] text-body transition-colors hover:text-black cursor-pointer"
         >
           Send another enquiry
         </button>

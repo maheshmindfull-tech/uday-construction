@@ -100,7 +100,7 @@ export default function Timeline() {
       aria-label="Company Milestones Timeline"
       className="relative w-full border-b border-line bg-white py-14 sm:py-16 md:py-24 text-[#18181B]"
     >
-      <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
+      <div className="site-pad mx-auto max-w-site">
         {/* Section Header */}
         <div className="mx-auto mb-10 sm:mb-12 md:mb-16 max-w-3xl 3xl:max-w-4xl text-center">
           <Reveal>

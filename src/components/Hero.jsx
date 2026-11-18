@@ -51,10 +51,10 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-night/20 via-transparent to-night/60" />
 
       {/* Hero Overlay Headlines — aligned to the site container on every screen size */}
-      <div className="pointer-events-none absolute inset-0 flex flex-col justify-end pb-20 min-[380px]:pb-24 md:pb-28 2xl:pb-36">
-        <div className="mx-auto w-full max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
+      <div className="pointer-events-none absolute inset-0 flex flex-col justify-end pb-24 min-[380px]:pb-28 md:pb-32 2xl:pb-40">
+        <div className="site-pad mx-auto w-full max-w-site">
           <div className="max-w-3xl 2xl:max-w-5xl">
-            <span className="inline-block text-[10px] min-[360px]:text-[11px] font-bold uppercase tracking-[0.25em] text-gold md:text-xs">
+            <span className="inline-block text-[10px] min-[360px]:text-[11px] font-bold uppercase tracking-[0.25em] text-white/80 md:text-xs">
               Coming Soon &middot; PCMC
             </span>
             <h1 className="mt-2.5 font-display text-2xl min-[360px]:text-[28px] min-[420px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[5.25rem] font-medium leading-[1.12] text-white">
@@ -66,14 +66,14 @@ export default function Hero() {
 
       {/* Bottom bar: video controls (left) + scroll cue (right) */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 pb-4 sm:pb-6 md:pb-8">
-        <div className="mx-auto flex w-full max-w-site items-center justify-between gap-3 px-4 sm:px-6 md:px-10 2xl:px-16">
+        <div className="site-pad mx-auto flex w-full max-w-site items-center justify-between gap-3">
           {hasVideo ? (
             <div className="pointer-events-auto flex items-center gap-2 sm:gap-2.5">
               <button
                 type="button"
                 onClick={togglePlay}
                 aria-label={playing ? 'Pause video' : 'Play video'}
-                className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/30 bg-night/50 text-white backdrop-blur-md transition-all duration-200 hover:border-orange-500 hover:bg-orange-600 cursor-pointer"
+                className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/30 bg-night/50 text-white backdrop-blur-md transition-colors duration-200 hover:border-white hover:bg-white hover:text-black cursor-pointer"
               >
                 {playing ? (
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
@@ -90,7 +90,7 @@ export default function Hero() {
                 type="button"
                 onClick={toggleMute}
                 aria-label={muted ? 'Unmute video' : 'Mute video'}
-                className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/30 bg-night/50 text-white backdrop-blur-md transition-all duration-200 hover:border-orange-500 hover:bg-orange-600 cursor-pointer"
+                className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/30 bg-night/50 text-white backdrop-blur-md transition-colors duration-200 hover:border-white hover:bg-white hover:text-black cursor-pointer"
               >
                 {muted ? (
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -112,7 +112,7 @@ export default function Hero() {
             aria-hidden="true"
           >
             <span>SCROLL</span>
-            <span className="block h-px w-8 bg-brand-deep sm:w-14" />
+            <span className="block h-px w-8 bg-white/80 sm:w-14" />
           </div>
         </div>
       </div>

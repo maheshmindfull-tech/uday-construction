@@ -41,7 +41,7 @@ export default function Footer() {
     <footer id="contact" className="border-t border-line bg-white text-ink" aria-label="Site footer">
       <div className="h-1 w-full bg-gradient-to-r from-sun via-brand to-gold" />
 
-      <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16 pt-14 md:pt-16">
+      <div className="site-pad mx-auto max-w-site pt-14 md:pt-16">
         <div className="grid gap-12 pb-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-5">
@@ -57,7 +57,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Follow on ${social.name}`}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-cream text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-500 hover:bg-orange-50 hover:text-orange-600"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-cream text-body transition-colors duration-200 hover:border-ink hover:bg-ink hover:text-white"
                 >
                   {renderSocialIcon(social.type)}
                 </a>
@@ -71,7 +71,7 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {footer.links.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.href} className="inline-block text-sm text-body transition-all duration-200 hover:text-black hover:scale-105 origin-left">
+                  <Link to={link.href} className="link-quiet inline-block text-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -98,7 +98,7 @@ export default function Footer() {
                   <p className="text-sm font-semibold text-ink">{email.label}</p>
                   <a
                     href={`mailto:${email.address}`}
-                    className="mt-1 inline-block break-all sm:break-normal text-sm text-body underline decoration-line underline-offset-4 transition-all duration-200 hover:text-black hover:decoration-black hover:scale-105 origin-left"
+                    className="mt-1 inline-block break-all sm:break-normal text-sm text-body underline decoration-line underline-offset-4 transition-colors duration-200 hover:text-black hover:decoration-black"
                   >
                     {email.address}
                   </a>

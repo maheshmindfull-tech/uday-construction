@@ -3,7 +3,7 @@ import { stats } from '../data/content'
 export default function Stats() {
   return (
     <section aria-label="Numbers" className="w-full bg-white text-ink border-b border-line">
-      <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16 pb-16 pt-16 sm:pb-20 sm:pt-20 md:pb-[6.5rem] md:pt-28">
+      <div className="site-pad mx-auto max-w-site pb-16 pt-16 sm:pb-20 sm:pt-20 md:pb-[6.5rem] md:pt-28">
         <div className="overflow-hidden whitespace-nowrap bg-gradient-to-r from-sun via-brand to-gold bg-clip-text font-number text-[clamp(34px,11.8vw,11.5rem)] font-[200] leading-[0.92] tracking-[-0.03em] text-transparent">
           {stats.bigNumber}
         </div>

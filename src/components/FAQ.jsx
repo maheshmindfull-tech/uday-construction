@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Reveal from './Reveal'
 
 const FAQS = [
@@ -34,7 +35,7 @@ export default function FAQ() {
 
   return (
     <section aria-label="Frequently Asked Questions" className="w-full bg-white border-t border-line py-16 sm:py-20 md:py-28">
-      <div className="mx-auto max-w-site px-4 sm:px-6 md:px-10 2xl:px-16">
+      <div className="site-pad mx-auto max-w-site">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
           {/* Left Side: Heading, Eyebrow & Description */}
           <div className="lg:col-span-5 lg:sticky lg:top-28 self-start">
@@ -50,15 +51,15 @@ export default function FAQ() {
                 <p className="mt-1.5 text-sm text-body leading-relaxed">
                   Our sales advisors are ready to assist with customized floor plans and site visit arrangements.
                 </p>
-                <a
-                  href="/contact"
-                  className="mt-3.5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-sun transition-colors hover:text-ink"
+                <Link
+                  to="/contact"
+                  className="mt-3.5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-body transition-colors hover:text-black"
                 >
                   Contact Project Desk
                   <svg width="14" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M0 5h17M13 1l4 4-4 4" />
                   </svg>
-                </a>
+                </Link>
               </div>
             </Reveal>
           </div>

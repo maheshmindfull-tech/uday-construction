@@ -98,7 +98,7 @@ export default function ProjectGallery() {
                         <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                       </span>
                     ) : item.category === 'Completed' ? (
-                      <span className="h-2 w-2 rounded-full bg-blue-400" />
+                      <span className="h-2 w-2 rounded-full bg-zinc-300" />
                     ) : (
                       <span className="h-2 w-2 rounded-full bg-amber-400" />
                     )}

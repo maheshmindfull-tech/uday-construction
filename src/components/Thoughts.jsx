@@ -3,7 +3,7 @@ import { thoughts } from '../data/content'
 export default function Thoughts() {
   return (
     <section id="thoughts" className="w-full bg-white">
-      <div className="mx-auto flex max-w-site flex-wrap items-center gap-10 sm:gap-12 md:gap-16 lg:gap-20 px-4 sm:px-6 md:px-10 2xl:px-16 py-16 sm:py-20 md:py-28">
+      <div className="site-pad mx-auto flex max-w-site flex-wrap items-center gap-10 sm:gap-12 md:gap-16 lg:gap-20 py-16 sm:py-20 md:py-28">
         {/* Left Column: Title, Subtitle, and the Thought Box */}
         <div className="min-w-[min(100%,280px)] flex-[1_1_28.75rem]">
           <div className="eyebrow text-sun">{thoughts.eyebrow}</div>
@@ -19,9 +19,9 @@ export default function Thoughts() {
             <blockquote className="border-l-[3px] border-brand pl-4 sm:pl-7">
               <p className="font-sans text-lg sm:text-2xl md:text-[1.5625rem] font-light leading-[1.48] text-ink tracking-[-0.01em]">
                 &ldquo;A home is not built from material alone it is built from{' '}
-                <span className="italic text-brand-deep font-normal">memory</span>,{' '}
-                <span className="italic text-brand-deep font-normal">silence</span>, and the quality of{' '}
-                <span className="italic text-brand-deep font-normal">morning light</span>.&rdquo;
+                <span className="italic text-brand font-normal">memory</span>,{' '}
+                <span className="italic text-brand font-normal">silence</span>, and the quality of{' '}
+                <span className="italic text-brand font-normal">morning light</span>.&rdquo;
               </p>
               <footer className="mt-5 sm:mt-7 text-xs sm:text-sm font-normal tracking-wide text-body">
                 &mdash; {thoughts.quote?.author || 'Balasaheb Gaikwad, Founder'}
